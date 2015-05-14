@@ -28,7 +28,7 @@
     <!-- End Body Section -->
     <!-- Footer Section -->
     <div class="row-fluid">
-        <div class="span12" align="center">Copyright to NIELIT Aizawl   :  2015</div>
+        <div class="span12" align="center">Copyright to NIELIT Aizawl   : Industrail Estate, Zungtui  2015</div>
     </div>
     <!-- End of Footer-->
 </div>
