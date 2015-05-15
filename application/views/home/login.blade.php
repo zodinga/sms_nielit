@@ -10,7 +10,7 @@
     <title>Signin Template for Bootstrap</title>
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/dist/css/signin.css" rel="stylesheet">
-    <script src="/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="/dist/js/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
     <div class="container">
@@ -22,7 +22,7 @@
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" >
        
         <button class="btn  btn-primary " type="submit">Sign in</button>
-        <button class="btn  btn-warning " onclick="location.href''">Back to Home</button>
+        <button class="btn  btn-warning " onclick="location.href'/home'">Back to Home</button>
       </form>
 
     </div> <!-- /container -->

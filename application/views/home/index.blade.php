@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">NIELIT, Aizawl: SDMS</a>
+          <a class="navbar-brand" href="/home">NIELIT, Aizawl: SDMS</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -19,6 +19,36 @@
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Student Search...">
+            <select class="form-control">
+                <option selected="selected" value="">All Academic Session</option>
+                <option value="">2015-2016</option>
+                <option value="">2001-2002</option>>
+                <option value="">2002-2003</option>>
+                <option value="">2003-2004</option>>
+                <option value="">2004-2005</option>>
+                <option value="">2005-2006</option>>
+                <option value="">2006-2007</option>>
+                <option value="">2007-2008</option>>
+                <option value="">2008-2009</option>>
+                <option value="">2009-2010</option>>
+                <option value="">2010-2011</option>>
+                <option value="">2011-2012</option>>
+                <option value="">2012-2013</option>>
+                <option value="">2013-2014</option>>
+                <option value="">2014-2015</option>>
+            </select>
+            <select class="form-control">
+                <option selected="selected" value="">All Course</option>
+                <option value="">MCA</option>
+                <option value="">BCA</option>
+                <option value="">DETE</option>
+                <option value="">DCSE</option>
+                <option value="">MAT-O</option>
+                <option value="">O-LEVEL</option>
+                <option value="">A-LEVEL</option>
+                <option value="">CCC</option>
+                <option value="">Short-Term</option>
+            </select>
           </form>
         </div>
       </div>
@@ -47,157 +77,231 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h3 class="page-header">Welcome to Student Record Database Management</h3>
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <div class="chart">
+                <div class="pie-thychart" data-set='[["Male", 40], ["Female",60]]' data-colors="#6699FF,#CC99FF"></div>
+              </div>
+              <h4>Sex</h4>
+              <span class="text-muted">% of Male & Female</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <div class="chart">
+                <div class="pie-thychart" data-set='[["ST", 20], ["SC",30],["OBC",40],["GEN",10]]' data-colors="#6699FF,#CC99FF,#FF9966,#47B224"></div>
+              </div>
+              <h4>Categories</h4>
+              <span class="text-muted">ST/SC/GEN/OBC</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <div class="chart">
+                <div class="pie-thychart" data-set='[["MCA", 20], ["BCA",30],["DETE",40],["DCSE",10],["O Level",10],["MAT-O",10],["A Level",10],["CCC",10],["Short-Term",10]]' data-colors="#6699FF,#CC99FF,#FF9966,#47B224,#9933FF,#CC6699,#669999,#000066,#666633"></div>
+              </div>
+              <h4>Courses</h4>
+              <span class="text-muted">Short and Long Term Courses</span>
             </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th><button type="button" class="btn btn-primary" data-toggle="popover" title="MCA" data-content="Master of Computer Applications : 3yrs Affiliated by MZU">MCA</button></th>
+                  <th>BCA</th>
+                  <th>DETE</th>
+                  <th>DCSE</th>
+                  <th>MAT-O</th>
+                  <th>O-Level</th>
+                  <th>A-Level</th>
+                  <th>CCC</th>
+                  <th>Short Term</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
+                  <td>2001-2002</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
+                  <td>2002-2003</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
+                  <td>2003-2004</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
+                  <td>2004-2005</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
+                  <td>2005-2006</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
+                  <td>2006-2007</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
+                  <td>2007-2008</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
+                  <td>2008-2009</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
+                  <td>2009-2010</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
+                  <td>2010-2011</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
+                  <td>2011-2012</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
+                  <td>2012-2013</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
+                  <td>2013-2014</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
+                  <td>2014-2015</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
                 <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
+                  <td>TOTAL</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
+                  <td>1000</td>
                 </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
+               </tbody>
             </table>
           </div>
         </div>
