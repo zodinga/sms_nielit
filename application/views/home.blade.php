@@ -1,3 +1,4 @@
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
     <link href="/dist/css/dashboard.css" rel="stylesheet">
     <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/dist/js/jquery.mini.js"></script>
     <script src="/dist/js/bootstrap.min.js"></script>
     <script src="/assets/js/docs.min.js"></script>
     <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
@@ -34,10 +35,86 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/home">NIELIT, Aizawl: SDMS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp; Login</a></li>
+            <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp;Contact</a></li>
+            <li><a href="/help"<span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;&nbsp;Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right" method="POST" action="/search">
+            <input type="text" class="form-control" name="searchtxt" placeholder="Student Search...">
+            <!--
+            <select class="form-control">
+                <option selected="selected" value="">All Academic Session</option>
+                <option value="">2015-2016</option>
+                <option value="">2001-2002</option>
+                <option value="">2002-2003</option>
+                <option value="">2003-2004</option>
+                <option value="">2004-2005</option>
+                <option value="">2005-2006</option>
+                <option value="">2006-2007</option>
+                <option value="">2007-2008</option>
+                <option value="">2008-2009</option>
+                <option value="">2009-2010</option>
+                <option value="">2010-2011</option>
+                <option value="">2011-2012</option>
+                <option value="">2012-2013</option>
+                <option value="">2013-2014</option>
+                <option value="">2014-2015</option>
+            </select>
+            -->
+            <select class="form-control" name="course">
+                <option selected="selected" value="all">All Course</option>
+                <option value="mca">MCA</option>
+                <option value="bca">BCA</option>
+                <option value="dete">DETE</option>
+                <option value="dcse">DCSE</option>
+                <option value="mato">MAT-O</option>
+                <option value="olevel">O-LEVEL</option>
+                <option value="alevel">A-LEVEL</option>
+                <option value="ccc">CCC</option>
+                <option value="shortterm">Short-Term</option>
+            </select>
+            <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </form>
+        </div>
+      </div>
       @yield('content')
     </nav>
     <div class="container-fluid">
+      <div class="row">
+       <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
       @yield('content1')
+      </div>
     </div>
     <script>
       $(function() {
