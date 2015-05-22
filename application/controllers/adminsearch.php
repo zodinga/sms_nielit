@@ -1,5 +1,5 @@
 <?php
-class Search_Controller extends Base_Controller {
+class Adminsearch_Controller extends Base_Controller {
 
 	public function action_index()
 	{
@@ -13,7 +13,7 @@ class Search_Controller extends Base_Controller {
 		{
 			$result = studentformats::where('name','LIKE',$searchtxt)->where('course','=',$course)->get();	
 		}
-        return View::make('home.searchResult')
+        return View::make('admin.searchResult')
         	->with('result',$result);
 	}
 

@@ -23,36 +23,93 @@
     {
       $student_short = 1;
     }
+    $per_male = round(($student_sex_male*100)/$student_no,2);
+    $per_female = round(($student_sex_female*100)/$student_no,2);
+    $per_unknown = round((($student_no - ($student_sex_female + $student_sex_male))*100)/$student_no,2);
+    $per_longterm = round((($student_long*100)/$student_no),2);
+    $per_shortterm = round((($student_short*100)/$student_no),2);
+    $per_st = round((($st*100)/$student_no),2);
+    $per_sc = round((($sc*100)/$student_no),2);
+    $per_obc = round((($obc*100)/$student_no),2);
+    $per_gen = round((($gen*100)/$student_no),2);
   ?> 
       
 @endsection
 @section('content1')
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h3 class="page-header">Dashboard : <?php echo Auth::user()->username;?></h3>
+          <h3 class="page-header">Dashboard</h3>
 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="chart">
-                <div class="pie-thychart" data-set='[["Male", <?php echo $student_sex_male; ?>], ["Female",<?php echo $student_sex_male; ?>]]' data-colors="#6699FF,#CC99FF"></div>
-              </div>
-              <h4>Sex</h4>
-              <span class="text-muted">% of Male & Female</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="chart">
-                <div class="pie-thychart" data-set='[["ST", <?php echo $st; ?>], ["SC",<?php echo $sc; ?>],["OBC",<?php echo $obc; ?>],["GEN",<?php echo $gen; ?>]]' data-colors="#6699FF,#CC99FF,#FF9966,#47B224"></div>
-              </div>
-              <h4>Categories</h4>
-              <span class="text-muted">ST/SC/GEN/OBC</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div class="chart">
-                <div class="pie-thychart" data-set='[["LognTerm", <?php echo $student_long; ?>], ["ShortTerm",<?php echo $student_short; ?>]]' data-colors="#6699FF,#CC99FF"></div>
-              </div>
-              <h4>Courses</h4>
-              <span class="text-muted">Short and Long Term Courses</span>
-            </div>
-          </div>
+          <p>
+    <button class="btn btn-primary" type="button">
+      Total No.of Student <span class="badge"><?php echo $student_no; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Male <span class="badge"><?php echo $student_sex_male; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Female <span class="badge"><?php echo $student_sex_female; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Unknown <span class="badge"><?php echo $student_no - ($student_sex_female + $student_sex_male); ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_male;?>%">
+        Male:<?php echo $per_male;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_female;?>%">
+        Female:<?php echo $per_female;?>%
+      </div>
+      <div class="progress-bar progress-bar-danger" style="width: <?php echo $per_unknown;?>%">
+        Unknown:<?php echo $per_unknown;?>%
+      </div>
+    </div>
+
+    <p>
+    <button class="btn btn-danger" type="button">
+      Long Term Student <span class="badge"><?php echo $student_long; ?></span>
+    </button>
+    <button class="btn btn-danger" type="button">
+      Short Term Student <span class="badge"><?php echo $student_short; ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_longterm;?>%">
+        Longterm:<?php echo $per_longterm;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_shortterm;?>%">
+        Short Term:<?php echo $per_shortterm;?>%
+      </div>
+    </div>
+
+    <p>
+    <button class="btn btn-info" type="button">
+      Schedule Tribe <span class="badge"><?php echo $st; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      Shedule Cast <span class="badge"><?php echo $sc; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      OBC <span class="badge"><?php echo $obc; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      General <span class="badge"><?php echo $gen; ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_st;?>%">
+        ST:<?php echo $per_st;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_sc;?>%">
+        SC:<?php echo $per_sc;?>%
+      </div>
+      <div class="progress-bar progress-bar-info progress-bar-striped" style="width: <?php echo $per_obc;?>%">
+        OBC:<?php echo $per_obc;?>%
+      </div>
+      <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <?php echo $per_gen;?>%">
+        General:<?php echo $per_gen;?>%
+      </div>
+    </div>
 
           <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
           <div class="table-responsive">

@@ -1,4 +1,4 @@
-@layout('home')
+@layout('admin')
 @section('content')
  <?php
     $student_no = studentformats::where('id','>',0)->count();
@@ -151,6 +151,7 @@
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 Details
               </a>
+              <button class="btn btn-warning" onclick="location.href='/edit_student/index/<?php echo $r->id;?>'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;Edit</button>
             </td>
           </tr>
         <?php

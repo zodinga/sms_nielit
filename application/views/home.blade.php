@@ -34,6 +34,9 @@
     </style>
   </head>
   <body>
+  <?php
+  $course = courses::all();
+  ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -47,12 +50,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp; Login</a></li>
-            <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp;Contact</a></li>
-            <li><a href="/help"<span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;&nbsp;Help</a></li>
+            <li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+            <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;Contact</a></li>
+            <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Login</a></li>
           </ul>
           <form class="navbar-form navbar-right" method="POST" action="/search">
-            <input type="text" class="form-control" name="searchtxt" placeholder="Student Search...">
+            <input type="text" class="form-control" required name="searchtxt" placeholder="Student Search...">
             <!--
             <select class="form-control">
                 <option selected="selected" value="">All Academic Session</option>
@@ -75,17 +78,15 @@
             -->
             <select class="form-control" name="course">
                 <option selected="selected" value="all">All Course</option>
-                <option value="mca">MCA</option>
-                <option value="bca">BCA</option>
-                <option value="dete">DETE</option>
-                <option value="dcse">DCSE</option>
-                <option value="mato">MAT-O</option>
-                <option value="olevel">O-LEVEL</option>
-                <option value="alevel">A-LEVEL</option>
-                <option value="ccc">CCC</option>
-                <option value="shortterm">Short-Term</option>
+                <?php
+                foreach ($course as $c) {
+                ?>
+                  <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
+                <?php
+                }
+                ?>
             </select>
-            <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
         </div>
       </div>
@@ -101,16 +102,10 @@
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href="">For Search</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li><a href="">For Info</a></li>
           </ul>
         </div>
       @yield('content1')

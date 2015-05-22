@@ -36,6 +36,9 @@
     </style>
   </head>
   <body>
+  <?php
+  $course = courses::all();
+  ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -45,16 +48,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home">NIELIT, Aizawl: SDMS</a>
+          <a class="navbar-brand" href="/admin">NIELIT, Aizawl: SDMS</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/setting">Setting</a></li>
-            <li><a href="/help">Help</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/admin"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;Home</a></li>
+            <li><a href="/setting"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;&nbsp;Setting</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;<?php echo Auth::user()->username;?> | Logout</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Student Search...">
+          <form class="navbar-form navbar-right" method="POST" action="/adminsearch">
+            <input type="text" required class="form-control" name="searchtxt" placeholder="Student Search...">
             <!--
             <select class="form-control">
                 <option selected="selected" value="">All Academic Session</option>
@@ -75,18 +78,17 @@
                 <option value="">2014-2015</option>>
             </select>
             -->
-            <select class="form-control">
-                <option selected="selected" value="">All Course</option>
-                <option value="">MCA</option>
-                <option value="">BCA</option>
-                <option value="">DETE</option>
-                <option value="">DCSE</option>
-                <option value="">MAT-O</option>
-                <option value="">O-LEVEL</option>
-                <option value="">A-LEVEL</option>
-                <option value="">CCC</option>
-                <option value="">Short-Term</option>
+            <select class="form-control" name="course">
+                <option selected="selected" value="all">All Course</option>
+                <?php
+                foreach ($course as $c) {
+                ?>
+                  <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
+                <?php
+                }
+                ?>
             </select>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
         </div>
       </div>
