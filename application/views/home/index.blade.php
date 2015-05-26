@@ -19,10 +19,6 @@
     foreach ($courses_short as $short) {
     $student_short = $student_short + studentformats::where('course','=',$short->id)->count();
     }
-    if($student_short == 0)
-    {
-      $student_short = 1;
-    }
     $per_male = round(($student_sex_male*100)/$student_no,2);
     $per_female = round(($student_sex_female*100)/$student_no,2);
     $per_unknown = round((($student_no - ($student_sex_female + $student_sex_male))*100)/$student_no,2);

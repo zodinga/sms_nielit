@@ -96,16 +96,8 @@
       <div class="row">
        <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">For Search</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">For Info</a></li>
+            <li class="active"><a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="/advanced_search"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Advance Search</a></li>
           </ul>
         </div>
       @yield('content1')

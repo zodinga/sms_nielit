@@ -13,6 +13,19 @@
     <script src="/dist/js/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/home">NIELIT Aizawl : Student Database Management System</a>
+        </div>
+      </div>
+    </nav>
     <div class="container">
       <form class="form-signin" method="POST" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -27,6 +40,11 @@
 
     </div> <!-- /container -->
 
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy; Copyright - NIELIT Aiawl 2015. Industrial Estate, Zuangtui. Aizawl                             </p>
+      </div>
+    </footer>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
