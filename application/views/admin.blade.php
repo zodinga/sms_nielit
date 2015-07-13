@@ -58,27 +58,7 @@
           </ul>
           <form class="navbar-form navbar-right" method="POST" action="/adminsearch">
             <input type="text" required class="form-control" name="searchtxt" placeholder="Student Search...">
-            <!--
-            <select class="form-control">
-                <option selected="selected" value="">All Academic Session</option>
-                <option value="">2015-2016</option>
-                <option value="">2001-2002</option>>
-                <option value="">2002-2003</option>>
-                <option value="">2003-2004</option>>
-                <option value="">2004-2005</option>>
-                <option value="">2005-2006</option>>
-                <option value="">2006-2007</option>>
-                <option value="">2007-2008</option>>
-                <option value="">2008-2009</option>>
-                <option value="">2009-2010</option>>
-                <option value="">2010-2011</option>>
-                <option value="">2011-2012</option>>
-                <option value="">2012-2013</option>>
-                <option value="">2013-2014</option>>
-                <option value="">2014-2015</option>>
-            </select>
-            -->
-            <select class="form-control" name="course">
+             <select class="form-control" name="course">
                 <option selected="selected" value="all">All Course</option>
                 <?php
                 foreach ($course as $c) {
@@ -99,7 +79,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Course</a></li>
+            <li><a href="/existing_course">Course</a></li>
             <li><a href="#">Type</a></li>
             <li><a href="#">Student</a></li>
           </ul>
