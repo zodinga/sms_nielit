@@ -4,7 +4,11 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">Existing Courses</h3> <button type="button" class="btn btn-primary" onclick="location.href='/add_course'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button>
     <p>
-    
+    <?php
+    	$course = Courses::find(10);
+		$type = $course->type_id;
+		var_dump($type);
+    ?>
     <table class="table table-hover">
     <thead>
 	<tr class="warning">
@@ -29,8 +33,9 @@
     			<td><?php echo $c->course;?></td>
     			<td><?php echo $c->full_form;?></td>
     			<td><?php
-    				$type = Types::find($c->type_id); 
-    				echo $type->type;
+    				//$type = Types::find($c->type_id); 
+    				//echo $type->type;
+    			echo $c->type_id;
     				?>
     			</td>
     			<td><?php echo $c->semester;?></td>

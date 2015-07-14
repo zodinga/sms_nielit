@@ -80,8 +80,8 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="/existing_course">Course</a></li>
-            <li><a href="#">Type</a></li>
-            <li><a href="#">Student</a></li>
+            <li><a href="/type_display">Type</a></li>
+            <li><a href="/student_display">Student</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
