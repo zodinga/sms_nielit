@@ -15,8 +15,22 @@ return View::make('admin.index')
         ->with('u_id',$uid)
         ->with('users',$users)
         ->with('confirm',2);
- 
+  
 }));
+
+/*Route::get('types',array('uses'=>'types@index'));
+Route::get('types/add',array('uses'=>'types@add'));
+Route::post('types/save',array('uses'=>'types@save'));*/
+
+Route::get('courses',array('uses'=>'courses@index'));
+Route::get('courses/add',array('uses'=>'courses@add'));
+
+
+
+Route::get('students',array('uses'=>'studentformats@index'));
+Route::get('students/add',array('uses'=>'studentformats@add'));
+
+//Route::get('student/(:any)',array('as'=>'student','uses'=>'studentformats@view'));
 
 /*
 |--------------------------------------------------------------------------

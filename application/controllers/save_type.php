@@ -6,7 +6,7 @@ class Save_type_Controller extends Base_Controller {
       $update_type = new Types;
       $update_type->type=Input::get('type');
       $update_type->save();
-      return View::make('admin.type_display');
+      return View::make('admin.type.index');
 	}
 
 

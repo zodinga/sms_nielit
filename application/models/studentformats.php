@@ -5,5 +5,6 @@ class Studentformats extends Eloquent
 		{
 		  return $this->has_many_and_belongs_to('courses', 'types');
 		}
+
     }
 ?>

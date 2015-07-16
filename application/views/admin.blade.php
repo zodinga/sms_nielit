@@ -79,9 +79,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/existing_course">Course</a></li>
-            <li><a href="/type_display">Type</a></li>
-            <li><a href="/student_display">Student</a></li>
+            <li><a href="/courses">Course</a></li>
+            <li><a href="/types">Type</a></li>
+            <li><a href="/students">Student</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
