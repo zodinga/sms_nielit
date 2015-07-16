@@ -1,23 +1,23 @@
 @layout('home')
 @section('content')
  <?php
-    $student_no = studentformats::where('id','>',0)->count();
-    $st =  studentformats::where('category','=',1)->count();
-    $sc =  studentformats::where('category','=',2)->count();
-    $obc =  studentformats::where('category','=',3)->count();
-    $gen =  studentformats::where('category','=',4)->count();
-    $student_sex_male =  studentformats::where('sex','=','M')->count();
-    $student_sex_female =  studentformats::where('sex','=','F')->count();
+    $student_no = students::where('id','>',0)->count();
+    $st =  students::where('category','=',1)->count();
+    $sc =  students::where('category','=',2)->count();
+    $obc =  students::where('category','=',3)->count();
+    $gen =  students::where('category','=',4)->count();
+    $student_sex_male =  students::where('sex','=','M')->count();
+    $student_sex_female =  students::where('sex','=','F')->count();
     $student_sex_unknown = ($student_no - ($student_sex_female + $student_sex_male));
     $student_long = 0;
     $student_short = 0;
     $courses_long = courses::where('type_id','=',1)->get();
     foreach ($courses_long as $long) {
-    $student_long = $student_long + studentformats::where('course','=',$long->id)->count();
+    $student_long = $student_long + students::where('course','=',$long->id)->count();
     }
     $courses_short = courses::where('type_id','=',2)->get();
     foreach ($courses_short as $short) {
-    $student_short = $student_short + studentformats::where('course','=',$short->id)->count();
+    $student_short = $student_short + students::where('course','=',$short->id)->count();
     }
     if($student_short == 0)
     {
@@ -97,7 +97,7 @@
                     </div>
                     <div class="modal-body">
                       <?php
-                      $detail = studentformats::find($r->id);
+                      $detail = students::find($r->id);
                       $course_detail = courses::find($r->course);
                       $cate = categories::find($r->category);
                       ?>

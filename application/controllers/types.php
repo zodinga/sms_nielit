@@ -14,11 +14,10 @@ class Types_Controller extends Base_Controller {
 
 	public function post_save()
 	{
-		echo "adfadf";
       $update_type = new Types;
       $update_type->type=Input::get('type');
       $update_type->save();
-      return View::make('admin.type.index');
+      return View::make('admin.type.index')->with('types',Types::order_by('id')->get());
 	}
 
 

@@ -27,10 +27,10 @@ Route::get('courses/add',array('uses'=>'courses@add'));
 
 
 
-Route::get('students',array('uses'=>'studentformats@index'));
-Route::get('students/add',array('uses'=>'studentformats@add'));
+Route::get('students',array('uses'=>'students@index'));
+Route::get('students/add',array('uses'=>'students@add'));
 
-//Route::get('student/(:any)',array('as'=>'student','uses'=>'studentformats@view'));
+//Route::get('student/(:any)',array('as'=>'student','uses'=>'students@view'));
 
 /*
 |--------------------------------------------------------------------------

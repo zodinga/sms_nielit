@@ -2,7 +2,7 @@
 	/**
 	* 
 	*/
-	class Studentformats_Controller extends Base_Controller
+	class students_Controller extends Base_Controller
 	{
 		public $restful = true;
 		public function get_index()
