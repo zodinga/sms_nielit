@@ -20,6 +20,15 @@ class Types_Controller extends Base_Controller {
       return View::make('admin.type.index')->with('types',Types::order_by('id')->get());
 	}
 
+	public function post_update()
+	{
+      $update_type = Types::find(Input::get('id'));
+      
+      $update_type->type=Input::get('type');
+      $update_type->save();
+      return View::make('admin.type.index')->with('types',Types::order_by('id')->get());
+	}
+
 
 }
 ?>

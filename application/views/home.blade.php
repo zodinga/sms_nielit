@@ -54,28 +54,10 @@
             <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;Contact</a></li>
             <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Login</a></li>
           </ul>
+           {{"DSDSDSDS"}}
           <form class="navbar-form navbar-right" method="POST" action="/search">
             <input type="text" class="form-control" required name="searchtxt" placeholder="Student Search...">
-            <!--
-            <select class="form-control">
-                <option selected="selected" value="">All Academic Session</option>
-                <option value="">2015-2016</option>
-                <option value="">2001-2002</option>
-                <option value="">2002-2003</option>
-                <option value="">2003-2004</option>
-                <option value="">2004-2005</option>
-                <option value="">2005-2006</option>
-                <option value="">2006-2007</option>
-                <option value="">2007-2008</option>
-                <option value="">2008-2009</option>
-                <option value="">2009-2010</option>
-                <option value="">2010-2011</option>
-                <option value="">2011-2012</option>
-                <option value="">2012-2013</option>
-                <option value="">2013-2014</option>
-                <option value="">2014-2015</option>
-            </select>
-            -->
+            
             <select class="form-control" name="course">
                 <option selected="selected" value="all">All Course</option>
                 <?php
@@ -90,6 +72,7 @@
           </form>
         </div>
       </div>
+
       @yield('content')
     </nav>
     <div class="container-fluid">

@@ -13,6 +13,8 @@ class Search_Controller extends Base_Controller {
 		{
 			$result = students::where('name','LIKE',$searchtxt)->where('course','=',$course)->get();	
 		}
+
+		
         return View::make('home.searchResult')
         	->with('result',$result);
 	}
