@@ -1,5 +1,5 @@
 <?php
-class students extends Eloquent 
+class Students extends Eloquent 
     {
     	public function courses()
 		{

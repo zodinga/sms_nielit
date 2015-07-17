@@ -29,6 +29,7 @@ Route::get('courses/add',array('uses'=>'courses@add'));
 
 Route::get('students',array('uses'=>'students@index'));
 Route::get('students/add',array('uses'=>'students@add'));
+Route::get('students/view/(:any)',array('as'=>'student','uses'=>'students@view'));
 
 //Route::get('student/(:any)',array('as'=>'student','uses'=>'students@view'));
 

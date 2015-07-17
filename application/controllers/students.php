@@ -17,6 +17,11 @@
 			return View::make('admin.student.form');
 		}
 
+		public function get_view($id){
+			
+			return View::make('admin.student.view')->with('id',$id);
+		}
+
 		public function post_save()
 		{
 			# code...

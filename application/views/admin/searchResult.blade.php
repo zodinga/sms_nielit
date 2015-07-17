@@ -100,6 +100,7 @@
                       $detail = students::find($r->id);
                       $course_detail = courses::find($r->course);
                       $cate = categories::find($r->category);
+
                       ?>
                       <ul class="list-group">
                         <li class="list-group-item">Name: <?php echo $detail->name;?></li>
@@ -112,13 +113,17 @@
                         <li class="list-group-item">Course: <?php echo $course_detail->course;?></li>
                         <li class="list-group-item">Batch: <?php echo $detail->batch;?></li>
                         <li class="list-group-item">Father's Name: <?php echo $detail->father_me;?></li>
+
                         <li class="list-group-item">Mother's Name: <?php echo $detail->mother_me;?></li>
                         <li class="list-group-item">Parent Contact: <?php echo $detail->parents_phone;?></li>
                         <li class="list-group-item">Guardian Name: <?php echo $detail->guardian_me;?></li>
+
                         <li class="list-group-item">Guardian Phone: <?php echo $detail->guardian_phone;?></li>
                         <li class="list-group-item">Date of Birth: <?php echo $detail->dob;?></li>
                         <li class="list-group-item">Sex: <?php echo $detail->sex;?></li>
+                        <?php var_dump($cate);exit();?>
                         <li class="list-group-item">Category: <?php echo $cate->categoty;?></li>
+
                         <li class="list-group-item">Community: <?php echo $detail->community;?></li>
                         <li class="list-group-item">Present Street: <?php echo $detail->pre_street;?></li>
                         <li class="list-group-item">Present City: <?php echo $detail->pre_city;?></li>
