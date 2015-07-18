@@ -21,7 +21,7 @@ class Adminsearch_Controller extends Base_Controller {
         return View::make('admin.searchResult')
         	->with('result',$result)
         	->with('stxt',Input::get('searchtxt'))
-        	->with('scourse',$scourse->course);
+        	->with('scourse',$scourse);
 	}
 
 }

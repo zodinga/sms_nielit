@@ -54,7 +54,7 @@
             <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;Contact</a></li>
             <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Login</a></li>
           </ul>
-           {{"DSDSDSDS"}}
+           
           <form class="navbar-form navbar-right" method="POST" action="/search">
             <input type="text" class="form-control" required name="searchtxt" placeholder="Student Search...">
             

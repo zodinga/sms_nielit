@@ -43,7 +43,7 @@
       ?>
       <table class="table table-condensed">
         <thead>
-          <caption>Search Result</caption>
+          <caption>Search Keywords: Name=<?php echo $stxt; ?>, Course=<?php echo $scourse; ?></caption>
           <tr>
             <td><strong>#</strong></td>
             <td><strong>Name</strong></td>
