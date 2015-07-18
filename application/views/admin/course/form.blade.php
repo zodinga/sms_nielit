@@ -3,7 +3,7 @@
  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">Course Entry Form</h3>
     <p>
-        <form class="form-horizontal" action="/types/save" method="POST">
+        <form class="form-horizontal" action="/courses/save" method="POST">
           <div class="form-group">
             <label for="course" class="col-sm-2 control-label">Course</label>
             <div class="col-sm-5">

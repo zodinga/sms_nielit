@@ -41,7 +41,7 @@
                           <div class="form-group">
                             <label for="type" class="col-sm-2 control-label">Type</label>
                             <div class="col-sm-5">
-                              <input type="text" name="type" value="<?php echo $tt->type; ?>" class="form-control" id="type" placeholder="Type" required>
+                              <input type="text" name="type" value="<?php echo $t->type; ?>" class="form-control" id="type" placeholder="Type" required>
                             </div>
                           </div>
 
