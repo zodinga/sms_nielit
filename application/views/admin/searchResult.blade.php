@@ -37,7 +37,7 @@
       ?>
       <table class="table table-condensed">
         <thead>
-          <caption>Search Result</caption>
+          <caption>Search Keywords: Name=<?php echo $stxt; ?>, Course=<?php echo $scourse; ?></caption>
           <tr>
             <td><strong>#</strong></td>
             <td><strong>Name</strong></td>
@@ -160,7 +160,7 @@
                       </ul>
                       <?php
                       ?>
-                    </div>
+                    </div
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;Close</button>

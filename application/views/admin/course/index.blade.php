@@ -122,10 +122,10 @@
               <form class="form-horizontal" action="/courses/delete" method="POST">
                         <input type="hidden" value=<?php echo $c->id?> name="id"></input>
 
-                                      <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                      <button type="submit" class="glyphicon glyphicon-trash">Delete</button>
                               
                 </form>
-              <a href="/courses/delete/<?php echo $c->id; ?>"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal">
+              <a href="/courses/delete"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal">
                 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
                 <!-- Trash -->
               </a>

@@ -41,7 +41,8 @@ class Courses_Controller extends Base_Controller {
 	}
 	public function post_delete()
 	{
-		
+		// $id=Input::get('id');
+		// echo "ID=",$id; exit();
 		$delete_course=Courses::find(Input::get('id'));
 		
 		$delete_course->delete();
