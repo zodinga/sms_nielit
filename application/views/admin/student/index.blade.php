@@ -17,10 +17,11 @@ h3, p { display:inline }
     <h3 class="page-header">All Students</h3> 
     <button type="button" class="btn btn-primary" onclick="location.href='/students/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button>
     <?php 
+
     $students=DB::table('students')->paginate(8);
     echo $students->links(); 
     //echo $students->previous().' '.$students->next();
-
+    //$students=Students::get();
     ?>
     <p>
 
@@ -75,6 +76,7 @@ h3, p { display:inline }
                 </td>
     			<td><?php echo $s->photo;?></td>
     			<td>
+
                 <!-- Modal Details-->
               <div class="modal fade" id="myModal<?php echo $s->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -561,7 +563,7 @@ h3, p { display:inline }
     		<?php
 
     	}
-
+echo "dddd", $s->id;
     ?>
     </tbody>
     </table>
