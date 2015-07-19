@@ -45,7 +45,7 @@
                             </div>
                           </div>
 
-                          <input type="hidden" value=<?php echo $t->id?> name="id"></input>
+                          <input type="hidden" value=<?php echo $t->id;?> name="id"></input>
 
                           <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-5">
@@ -65,15 +65,21 @@
                 </div>
               </div>
     <!-- Modal -->
-<a href="#myModal<?php echo $t->id; ?>"  role="button" class="btn btn-success" data-toggle="modal">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Edit
+
+              <a href="#myModal<?php echo $t->id; ?>"  role="button" class="glyphicon glyphicon-edit" data-toggle="modal">
+                <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+                <!-- Edit  -->
               </a>
-    				<button type="" onclick="location.href='#'" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-    				<button type="" onclick="location.href='#myModal'" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-    			</td>
+              <form class="form-horizontal" action="/types/delete" method="POST">
+                  <input type="hidden" value=<?php echo $t->id?> name="id"></input>
+
+                  <button type="submit" class="glyphicon glyphicon-trash">Delete</button>
+                              
+                </form>
+    				<button type="" onclick="location.href='/types/delete/<?php echo $t->id; ?>'" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+    			
     			</tr>
-    		
+    		</td>
     		<?php
     	}
 

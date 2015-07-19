@@ -2,6 +2,8 @@
 
 
 Route::controller(Controller::detect());
+
+//Route::get('/',array('uses'=>'home@index'));
 Route::get('/', function()
 {
 return View::make('home.index')->with('loginerror',2);
@@ -25,7 +27,8 @@ Route::post('types/save',array('uses'=>'types@save'));*/
 Route::get('courses',array('uses'=>'courses@index'));
 Route::get('courses/add',array('uses'=>'courses@add'));
 
-
+Route::get('types',array('uses'=>'types@index'));
+Route::delete('types/delete',array('uses'=>'types@delete'));
 
 Route::get('students',array('uses'=>'students@index'));
 Route::get('students/add',array('uses'=>'students@add'));

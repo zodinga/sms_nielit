@@ -94,7 +94,7 @@
                             </div>
                           </div>
 
-                          <input type="hidden" value=<?php echo $c->id?> name="id"></input>
+                          <input type="hidden" value=<?php echo $c->id; ?> name="id"></input>
 
                           <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-5">

@@ -1,6 +1,4 @@
-<?php
-//$setting=Settings::where('id','=',1)->first();
-?>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,17 +46,37 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin">NIELIT, Aizawl: SDMS</a>
+          <a class="navbar-brand" href="/home">NIELIT, Aizawl: SDMS</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;Home</a></li>
-            <li><a href="/setting"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;&nbsp;Setting</a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;<?php echo Auth::user()->username;?> | Logout</a></li>
+            <li><a href="/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+            <li><a href="/contact"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;Contact</a></li>
+            <li><a href="/signin"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp; Login</a></li>
           </ul>
-          <form class="navbar-form navbar-right" method="POST" action="/adminsearch">
-            <input type="text" required class="form-control" name="searchtxt" placeholder="Student Search...">
-             <select class="form-control" name="course">
+          <form class="navbar-form navbar-right" method="POST" action="/search">
+            <input type="text" class="form-control" required name="searchtxt" placeholder="Student Search...">
+            <!--
+            <select class="form-control">
+                <option selected="selected" value="">All Academic Session</option>
+                <option value="">2015-2016</option>
+                <option value="">2001-2002</option>
+                <option value="">2002-2003</option>
+                <option value="">2003-2004</option>
+                <option value="">2004-2005</option>
+                <option value="">2005-2006</option>
+                <option value="">2006-2007</option>
+                <option value="">2007-2008</option>
+                <option value="">2008-2009</option>
+                <option value="">2009-2010</option>
+                <option value="">2010-2011</option>
+                <option value="">2011-2012</option>
+                <option value="">2012-2013</option>
+                <option value="">2013-2014</option>
+                <option value="">2014-2015</option>
+            </select>
+            -->
+            <select class="form-control" name="course">
                 <option selected="selected" value="all">All Course</option>
                 <?php
                 foreach ($course as $c) {
@@ -76,20 +94,10 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+       <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/courses">Course</a></li>
-            <li><a href="/types">Type</a></li>
-            <li><a href="/students">Student</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
+            <li class="active"><a href="/home"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="/advanced_search"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Advance Search</a></li>
           </ul>
         </div>
       @yield('content1')

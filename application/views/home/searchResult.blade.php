@@ -113,7 +113,17 @@
                       $comm=communities::find($r->community);
                       ?>
                       <ul class="list-group">
+                        <li class="list-group-item">
+                          <?php
 
+                          $photo = "/img/icon-user-default.jpg";
+                          if($detail->status != NULL)
+                          {
+                            $photo = $detail->photo;
+                          }
+                          ?>
+                          Photo: <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
+                        </li>
                        <li class="list-group-item">Name: <?php echo $detail->name;?></li>
                         <li class="list-group-item">Aadhaar-no: <?php echo $detail->aadhaar;?></li>
                         <li class="list-group-item">EID: <?php echo $detail->eid;?></li>
@@ -158,17 +168,6 @@
                         <li class="list-group-item">Present State: <?php echo $detail->pre_state;?></li>
                         <li class="list-group-item">PIN: <?php echo $detail->pre_pin;?></li>
                         <li class="list-group-item">Status: <?php echo $detail->status;?></li>
-                        <li class="list-group-item">
-                          <?php
-
-                          $photo = "/img/icon-user-default.jpg";
-                          if($detail->status != NULL)
-                          {
-                            $photo = $detail->photo;
-                          }
-                          ?>
-                          Photo: <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
-                        </li>
                       </ul>
                       <?php
 

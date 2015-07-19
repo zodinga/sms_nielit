@@ -5,13 +5,13 @@ class Search_Controller extends Base_Controller {
 	{
 		$searchtxt = "%".Input::get('searchtxt')."%";
 		$course = Input::get('course');
-		echo "Course=",$course;
+		//echo "Course=",$course;
 
 		if($course == "all")
 		{
 			$result = students::where('name','LIKE',$searchtxt)->get();
 			$scourse=Input::get('course');
-			echo "SCourse=",$scourse;
+			//echo "SCourse=",$scourse;
 		}
 		else
 		{
