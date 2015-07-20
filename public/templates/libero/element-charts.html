@@ -1,119 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en"><head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>NIELIT, Aizawl : Student Database Management System</title>
+	<title>Libero - Flat Admin Interface</title>
 	<!-- BOOTSTRAPS -->
-	<link type="text/css" href="/templates/libero/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- THEMES -->
-	<link type="text/css" href="/templates/libero/css/theme.css" rel="stylesheet">
+	<link type="text/css" href="css/theme.css" rel="stylesheet">
 	<!--ICONS-->
-	<link type="text/css" href="/templates/libero/icons/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<link type="text/css" href="icons/font-awesome/css/font-awesome.css" rel="stylesheet">
 	<!--FONTS-->
 	<link type='text/css'href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet'>
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Fugaz+One|Leckerli+One' rel='stylesheet'>
 	<!--JAVASCRIPTS-->
-	<script src="/templates/libero/js/jquery-1.9.1.min.js"></script>
-	<script src="/templates/libero/js/jquery-ui-1.10.1.custom.min.js"></script>
-	<script src="/templates/libero/bootstrap/js/bootstrap.min.js"></script>
-	<style type="text/css">
-	
-
-	</style>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery-ui-1.10.1.custom.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="frame">
-		<div class="sidebar">
-			<div class="wrapper">
-				<a href="page-profile.html" class="profile">
-					<img src="img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
-					Welcome
-				</a>
-				<ul class="nav nav-list">
-					<li class="nav-header">Menu</li>
-					<li>
-						<a href="#"><i class="icon-file"></i>Existing Courses</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-list-alt"></i>Search Student</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-group"></i>About Developer Team</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-calendar"></i>Calendar</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content">
-			<div class="navbar navbar-static-tops">
-				<div class="navbar-inner">		
-					<a href="javascript:void(0);" class="btn pull-left toggle-sidebar hidden-desktop"><i class="icon-reorder"></i></a>
-					<a class="brand" href="index.html"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
-				</div>
-			</div><!--/.navbar -->	
-			<div class="content-head">
-				<img src="/img/NIELIT-logo.png" alt="logo">
-				<a href="#myModal" role="button" class="btn btn-success" data-toggle="modal">Sign In</a>
-				<button type="submit" onclick="location.href='/signup'" class="btn btn-primary">Sign Up</button>
-				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">NIELIT SDMS - Sign In</h3>
-					</div>
-					<form class="form-horizontal" method="POST" action="#">
-						<div class="modal-body">
-							<div class="control-group">
-								<label class="control-label" for="basicinput">Username :</label>
-								<div class="controls">
-									<input class="input-xlarge" type="text" placeholder="Usename..." name="username" autofocus required>
-								</div>
-								<label class="control-label" for="basicinput">Password: </label>
-								<div class="controls">
-									<input class="input-xlarge" type="password" placeholder="Password..." name="password" Autofocus required>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-success">Sign In</button>
-						</div>
-					</form>
-				</div>
+	<div class="frame"><div class="sidebar">
+<div class="wrapper">
 
+	<a href="page-profile.html" class="profile">
+		<img src="img/samples/avatar-2.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
+		Andy Norman
+	</a>
+	<ul class="nav nav-list">
+		<li class="nav-header">Pages</li>
+		<li>
+			<a href="index.html"><i class="icon-dashboard"></i>Dashboard</a>
+		</li>
+		<!-- <li>
+			<a href="activity.html"><i class="icon-bullhorn"></i>Activity</a>
+		</li> -->
+		<li>
+			<a href="page-message.html"><i class="icon-inbox"></i>Message<b class="label">6</b></a>
+		</li>
+		<li>
+			<a href="page-people.html"><i class="icon-group"></i>People</a>
+		</li>
+		<li>
+			<a href="page-calendar.html"><i class="icon-calendar"></i>Calendar</a>
+		</li>
+		<li>
+			<a href="page-gallery.html"><i class="icon-picture"></i>Gallery</a>
+		</li>
+		<li>
+			<a href="page-profile.html"><i class="icon-user"></i>Profile</a>
+		</li>
+
+		<!--SEPARATE-->
+
+		<li class="nav-header">Elements</li>
+		<li>
+			<a href="element-typography.html"><i class="icon-text-width"></i>Typography</a>
+		</li>
+		<li>
+			<a href="element-layout.html"><i class="icon-desktop"></i>Layout</a>
+		</li>
+		<li>
+			<a href="element-tables.html"><i class="icon-table"></i>Tables</a>
+		</li>
+		<li>
+			<a href="element-form.html"><i class="icon-list-alt"></i>Form</a>
+		</li>
+		<li>
+			<a href="element-buttons.html"><i class="icon-pushpin"></i>Buttons</a>
+		</li>
+		<li>
+			<a href="element-icons.html"><i class="icon-truck"></i>Icons</a>
+		</li>
+		<li class="active" >
+			<a href="element-charts.html"><i class="icon-bar-chart"></i>Charts</a>
+		</li>
+
+		<!--SEPARATE-->
+
+		<li class="nav-header">Extra</li>
+		<li>
+			<a href="extra-login.html"><i class="icon-key"></i>Login</a>
+		</li>
+
+		<!--SEPARATE-->
+
+		<li class="nav-header">Bandwidth Transfer</li>
+		<li>
+			<div class="progress progress-danger small">
+				<div class="bar" style="width: 80%;"></div>
 			</div>
-			<div class="content-body">
-				<div class="row-fluid">
-					 @yield('content')
+			<div>19419.94 / 12000 MB</div>
+		</li>
+		<li class="nav-header">Disk Space Usage</li>
+		<li>
+			<div class="progress small">
+				<div class="bar" style="width: 20%;"></div>
+			</div>
+			<div>304.44 / 8000 MB</div>
+		</li>
+	</ul>
+</div>
+</div>
+<div class="content">
+
+	<div class="navbar navbar-static-tops">
+	<div class="navbar-inner">		
+		<a href="javascript:void(0);" class="btn pull-left toggle-sidebar hidden-desktop"><i class="icon-reorder"></i></a>
+		<a class="brand" href="index.html">libero</a>
+	</div>
+</div><!--/.navbar -->	
+	<div class="content-head">
+		<ul class="breadcrumb">
+			<li><a href="#">Home</a> <span class="divider"><i class="icon-angle-right"></i></span></li>
+			<li class="active">Charts</li>
+		</ul>
+		<h2>Charts</h2>
+		<div class="muted">
+			Sample description for charts page
+		</div>
+	</div>
+	<div class="content-body">
+
+		<div class="module">
+			<div class="module-head"><b>Chart - flot</b></div><div class="module-body">
+				<div class="chart-wrapper">
+					<div class="chart-inner">
+						<div id="placeholder" class="chart"></div>
+					</div>
+				</div>
+		</div></div><!--/.module-->
+
+		<div class="module">
+			<div class="module-head"><b>Chart - flot</b></div>
+			<div class="module-body">
+				<div class="chart inline-legend grid">
+					<div id="placeholder2" class="chart"></div>
 				</div>
 			</div>
-		</div><!--/.content-->
-	</div><!-- /.frame -->
+		</div><!--/.module-->
+
+		<div class="module">
+			<div class="module-head"><b>Pie - Donut</b></div>
+			<div class="module-body">
+				<div class="chart pie donut">
+					<div id="pie-donut" class="chart"></div>
+				</div>
+			</div>
+		</div><!--/.module-->
+
+		<div class="module">
+			<div class="module-head"><b>Pie - Donut & Interactive</b></div>
+			<div class="module-body">
+				<div class="chart pie donut interactive">
+					<div id="pie-interactive" class="chart"></div>
+					<div id="hover"></div>	
+				</div>
+			</div>
+		</div><!--/.module-->
+	</div>
+</div><!--/.content-->
+
+</div><!-- /.frame -->
+
 
 
 <!-- WYSIHTML5 TEXT EDITOR -->
-<script src="/templates/libero/js/wysihtml5/advanced.js"></script>
-<script src="/templates/libero/js/wysihtml5/wysihtml5-0.3.0.min.js"></script>
+<script src="js/wysihtml5/advanced.js"></script>
+<script src="js/wysihtml5/wysihtml5-0.3.0.min.js"></script>
 <!-- AUTOSIZE TEXTAREA -->
-<script src='/templates/libero/js/autosize/jquery.autosize-min.js'></script>
+<script src='js/autosize/jquery.autosize-min.js'></script>
 <!-- BOOTSTRAP DATEPICKER -->
-<script src="/templates/libero/js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
 <!-- FLOT CHART -->
-<script src="/templates/libero/js/flot/jquery.flot.js"></script>
-<script src="/templates/libero/js/flot/jquery.flot.pie.js"></script>
-<script src="/templates/libero/js/flot/jquery.flot.resize.js"></script>
+<script src="js/flot/jquery.flot.js"></script>
+<script src="js/flot/jquery.flot.pie.js"></script>
+<script src="js/flot/jquery.flot.resize.js"></script>
 <!-- FULLCALENDAR -->
-<script src="/templates/libero/js/fullcalendar/fullcalendar.custom.js"></script>
+<script src="js/fullcalendar/fullcalendar.custom.js"></script> -->
 <!-- MIXITUP -->
-<script src="/templates/libero/js/mixitup/jquery.mixitup.min.js"></script>
+<script src="js/mixitup/jquery.mixitup.min.js"></script>
 <!-- THEME -->
-<script src="/templates/libero/js/theme.js"></script>
+<script src="js/theme.js"></script>
 <!-- SCRIPTS: FLOT GRAPH BASIC -->
 <script type="text/javascript">
 $(function () {
@@ -287,7 +354,7 @@ $(function () {
 	{
 		series: {
 			pie: { 
-				innerRadius: 10,
+				innerRadius: 50,
 				show: true
 			}
 		}
@@ -298,7 +365,7 @@ $(function () {
 	{
 			series: {
 				pie: {
-					innerRadius: 10,
+					innerRadius: 50,
 					show: true
 				}
 			},
