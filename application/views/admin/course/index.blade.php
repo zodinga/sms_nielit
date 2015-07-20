@@ -105,7 +105,7 @@
                         </form>
                       <?php
                       ?>
-                    </div
+                    </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;Close</button>
@@ -113,22 +113,39 @@
                   </div>
                 </div>
               </div>
-    <!-- Modal -->
-                <a href="#myModal<?php echo $c->id; ?>"  role="button" class="glyphicon glyphicon-edit" data-toggle="modal">
+              <a href="#myModal<?php echo $c->id; ?>"  role="button" class="glyphicon glyphicon-edit" data-toggle="modal"></a>
+              <!-- Modal -->
+              <!-- Delete Modal -->
+              <div class="modal fade" id="Delete<?php echo $c->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      Course Delete Confirmation
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to Delete...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" onclick="location.href='/courses/delete/<?php echo $c->id; ?>'" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Yes</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#Delete<?php echo $c->id; ?>"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal"></a>
+              <!-- Modal -->
                 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
                 <!-- Edit  -->
-              </a>
-              &nbsp&nbsp
-              <form class="form-horizontal" action="/courses/delete" method="POST">
-                        <input type="hidden" value=<?php echo $c->id?> name="id"></input>
+              &nbsp;&nbsp;
+              <!-- <form class="form-horizontal" action="/courses/delete" method="POST">
+                        <input type="hidden" value=<?php echo $c->id;?> name="id"></input>
 
                                       <button type="submit" class="glyphicon glyphicon-trash">Delete</button>
                               
-                </form>
-              <a href="/courses/delete"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal">
+                </form> -->
+
                 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
                 <!-- Trash -->
-              </a>
     				<!-- <button type="" onclick="location.href='#'" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
     				<button type="" onclick="location.href="#myModal<?php echo $c->id; ?>"" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button> -->
     			</td>

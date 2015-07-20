@@ -39,11 +39,11 @@ class Courses_Controller extends Base_Controller {
 
 		return View::make('admin.course.index')->with('cours',Courses::order_by('id')->get());
 	}
-	public function post_delete()
+	public function get_delete($id)
 	{
 		// $id=Input::get('id');
 		// echo "ID=",$id; exit();
-		$delete_course=Courses::find(Input::get('id'));
+		$delete_course=Courses::find($id);
 		
 		$delete_course->delete();
 

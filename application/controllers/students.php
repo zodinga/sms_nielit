@@ -8,8 +8,10 @@
 		public function get_index()
 		{
 			# code...
-			
-			return View::make('admin.student.index');
+			$students = Students::where('id','>',0)->paginate(10);
+
+			return View::make('admin.student.index')->with('students',$students);
+
 		}
 
 		public function get_add()
