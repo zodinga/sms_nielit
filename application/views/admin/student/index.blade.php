@@ -17,11 +17,7 @@ h3, p { display:inline }
     <h3 class="page-header">All Students</h3> 
     <button type="button" class="btn btn-primary" onclick="location.href='/students/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button>
     <?php 
-
-    $students=DB::table('students')->paginate(8);
-    
-    //echo $students->previous().' '.$students->next();
-    //$students=Students::get();
+    $students=DB::table('students')->paginate(12);
     ?>
     <p>
 
@@ -44,37 +40,28 @@ h3, p { display:inline }
     	foreach($students->results as $s){
     		?>
     		
-    			<tr>
-    			<td><?php echo $s->id;?></td>
-    			<td><?php echo $s->name;?></td>
+    	<tr>
+    			<td><?php echo $s->id;?>
+          </td>
+    			<td><?php echo $s->name;?>
+          </td>
     			<td><?php 
                 $course=Courses::find($s->course);
                 if($course)
-                echo $course->course;?></td>
-                <td><?php echo $s->batch;?></td>
-                <td><?php echo $s->phone;?></td>
-                <td>
-                <?php 
-                $status=Statuses::find($s->status);
-                if($status)
-                    if($status->status=="FIN"){
-                        ?>
-                        <button type="button" class="btn btn-success"><?php echo $status->status; ?></button>
-                    <?php
-                    } 
-                    else if($status->status=="ON"){
-                        ?>
-                        <button type="button" class="btn btn-primary"><?php echo $status->status; ?></button>
-                    <?php
-                    }
-                    else{
-                        ?>
-                        <button type="button" class="btn btn-danger"><?php echo $status->status; ?></button>
-                    <?php 
-                    } 
-                ?>
-                </td>
-    			       <td><?php echo $s->photo;?></td>
+                echo $course->course;?>
+          </td>
+          <td><?php echo $s->batch;?>
+          </td>
+          <td><?php echo $s->phone;?>
+          </td>
+          <td>
+              <?php 
+              $status=Statuses::find($s->status);
+              echo $status->status; 
+              ?>
+          </td>
+    			<td><?php echo $s->photo;?>
+          </td>
     			<td>
                 <!--Details Modal Start -->
                 <?php include("./application/views/admin/student/details-modal.php"); ?>
@@ -85,23 +72,35 @@ h3, p { display:inline }
                 <!--Edit Modal End -->
 
                     
-                <a href="#myModal<?php echo $s->id; ?>"  role="button" class="btn btn-success" data-toggle="modal">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Details
-              </a>
-              <a href="#myModalEdit<?php echo $s->id; ?>"  role="button" class="btn btn-success" data-toggle="modal">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Edit
-              </a>
-              <a href="#myModalEdit<?php echo $s->id; ?>"  role="button" class="btn btn-success" data-toggle="modal">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                Delete
-              </a>
-    			</td>    		
+              <a href="#myModal<?php echo $s->id; ?>"  role="button" class="glyphicon glyphicon-eye-open" data-toggle="modal" title="Display Details"></a>
+              &nbsp;
+              <a href="#myModalEdit<?php echo $s->id; ?>"  role="button" class="glyphicon glyphicon-edit" data-toggle="modal" title="Edit Student"></a>
+
+              <!-- Delete Modal -->
+              <div class="modal fade" id="Delete<?php echo $s->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      Course Delete Confirmation
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to Delete... Mr {{$s->name}}?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" onclick="location.href='/students/delete/<?php echo $s->id; ?>'" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Yes</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              &nbsp;
+              <a href="#Delete<?php echo $s->id; ?>"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal" title="Delete Student"></a>
+              <!-- End Delete Modal -->
+    			</td>
+        </tr>    		
     		<?php
 
     	}
-echo "dddd", $s->id;
     ?>
     </tbody>
     </table>

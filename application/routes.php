@@ -24,7 +24,7 @@ return View::make('admin.index')
 Route::get('types/add',array('uses'=>'types@add'));
 Route::post('types/save',array('uses'=>'types@save'));*/
 
-Route::get('courses',array('uses'=>'courses@index'));
+Route::get('course',array('uses'=>'courses@index'));
 Route::get('courses/add',array('uses'=>'courses@add'));
 
 Route::get('types',array('uses'=>'types@index'));

@@ -25,6 +25,16 @@
 			return View::make('admin.student.view')->with('id',$id);
 		}
 
+		public function get_delete($id)
+		{
+		$delete_student=Students::find($id);
+		
+		$delete_student->delete();
+
+		//return View::make('admin.student.index')->with('students',Students::order_by('id')->get());	
+		return Redirect::to('students/index');
+		}
+
 		public function post_save()
 		{
 			# code...
@@ -65,7 +75,8 @@
 
       		$update_student->save();
       		
-			return View::make('admin.student.index');
+			//return View::make('admin.student.index');
+			return Redirect::to('students/index');
 		}
 
 		public function post_update()
@@ -108,7 +119,16 @@
 
       		$update_student->save();
       		
-			return View::make('admin.student.index');
+			//return View::make('admin.student.index');
+			return Redirect::to('students/index');
+		}
+
+
+			public function post_image(){
+			$file = Input::file('image');
+			$destinationPath = 'img/';
+			$filename = $file->getClientOriginalName();
+			Input::file('image')->move($destinationPath, $filename);
 		}
 	}
 ?>

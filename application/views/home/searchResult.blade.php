@@ -41,7 +41,7 @@
     if($result)
     {
       ?>
-      <table class="table table-condensed">
+      <table class="table table-hover">
         <thead>
           <caption>Search Keywords: Name=<?php echo $stxt; ?>, Course=<?php echo $scourse; ?></caption>
           <tr>
@@ -180,10 +180,7 @@
                   </div>
                 </div>
               </div>
-              <a href="#myModal<?php echo $r->id; ?>"  role="button" class="btn btn-success" data-toggle="modal">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Details
-              </a>
+              <a href="#myModal<?php echo $r->id; ?>"  role="button" class="glyphicon glyphicon-eye-open" data-toggle="modal" title="Display Details"></a>
             </td>
           </tr>
         <?php

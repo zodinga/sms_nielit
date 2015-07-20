@@ -20,7 +20,7 @@ class Search_Controller extends Base_Controller {
 			$scourse=Courses::find($course);	
 		}
 
-		echo "SCourse=",$scourse;
+		//echo "SCourse=",$scourse;
         return View::make('home.searchResult')
         	->with('result',$result)
         	->with('stxt',Input::get('searchtxt'))

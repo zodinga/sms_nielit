@@ -133,7 +133,7 @@
                 </div>
               </div>
               <a href="#Delete<?php echo $c->id; ?>"  role="button" class="glyphicon glyphicon-trash" data-toggle="modal"></a>
-              <!-- Modal -->
+              <!-- End Delete Modal -->
                 <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
                 <!-- Edit  -->
               &nbsp;&nbsp;

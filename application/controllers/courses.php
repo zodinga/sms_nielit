@@ -23,7 +23,7 @@ class Courses_Controller extends Base_Controller {
 
 		$update_course->save();
 
-		return View::make('admin.course.index')->with('cours',Courses::order_by('id')->get());
+		return Redirect::to('courses/index')->with('cours',Courses::order_by('id')->get());
 	}
 	public function post_update()
 	{
@@ -37,7 +37,7 @@ class Courses_Controller extends Base_Controller {
 
 		$update_course->save();
 
-		return View::make('admin.course.index')->with('cours',Courses::order_by('id')->get());
+		return Redirect::to('courses/index')->with('cours',Courses::order_by('id')->get());
 	}
 	public function get_delete($id)
 	{
@@ -47,7 +47,8 @@ class Courses_Controller extends Base_Controller {
 		
 		$delete_course->delete();
 
-		return View::make('admin.course.index')->with('cours',Courses::order_by('id')->get());	
+		//return View::make('admin.course.index')->with('cours',Courses::order_by('id')->get());	
+		return Redirect::to('courses/index')->with('cours',Courses::order_by('id','DESC')->get());
 	}
 }
 
