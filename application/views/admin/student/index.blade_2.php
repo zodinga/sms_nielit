@@ -3,10 +3,10 @@
 
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h3 class="page-header">{{$heading}}</h3> 
+<h3 class="page-header">All Students</h3> 
 <!-- <button type="button" class="btn btn-primary" onclick="location.href='/students/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button> -->
 <?php 
-//$students=students::where('id','>',0)->paginate(10);
+$students=students::where('id','>',0)->paginate(10);
 //var_dump($students);exit();
 ?>
 <p>
@@ -27,7 +27,7 @@
 <tbody>
 
 <?php
-	foreach($students as $s){
+	foreach($students->results as $s){
 		?>
 		
 	<tr>
@@ -65,9 +65,9 @@
             <!--Edit Modal End -->
 
                 
-          <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
+          <a href="#myModal<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
           &nbsp;
-          <a href="/students/edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
+          <a href="#myModalEdit<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
 
           <!-- Delete Modal -->
           <div class="modal fade" id="Delete<?php echo $s->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -97,7 +97,7 @@
 ?>
 </tbody>
 </table>
-<?php echo $links; ?>
+<?php echo $students->links(); ?>
 
     </p>
  </div>

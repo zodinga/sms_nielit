@@ -27,14 +27,31 @@
 	<div class="frame">
 		<div class="sidebar">
 			<div class="wrapper">
-				<a href="page-profile.html" class="profile">
+				<a href="/admin/index" class="profile">
 					<img src="../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
 					Welcome : <?php echo Auth::user()->username; ?>
 				</a>
 				<ul class="nav nav-list">
+
+				<form class="navbar-form navbar-right" method="POST" action="/students/search">
+		            <input type="text" class="input-small" required name="searchtxt" placeholder="Student Search...">
+		              <select class="input-small" name="course">
+		                  <option selected="selected" value="all">All Course</option>
+		                  <?php
+		                  $course=Courses::all();
+		                  foreach ($course as $c) {
+		                  ?>
+		                    <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
+		                  <?php
+		                  }
+		                  ?>
+		              </select>
+		            <button class="btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
+		         </form>
+
 					<li class="nav-header">Extra</li>
 					<li>
-						<a href="/logout"><i class="icon-file"></i>Logout</a>
+						<a href="/users/logout"><i class="icon-signout"></i>Logout</a>
 					</li>
 					<li class="nav-header">Student</li>
 					<li>
@@ -52,18 +69,26 @@
 
 					<li class="nav-header">Course</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>List Course</a>
+						<a href="/courses/index"><i class="icon-file"></i>List Course</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>New Course</a>
+						<a href="/courses/add"><i class="icon-file"></i>New Course</a>
 					</li>
 
 					<li class="nav-header">Type</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>List Types</a>
+						<a href="/types/index"><i class="icon-file"></i>List Types</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>New Tyoe</a>
+						<a href="/types/add"><i class="icon-file"></i>New Type</a>
+					</li>
+
+					<li class="nav-header">Category</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>List Catogories</a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>New Category</a>
 					</li>
 				</ul>
 			</div>
@@ -72,7 +97,7 @@
 			<div class="navbar navbar-static-tops">
 				<div class="navbar-inner">		
 					<a href="javascript:void(0);" class="btn pull-left toggle-sidebar hidden-desktop"><i class="icon-reorder"></i></a>
-					<a class="brand" href="index.html"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
+					<a class="brand" href="/admin/index"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
 				</div>
 			</div><!--/.navbar -->	
 			

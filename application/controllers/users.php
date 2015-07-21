@@ -19,7 +19,7 @@ class Users_Controller extends Base_Controller {
 						$uname = Session::get('username');
 						if(Auth::user()->type == 1)
 						{
-						return View::make('admin.index')
+						return Redirect::to('admin/index')
 		                        ->with('error_code',2)
 		                        ->with('username',$uname);
 						}
@@ -40,6 +40,13 @@ class Users_Controller extends Base_Controller {
 		        }
 		else
 		        return View::make('home.index')->with('error_code',1);
+	}
+
+	public function get_logout()
+	{
+		Auth::logout();
+		return Redirect::to('home/index')
+                        ->with('error_code','2');
 	}
 
 	public function get_signup()

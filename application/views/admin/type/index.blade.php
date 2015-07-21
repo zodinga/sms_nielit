@@ -1,5 +1,5 @@
 @layout('admin')
-@section('content1')
+@section('content')
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">Course Types</h3> <button type="button" class="btn btn-primary" onclick="location.href='/types/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button>
     <p>
@@ -66,17 +66,36 @@
               </div>
     <!-- Modal -->
 
-              <a href="#myModal<?php echo $t->id; ?>"  role="button" class="glyphicon glyphicon-edit" data-toggle="modal">
-                <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
-                <!-- Edit  -->
-              </a>
-              <form class="form-horizontal" action="/types/delete" method="POST">
+              <a href="#myModal<?php echo $t->id; ?>"  role="button" class="icon-edit" data-toggle="modal"> Edit</a>
+              
+<!-- Delete Modal -->
+              <div class="modal fade" id="Delete<?php echo $t->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      Course Delete Confirmation
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to Delete...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" onclick="location.href='/types/delete/<?php echo $t->id; ?>'" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Yes</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>&nbsp;&nbsp;No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#Delete<?php echo $t->id; ?>"  role="button" class="icon-trash" data-toggle="modal"> Delete</a>
+<!-- End Delete Modal -->
+
+
+              <!-- <form class="form-horizontal" action="/types/delete" method="POST">
                   <input type="hidden" value=<?php echo $t->id?> name="id"></input>
 
                   <button type="submit" class="glyphicon glyphicon-trash">Delete</button>
                               
                 </form>
-    				<button type="" onclick="location.href='/types/delete/<?php echo $t->id; ?>'" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+    				<button type="" onclick="location.href='/types/delete/<?php echo $t->id; ?>'" ><span class="icon-trash" aria-hidden="true"></span></button> -->
     			
     			</tr>
     		</td>

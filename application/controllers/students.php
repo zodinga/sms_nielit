@@ -7,12 +7,14 @@
 		public $restful = true;
 		public function get_index()
 		{
-			
+			$head="All Students";
 			$students = Students::where('id','>',0)->paginate(10);
 
 			return View::make('admin.student.index')
-				->with('students',$students)
-				->with('error_code',0);
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
 
 		}
 
@@ -21,6 +23,23 @@
 			# code...
 			return View::make('admin.student.form')->with('error_code',0);
 		}
+
+		public function get_edit($id)
+		{
+			# code...
+			return View::make('admin.student.edit')
+			->with('s',Students::find($id))
+			->with('error_code',0);
+		}
+
+		public function get_detail($id)
+		{
+			# code...
+			return View::make('admin.student.details')
+			->with('s',Students::find($id))
+			->with('error_code',0);
+		}
+
 
 		public function get_view($id){
 			
@@ -126,11 +145,52 @@
 		}
 
 
-			public function post_image(){
+	public function post_image()
+		{
 			$file = Input::file('image');
 			$destinationPath = 'img/';
 			$filename = $file->getClientOriginalName();
 			Input::file('image')->move($destinationPath, $filename);
+		}
+
+	public function post_search()
+		{
+			$searchtxt = "%".Input::get('searchtxt')."%";
+			$course = Input::get('course');
+			//echo "Course=",$course;
+
+			if($course == "all")
+			{
+				$students = students::where('name','LIKE',$searchtxt)->get();
+				$scourse=$course;
+				//echo "SCourse=",$scourse;
+			}
+			else
+			{
+				$students = students::where('name','LIKE',$searchtxt)->where('course','=',$course)->get();
+				//echo "Course=",$course;
+				$scourse=Courses::find($course)->course;	
+			}
+
+	        /*return View::make('admin.student.index')
+	        	->with('result',$result)
+	        	->with('stxt',Input::get('searchtxt'))
+	        	->with('scourse',$scourse);*/
+
+	        $head="Search Result <small>Keywords: <u>".Input::get('searchtxt')."</u> from <u>".$scourse."</u></small>";
+			//$students = Students::where('id','>',0)->paginate(10);
+
+			return View::make('admin.student.index')
+				->with('students',$students)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',"");
+
+			/*return Redirect::to('students/index')
+				->with('students',$students)
+				->with('error_code',0)
+				->with('heading',$head);*/
+
 		}
 	}
 ?>
