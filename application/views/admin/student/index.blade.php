@@ -55,9 +55,12 @@ h3, p { display:inline }
           <td><?php echo $s->phone;?>
           </td>
           <td>
-              <?php 
-              $status=Statuses::find($s->status);
-              echo $status->status; 
+              <?php
+               $status=Statuses::find($s->status);
+               if($status) {
+              echo $status->status;  
+              }
+              
               ?>
           </td>
     			<td><?php echo $s->photo;?>
