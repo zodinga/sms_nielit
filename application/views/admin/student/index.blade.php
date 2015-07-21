@@ -1,23 +1,13 @@
 @layout('admin')
-@section('content1')
-<style>
-li {
-    display: inline-block;
-    vertical-align: middle;
-    list-style-position: inside;
-    list-style-type: disc;
-    margin-right: 1em;
-    text-align: left;
-    white-space: nowrap;
-}
-h3, p { display:inline }
-</style>
+@section('content')
+
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">All Students</h3> 
     <button type="button" class="btn btn-primary" onclick="location.href='/students/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button>
     <?php 
-    $students=DB::table('students')->paginate(12);
+    $students=students::where('id','>',0)->paginate(12);
+    //var_dump($students);exit();
     ?>
     <p>
 
@@ -29,7 +19,7 @@ h3, p { display:inline }
 		<td>Course</td>
 		<td>Batch</td>
 		<td>Phone</td>
-        <td>Status</td>
+    <td>Status</td>
 		<td>Photo</td>
 		<td>Action</td>
 	</tr>

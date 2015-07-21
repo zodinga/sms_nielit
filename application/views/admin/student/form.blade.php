@@ -1,5 +1,5 @@
 @layout('admin')
-@section('content1')
+@section('content')
  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">Student Entry Form</h3>
     <p>

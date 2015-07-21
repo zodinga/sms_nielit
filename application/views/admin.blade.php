@@ -1,107 +1,308 @@
-<?php
-//$setting=Settings::where('id','=',1)->first();
-?>
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/favicon.ico">
-    <title>NIELIT, Aizawl : Student Database Management System</title>
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/dist/css/dashboard.css" rel="stylesheet">
-    <script src="/assets/js/ie-emulation-modes-warning.js"></script>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NIELIT, Aizawl : Student Database Management System</title>
+	<!-- BOOTSTRAPS -->
+	<link type="text/css" href="/templates/libero/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- THEMES -->
+	<link type="text/css" href="/templates/libero/css/theme.css" rel="stylesheet">
+	<!--ICONS-->
+	<link type="text/css" href="/templates/libero/icons/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!--FONTS-->
+	<link type='text/css'href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500,300italic,300' rel='stylesheet'>
+	<link type="text/css" href='http://fonts.googleapis.com/css?family=Fugaz+One|Leckerli+One' rel='stylesheet'>
+	<!--JAVASCRIPTS-->
+	<script src="/templates/libero/js/jquery-1.9.1.min.js"></script>
+	<script src="/templates/libero/js/jquery-ui-1.10.1.custom.min.js"></script>
+	<script src="/templates/libero/bootstrap/js/bootstrap.min.js"></script>
+	<style type="text/css">
+	
 
-    <script src="/dist/js/jquery.mini.js"></script>
-    <script src="/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/docs.min.js"></script>
-    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+	</style>
+</head>
+<body>
+	<div class="frame">
+		<div class="sidebar">
+			<div class="wrapper">
+				<a href="page-profile.html" class="profile">
+					<img src="../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
+					Welcome : <?php echo Auth::user()->username; ?>
+				</a>
+				<ul class="nav nav-list">
+					<li class="nav-header">Extra</li>
+					<li>
+						<a href="/logout"><i class="icon-file"></i>Logout</a>
+					</li>
+					<li class="nav-header">Student</li>
+					<li>
+						<a href="/students/index"><i class="icon-file"></i>List Student</a>
+					</li>
+					<li>
+						<a href="/students/add"><i class="icon-file"></i>New Student</a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-list-alt"></i>Search Student</a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
+					</li>
 
-    <link rel="stylesheet" href="/dist/css/cssCharts.css">
-    <script src="/dist/js/jquery.chart.js"></script>
+					<li class="nav-header">Course</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>List Course</a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>New Course</a>
+					</li>
 
-    <style>
-          /* page specific styles*/
-      h1{text-align:center;font-family:sans-serif;font-size:28px;color:#333;padding:40px 0 0 0;}
-      h2{text-align:center;font-family:sans-serif;font-size:18px;color:#333;padding:40px 0 0 0;}
-      hr{width:60%;height:1px;background:none;border:none;border-bottom:1px dashed rgba(0,0,0,0.1);outline:none;margin:40px auto 60px auto;}
-          .desc p{text-align:center;font-size:16px;color:rgba(0,0,0,0.6);padding:20px 0 0 0;font-family:sans-serif;}
-          .desc a{color:blue;}
-          .wrap{margin:0 auto;width:640px;padding-bottom:100px;}
-          #line{width:400px;}
-          /* page specific styles*/
-    </style>
-  </head>
-  <body>
-  <?php
-  $course = courses::all();
-  ?>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/admin">NIELIT, Aizawl: SDMS</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;&nbsp;Home</a></li>
-            <li><a href="/setting"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp;&nbsp;Setting</a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;<?php echo Auth::user()->username;?> | Logout</a></li>
-          </ul>
-          <form class="navbar-form navbar-right" method="POST" action="/adminsearch">
-            <input type="text" required class="form-control" name="searchtxt" placeholder="Student Search...">
-             <select class="form-control" name="course">
-                <option selected="selected" value="all">All Course</option>
-                <?php
-                foreach ($course as $c) {
-                ?>
-                  <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
-                <?php
-                }
-                ?>
-            </select>
-            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-          </form>
-        </div>
-      </div>
-      @yield('content')
-    </nav>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/courses">Course</a></li>
-            <li><a href="/types">Type</a></li>
-            <li><a href="/students">Student</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-          </ul>
-        </div>
-      @yield('content1')
-      </div>
-    </div>
-    <script>
-      $(function() {
-        $('.bar-chart').cssCharts({type:"bar"});
-        $('.donut-chart').cssCharts({type:"donut"}).trigger('show-donut-chart');
-        $('.line-chart').cssCharts({type:"line"});
-        $('.pie-thychart').cssCharts({type:"pie"});
-        });
-    </script>
-  </body>
-</html>
+					<li class="nav-header">Type</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>List Types</a>
+					</li>
+					<li>
+						<a href="#"><i class="icon-file"></i>New Tyoe</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="navbar navbar-static-tops">
+				<div class="navbar-inner">		
+					<a href="javascript:void(0);" class="btn pull-left toggle-sidebar hidden-desktop"><i class="icon-reorder"></i></a>
+					<a class="brand" href="index.html"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
+				</div>
+			</div><!--/.navbar -->	
+			
+			<div class="content-body">
+				<div class="row-fluid">
+					<?php if($error_code == 2){?>
+					<div class="alert alert-success">
+					  <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+					  <strong>Signin Success!</strong> You successfully signin in the system as Administrator.
+					</div>
+					<?php } ?>
+					@yield('content')
+				</div>
+			</div>
+		</div><!--/.content-->
+	</div><!-- /.frame -->
+
+
+<!-- WYSIHTML5 TEXT EDITOR -->
+<script src="/templates/libero/js/wysihtml5/advanced.js"></script>
+<script src="/templates/libero/js/wysihtml5/wysihtml5-0.3.0.min.js"></script>
+<!-- AUTOSIZE TEXTAREA -->
+<script src='/templates/libero/js/autosize/jquery.autosize-min.js'></script>
+<!-- BOOTSTRAP DATEPICKER -->
+<script src="/templates/libero/js/bootstrap-datepicker.js"></script>
+<!-- FLOT CHART -->
+<script src="/templates/libero/js/flot/jquery.flot.js"></script>
+<script src="/templates/libero/js/flot/jquery.flot.pie.js"></script>
+<script src="/templates/libero/js/flot/jquery.flot.resize.js"></script>
+<!-- FULLCALENDAR -->
+<script src="/templates/libero/js/fullcalendar/fullcalendar.custom.js"></script>
+<!-- MIXITUP -->
+<script src="/templates/libero/js/mixitup/jquery.mixitup.min.js"></script>
+<!-- THEME -->
+<script src="/templates/libero/js/theme.js"></script>
+<!-- SCRIPTS: FLOT GRAPH BASIC -->
+<script type="text/javascript">
+$(function () {
+	var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
+	var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+
+	var plot = $.plot($("#placeholder"), 
+	[ { data: d1, label: "Data A" }, { data: d2, label: "Data B" } ], {
+		lines: { 
+			show: true, 
+			fill: false, 
+			lineWidth: 1,
+			lineColor: "#fc0" 
+		},
+		points: { 
+			show: true, 
+			lineWidth: 4 
+		},
+		grid: {
+			clickable: true,
+			hoverable: true,
+			autoHighlight: true,
+			mouseActiveRadius: 10,
+			aboveData: true,
+			backgroundColor: "#fafafa",
+			borderWidth: 0,
+			borderColor: "#fc0",
+			minBorderMargin: 25,
+		},
+		colors: [ "#090", "#099",  "#609", "#900"],
+		shadowSize: 0
+	});
+
+	function showTooltip(x, y, contents) {
+		$('<div id="gridtip">' + contents + '</div>').css( {
+			position: 'absolute',
+			display: 'none',
+			top: y + 5,
+			left: x + 5
+		}).appendTo("body").fadeIn(300);
+	}
+
+	var previousPoint = null;
+	$("#placeholder").bind("plothover", function (event, pos, item) {
+		$("#x").text(pos.x.toFixed(2));
+		$("#y").text(pos.y.toFixed(2));
+
+		if (item) {
+			if (previousPoint != item.dataIndex) {
+				previousPoint = item.dataIndex;
+				
+				$("#gridtip").remove();
+				var x = item.datapoint[0].toFixed(0),
+					y = item.datapoint[1].toFixed(0);
+				
+				showTooltip(item.pageX, item.pageY,
+							"x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
+			}
+		}
+		else {
+			$("#gridtip").remove();
+			previousPoint = null;            
+		}
+	});
+});
+</script>
+
+<!-- SCRIPTS: FLOT GRAPH ADVANCE -->
+<script type="text/javascript">
+$(function () {
+	var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
+	var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+
+	var plot = $.plot($("#placeholder2"),
+		   [ { data: d1, label: "Data Y"}, { data: d2, label: "Data X" } ], {
+				lines: { 
+					show: true, 
+					fill: true, /*SWITCHED*/
+					lineWidth: 2 
+				},
+				points: { 
+					show: true, 
+					lineWidth: 3
+				},
+				grid: {
+					clickable: true,
+					hoverable: true,
+					autoHighlight: true,
+					mouseActiveRadius: 10,
+					aboveData: true,
+					backgroundColor: "#fafafa",
+					borderWidth: 0,
+					minBorderMargin: 25,
+				},
+				colors: [ "#090", "#099",  "#609", "#900"],
+				shadowSize: 0
+			 });
+
+	function showTooltip(x, y, contents) {
+		$('<div id="gridtip">' + contents + '</div>').css( {
+			position: 'absolute',
+			display: 'none',
+			top: y + 5,
+			left: x + 5
+		}).appendTo("body").fadeIn(300);
+	}
+
+	var previousPoint = null;
+	$("#placeholder2").bind("plothover", function (event, pos, item) {
+		$("#x").text(pos.x.toFixed(2));
+		$("#y").text(pos.y.toFixed(2));
+
+		if (item) {
+			if (previousPoint != item.dataIndex) {
+				previousPoint = item.dataIndex;
+				
+				$("#gridtip").remove();
+				var x = item.datapoint[0].toFixed(0),
+					y = item.datapoint[1].toFixed(0);
+				
+				showTooltip(item.pageX, item.pageY,
+							"x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
+			}
+		}
+		else {
+			$("#gridtip").remove();
+			previousPoint = null;            
+		}
+	});
+});
+</script>
+
+<!-- SCRIPTS: CHARTS -->
+<script>
+	// PREDEFINED DATA
+	var data = [
+					{ label: "Series1",  data: [[1,10]]},
+					{ label: "Series2",  data: [[1,30]]},
+					{ label: "Series3",  data: [[1,90]]}
+				];
+
+	// // DEFAULT
+	// $.plot($("#pie-default"), data, 
+	// {
+	// 	series: {
+	// 		pie: {
+	// 			show: true
+	// 		}
+	// 	}
+	// });
+
+	// DEFINE ACTIONS FOR pieHover & pieClick
+	function pieHover(event, pos, obj) 
+	{
+		if (!obj)
+					return;
+		percent = parseFloat(obj.series.percent).toFixed(2);
+		$("#hover").html('<span>'+obj.series.label+' - '+percent+'%</span>');
+	}
+
+	function pieClick(event, pos, obj) 
+	{
+		if (!obj)
+					return;
+		percent = parseFloat(obj.series.percent).toFixed(2);
+		alert(''+obj.series.label+': '+percent+'%');
+	}
+
+	// DONUT
+	$.plot($("#pie-donut"), data, 
+	{
+		series: {
+			pie: { 
+				innerRadius: 10,
+				show: true
+			}
+		}
+	});
+
+	// DONUT + INTERACTIVE
+	$.plot($("#pie-interactive"), data,
+	{
+			series: {
+				pie: {
+					innerRadius: 10,
+					show: true
+				}
+			},
+			grid: {
+				hoverable: true,
+				clickable: true
+			}
+	});
+
+	$("#pie-interactive").bind("plothover", pieHover);
+	$("#pie-interactive").bind("plotclick", pieClick);
+</script>
+</body>

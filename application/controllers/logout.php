@@ -7,7 +7,7 @@ class Logout_Controller extends Base_Controller {
 	{
 		Auth::logout();
 		return View::make('home.index')
-                        ->with('loginerror','2');
+                        ->with('error_code','2');
 	}
 
 }
