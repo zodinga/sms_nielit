@@ -34,12 +34,12 @@
     $per_gen = round((($gen*100)/$student_no),2);
   ?> 
       
-@endsection
-@section('content1')
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h3 class="page-header">Dashboard</h3>
+<section class="module">
+        <div class="module-head">
+          <b>Dashboard</b>
+        </div><!--/.module-head-->
 
-          <p>
+      <p>
     <button class="btn btn-primary" type="button">
       Total No.of Student <span class="badge"><?php echo $student_no; ?></span>
     </button>
@@ -169,5 +169,5 @@
             </table>
           </div>
         </div>
-  
+  </section>
 @endsection

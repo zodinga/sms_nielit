@@ -7,10 +7,12 @@
 		public $restful = true;
 		public function get_index()
 		{
-			# code...
+			
 			$students = Students::where('id','>',0)->paginate(10);
 
-			return View::make('admin.student.index')->with('students',$students);
+			return View::make('admin.student.index')
+				->with('students',$students)
+				->with('error_code',0);
 
 		}
 

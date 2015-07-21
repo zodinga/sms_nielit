@@ -29,19 +29,12 @@
 			<div class="wrapper">
 				<a href="page-profile.html" class="profile">
 					<img src="../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
-					Welcome : <?php echo Auth::user()->username; ?>
+					Welcome
 				</a>
 				<ul class="nav nav-list">
-					<li class="nav-header">Extra</li>
+					<li class="nav-header">Menu</li>
 					<li>
-						<a href="/logout"><i class="icon-file"></i>Logout</a>
-					</li>
-					<li class="nav-header">Student</li>
-					<li>
-						<a href="/students/index"><i class="icon-file"></i>List Student</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-file"></i>New Student</a>
+						<a href="#"><i class="icon-file"></i>Existing Courses</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-list-alt"></i>Search Student</a>
@@ -49,21 +42,11 @@
 					<li>
 						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
 					</li>
-
-					<li class="nav-header">Course</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>List Course</a>
+						<a href="#"><i class="icon-group"></i>About Developer Team</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>New Course</a>
-					</li>
-
-					<li class="nav-header">Type</li>
-					<li>
-						<a href="#"><i class="icon-file"></i>List Types</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-file"></i>New Tyoe</a>
+						<a href="#"><i class="icon-calendar"></i>Calendar</a>
 					</li>
 				</ul>
 			</div>
@@ -78,13 +61,7 @@
 			
 			<div class="content-body">
 				<div class="row-fluid">
-					<?php if($error_code == 2){?>
-					<div class="alert alert-success">
-					  <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
-					  <strong>Signin Success!</strong> You successfully signin in the system as Administrator.
-					</div>
-					<?php } ?>
-					@yield('content')
+					 @yield('content')
 				</div>
 			</div>
 		</div><!--/.content-->

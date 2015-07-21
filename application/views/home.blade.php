@@ -27,11 +27,22 @@
 	<div class="frame">
 		<div class="sidebar">
 			<div class="wrapper">
-				<a href="page-profile.html" class="profile">
+				<a href="/home" class="profile">
 					<img src="img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
-					Welcome
+					Welcome Guest
 				</a>
 				<ul class="nav nav-list">
+					<!--SEPARATE-->
+
+					<li class="nav-header">Extra</li>
+					<li>
+						<a href="#signinModal"  data-toggle="modal"><i class="icon-signin"></i>Sign In</a>
+						
+					</li>
+					<li>
+						<a href="users/signup" data-toggle="modal"><i class="icon-key"></i>Signup</a>
+					</li>
+					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
 						<a href="#"><i class="icon-file"></i>Existing Courses</a>
@@ -48,45 +59,24 @@
 					<li>
 						<a href="#"><i class="icon-calendar"></i>Calendar</a>
 					</li>
+
+
 				</ul>
 			</div>
 		</div>
 		<div class="content">
 			<div class="navbar navbar-static-tops">
 				<div class="navbar-inner">		
-					<a href="javascript:void(0);" class="btn pull-left toggle-sidebar hidden-desktop"><i class="icon-reorder"></i></a>
-					<a class="brand" href="index.html"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
+					<a class="brand" href="/home"> <i class="icon-edit"></i> NIELIT, Aizawl : Student Database Management System</a>
 				</div>
 			</div><!--/.navbar -->	
 			<div class="content-head">
-				<img src="/img/NIELIT-logo.png" alt="logo">
-				<a href="#myModal" role="button" class="btn btn-success" data-toggle="modal">Sign In</a>
-				<button type="submit" onclick="location.href='/signup'" class="btn btn-primary">Sign Up</button>
-				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h3 id="myModalLabel">NIELIT SDMS - Sign In</h3>
-					</div>
-					<form class="form-horizontal" method="POST" action="#">
-						<div class="modal-body">
-							<div class="control-group">
-								<label class="control-label" for="basicinput">Username :</label>
-								<div class="controls">
-									<input class="input-xlarge" type="text" placeholder="Usename..." name="username" autofocus required>
-								</div>
-								<label class="control-label" for="basicinput">Password: </label>
-								<div class="controls">
-									<input class="input-xlarge" type="password" placeholder="Password..." name="password" Autofocus required>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-success">Sign In</button>
-						</div>
-					</form>
+			<?php if($error_code == 1) {?>
+				<div class="alert alert-error">
+				  <a href="#" class="close" data-dismiss="alert"><i class="icon-remove"></i></a>
+				  <strong>Login Error!</strong> Please Re-type your usename and password.
 				</div>
-
+			<?php } ?>
 			</div>
 			<div class="content-body">
 				<div class="row-fluid">
@@ -311,4 +301,66 @@ $(function () {
 	$("#pie-interactive").bind("plothover", pieHover);
 	$("#pie-interactive").bind("plotclick", pieClick);
 </script>
+<!--Signin Modal -->
+<div id="signinModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">NIELIT SDMS - Sign In</h3>
+	</div>
+	<form class="form-horizontal" method="POST" action="/users/signin">
+		<div class="modal-body">
+			<div class="control-group">
+				<label class="control-label" for="basicinput">Username :</label>
+				<div class="controls">
+					<input class="input-xlarge" type="text" placeholder="Usename..." name="username" Autofocus required>
+				</div>
+				<label class="control-label" for="basicinput">Password: </label>
+				<div class="controls">
+					<input class="input-xlarge" type="password" placeholder="Password..." name="password"  required>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-success">Sign In</button>
+			<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
+	</form>
+</div>
+
+<!--Signup Modal -->
+<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">NIELIT SDMS - Sign Up</h3>
+	</div>
+	<form class="form-horizontal" method="POST" action="users/save">
+		<div class="modal-body">
+			<div class="form-group">
+            	<label for="username" class="col-sm-2 control-label">Username</label>
+            	<div class="col-sm-5">
+             	 	<input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" required>
+            	</div>
+          	</div>
+
+          	<div class="form-group">
+            	<label for="password" class="col-sm-2 control-label">Password</label>
+            	<div class="col-sm-5">
+              		<input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+            	</div>
+          	</div>
+
+          	<div class="form-group">
+            	<label for="repassword" class="col-sm-2 control-label">Retype Password</label>
+            	<div class="col-sm-5">
+              		<input type="password" name="repassword" class="form-control" id="repassword" placeholder="Reenter password" required>
+            	</div>
+          	</div>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-success">Signup</button>
+			<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
+	</form>
+</div>
 </body>
+

@@ -6,7 +6,7 @@ Route::controller(Controller::detect());
 //Route::get('/',array('uses'=>'home@index'));
 Route::get('/', function()
 {
-return View::make('home.index')->with('loginerror',2);
+return View::make('home.index')->with('error_code',0);
 });
 Route::get('admin', array('before' => 'auth', function() {
 $users=Users::all();
