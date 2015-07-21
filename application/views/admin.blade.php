@@ -41,7 +41,7 @@
 						<a href="/students/index"><i class="icon-file"></i>List Student</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>New Student</a>
+						<a href="/students/add"><i class="icon-file"></i>New Student</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-list-alt"></i>Search Student</a>

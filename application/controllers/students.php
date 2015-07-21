@@ -19,7 +19,7 @@
 		public function get_add()
 		{
 			# code...
-			return View::make('admin.student.form');
+			return View::make('admin.student.form')->with('error_code',0);
 		}
 
 		public function get_view($id){
