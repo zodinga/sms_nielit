@@ -33,22 +33,34 @@
 				</a>
 				<ul class="nav nav-list">
 					<!--SEPARATE-->
-
+					<form class="navbar-form navbar-right" method="POST" action="/students/search">
+		            <input type="text" class="input-small" required name="searchtxt" placeholder="Student Search...">
+		              <select class="input-small" name="course">
+		                  <option selected="selected" value="all">All Course</option>
+		                  <?php
+		                  $course=Courses::all();
+		                  foreach ($course as $c) {
+		                  ?>
+		                    <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
+		                  <?php
+		                  }
+		                  ?>
+		              </select>
+		            <button class="btn btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
+<!-- 		          <button class="btn btn-warning" type="button"><i class="icon-eye-open"></i></button>
+ -->		         </form>
 					<li class="nav-header">Extra</li>
 					<li>
 						<a href="#signinModal"  data-toggle="modal"><i class="icon-signin"></i>Sign In</a>
 						
 					</li>
 					<li>
-						<a href="users/signup" data-toggle="modal"><i class="icon-key"></i>Signup</a>
+						<a href="/users/signup" data-toggle="modal"><i class="icon-key"></i>Signup</a>
 					</li>
 					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>Existing Courses</a>
-					</li>
-					<li>
-						<a href="#"><i class="icon-list-alt"></i>Search Student</a>
+						<a href="/courses/list"><i class="icon-file"></i>Existing Courses</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>

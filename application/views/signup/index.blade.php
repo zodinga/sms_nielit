@@ -1,11 +1,5 @@
-@layout('pages')
-@section('head')
+@layout('home')
 
-  
-  
-
-  
-@endsection
 @section('content')
 <section class="module">
         <div class="module-head">

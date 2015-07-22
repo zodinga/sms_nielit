@@ -33,7 +33,7 @@
 				</a>
 				<ul class="nav nav-list">
 
-				<form class="navbar-form navbar-right" method="POST" action="/students/search">
+				<form class="navbar-form navbar-right" method="POST" action="/students/adminsearch">
 		            <input type="text" class="input-small" required name="searchtxt" placeholder="Student Search...">
 		              <select class="input-small" name="course">
 		                  <option selected="selected" value="all">All Course</option>
@@ -82,12 +82,16 @@
 						<a href="/types/add"><i class="icon-file"></i>New Type</a>
 					</li>
 
-					<li class="nav-header">Category</li>
+					<li>Category</li>
 					<li>
 						<a href="#"><i class="icon-file"></i>List Catogories</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-file"></i>New Category</a>
+					</li>
+					<li class="nav-header">Settings</li>
+					<li>
+						<a href="/settings/index"><i class="icon-wrench"></i>Settings</a>
 					</li>
 				</ul>
 			</div>

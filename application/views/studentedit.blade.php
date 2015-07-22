@@ -8,19 +8,19 @@
         $comm=communities::find($s->community);
         $sta=statuses::find($s->status);
       ?> 
-<form class="form-horizontal" action="/students/update" method="POST">
+<form class="form-horizontal" action="/students/studentupdate" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="photo" class="col-sm-2 control-label">Photo</label>
       <div class="col-sm-5">
           <?php
-              $photo = "/img/icon-user-default.jpg";
+              $photo = "/img/user.jpg";
               if($detail->photo != NULL)
               {
                 $photo = $detail->photo;
               }
             ?>
-        Photo: <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
-        <input type="text" name="photo" value="<?php echo $detail->photo; ?>" class="form-control" id="photo" placeholder="Photo">
+        <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
+        <input type="file" name="image" value="<?php echo $detail->photo; ?>" class="form-control" id="image" placeholder="Photo">
       </div>
     </div>
 

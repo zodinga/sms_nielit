@@ -6,8 +6,6 @@
 <h3 class="page-header">{{$heading}}</h3> 
 <!-- <button type="button" class="btn btn-primary" onclick="location.href='/students/add'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp;Add New</button> -->
 <?php 
-//$students=students::where('id','>',0)->paginate(10);
-//var_dump($students);exit();
 ?>
 <p>
 

@@ -4,11 +4,18 @@ class Courses_Controller extends Base_Controller {
 	public $restful = true;
 	public function get_index()
 	{
-		
 		return View::make('admin.course.index')
 		->with('cours',Courses::order_by('id')->get())
 		->with('error_code',0);
 	}
+
+		public function get_list()
+	{
+		return View::make('/courses')
+		->with('cours',Courses::order_by('id')->get())
+		->with('error_code',0);
+	}
+
 	public function get_add()
 	{
 		return View::make('admin.course.form')->with('error_code',0);

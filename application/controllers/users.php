@@ -51,13 +51,13 @@ class Users_Controller extends Base_Controller {
 
 	public function get_signup()
 	{
-		return View::make('signup.index');
+		return View::make('signup.index')
+					->with('error_code','2');
 	}
 
 	public function post_save()
 	{
-		/*echo Input::get('username');
-		echo Input::get('password');exit();*/
+
       if(Input::get('password')!=Input::get('repassword'))
       	{
       		return View::make('home.index')->with('error_code',1);
@@ -83,13 +83,9 @@ class Users_Controller extends Base_Controller {
 	public function get_delete($id)
 	{
 		$delete_type=Types::find($id);
-		//echo Input::get('id');
 		$delete_type->delete();
 
 		return View::make('admin.type.index')->with('types',Types::order_by('id')->get());
-		//return Redirect::to_route('types')->with('message','The type was deleted successfully');
 	}
-
-
 }
 ?>
