@@ -46,28 +46,27 @@
 		                  }
 		                  ?>
 		              </select>
-		            <button class="btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
-		         </form>
+		            <button class="btn btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
+<!-- 		          <button class="btn btn-warning" type="button"><i class="icon-eye-open"></i></button>
+ -->		         </form>
 
 					<li class="nav-header">Extra</li>
 					<li>
 						<a href="/users/logout"><i class="icon-signout"></i>Logout</a>
 					</li>
-					<li class="nav-header">Student</li>
+					<li>Student</li>
 					<li>
 						<a href="/students/index"><i class="icon-file"></i>List Student</a>
 					</li>
 					<li>
 						<a href="/students/add"><i class="icon-file"></i>New Student</a>
 					</li>
-					<li>
-						<a href="#"><i class="icon-list-alt"></i>Search Student</a>
-					</li>
+					
 					<li>
 						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
 					</li>
 
-					<li class="nav-header">Course</li>
+					<li>Course</li>
 					<li>
 						<a href="/courses/index"><i class="icon-file"></i>List Course</a>
 					</li>
@@ -75,7 +74,7 @@
 						<a href="/courses/add"><i class="icon-file"></i>New Course</a>
 					</li>
 
-					<li class="nav-header">Type</li>
+					<li>Type</li>
 					<li>
 						<a href="/types/index"><i class="icon-file"></i>List Types</a>
 					</li>

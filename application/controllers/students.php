@@ -177,7 +177,7 @@
 	        	->with('stxt',Input::get('searchtxt'))
 	        	->with('scourse',$scourse);*/
 
-	        $head="Search Result <small>Keywords: <u>".Input::get('searchtxt')."</u> from <u>".$scourse."</u></small>";
+	        $head="Search Result <small class='text-error'>Keywords: <u>".Input::get('searchtxt')."</u> from <u>".$scourse."</u></small>";
 			//$students = Students::where('id','>',0)->paginate(10);
 
 			return View::make('admin.student.index')
