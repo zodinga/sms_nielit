@@ -21,7 +21,6 @@
     <?php
     	foreach($cours as $c){
     		?>
-    		
     			<tr>
     			<td><?php echo $c->id;?></td>
     			<td><?php echo $c->course;?></td>

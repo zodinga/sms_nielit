@@ -28,7 +28,7 @@
 		<div class="sidebar">
 			<div class="wrapper">
 				<a href="/home" class="profile">
-					<img src="img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
+					<img src="../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
 					Welcome Guest
 				</a>
 				<ul class="nav nav-list">
