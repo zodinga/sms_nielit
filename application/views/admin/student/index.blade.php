@@ -13,12 +13,12 @@
 <thead>
 <tr class="warning">
 <td>Id</td>
+<td>Photo</td>
 <td>Name</td>
 <td>Course</td>
 <td>Batch</td>
 <td>Phone</td>
 <td>Status</td>
-<td>Photo</td>
 <td>Action</td>
 </tr>
 </thead>
@@ -30,6 +30,14 @@
 		
 	<tr>
 			<td><?php echo $s->id;?>
+      </td>
+      <td>
+      <?php 
+        $pic="/uploads/".$s->photo;
+        if($s->photo=="")
+          $pic="/img/user.jpg";
+      ?>
+      <img src="<?php echo $pic;?>" height="30" width="30" alt="student-photo" class="img-rounded">
       </td>
 			<td><?php echo $s->name;?>
       </td>
@@ -51,8 +59,7 @@
           
           ?>
       </td>
-			<td><?php echo $s->photo;?>
-      </td>
+			
 			<td>
             <!--Details Modal Start -->
             <?php include("./application/views/admin/student/details-modal.php"); ?>

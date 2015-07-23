@@ -22,7 +22,7 @@
             $photo = $detail->photo;
           }
           ?>
-          Photo: <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-circle">
+          Photo: <img src="/uploads/<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-circle">
         </li>
         <li class="list-group-item">Name: <?php echo $detail->name;?></li>
         <li class="list-group-item">Aadhaar-no: <?php echo $detail->aadhaar;?></li>

@@ -148,8 +148,26 @@
 				$update_student->status=Input::get('status');
 				$update_student->photo=Input::get('photo');
 
-      		$update_student->save();
-			return Redirect::to('students/index');
+				$rules = array(
+            	'image' => 'image',
+		        );
+		        $validation = Validator::make(Input::file('photo'), $rules);
+		        // create random filename
+				$filename = Input::get('sid').'.'. File::extension(Input::file('photo.name'));
+				// Save photo in the database
+				$update_student->photo = $filename;
+				$update_student->save();
+				//upload to uploads folder
+				Input::upload('photo', 'public/uploads', $filename);
+
+
+      		//$update_student->save();
+				if(Auth::check())
+				{
+					return Redirect::to('students');
+				}
+				else
+					return Redirect::to('home');
 		}
 
 
@@ -251,11 +269,21 @@
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->status=Input::get('status');
-				$update_student->photo=Input::get('photo');
 
-      		$update_student->save();
+				$rules = array(
+            	'image' => 'image',
+		        );
+		        $validation = Validator::make(Input::file('photo'), $rules);
+		        // create random filename
+				$filename = Input::get('sid').'.'. File::extension(Input::file('photo.name'));
+				// Save photo in the database
+				$update_student->photo = $filename;
+				$update_student->save();
+				//upload to uploads folder
+				Input::upload('photo', 'public/uploads', $filename);
+      		
 
-      		$this->upload();
+      		//$this->upload();
       		
       		
 			return Redirect::to('home');

@@ -63,7 +63,7 @@
 						<a href="/courses/list"><i class="icon-file"></i>Existing Courses</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
+						<a href="/images/index"><i class="icon-user-md"></i>Image Upload</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-group"></i>About Developer Team</a>

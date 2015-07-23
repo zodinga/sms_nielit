@@ -10,14 +10,13 @@
 ?>
 <ol class="list-group">
 	<li class="list-group-item">
-      <?php
-      $photo = "/img/icon-user-default.jpg";
-      if($detail->photo != NULL)
-      {
-        $photo = $detail->photo;
-      }
-      ?>
-      Photo: <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-circle">
+      <?php 
+                echo $detail->photo;
+                  $pic="/uploads/".$detail->photo;
+                  if($detail->photo=="")
+                    $pic="/img/user.jpg";
+                ?>
+      <img src="<?php echo $pic;?>" height="100" width="100" alt="student-photo" class="img-rounded">
    	</li>
     <li class="list-group-item">Name: <b><?php echo $detail->name;?></b></li>
     <li class="list-group-item">Aadhaar-no: <b><?php echo $detail->aadhaar;?></b></li>

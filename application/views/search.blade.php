@@ -48,7 +48,13 @@
               }
               ?>
           </td>
-    			<td><?php echo $s->photo;?>
+    			<td>
+           <?php 
+                  $pic="/uploads/".$s->photo;
+                  if($s->photo=="")
+                    $pic="/img/user.jpg";
+                ?>
+      <img src="<?php echo $pic;?>" height="30" width="30" alt="student-photo" class="img-rounded">
           </td>
     			<td>
                 <!--Details Modal Start -->

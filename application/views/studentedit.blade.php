@@ -8,19 +8,24 @@
         $comm=communities::find($s->community);
         $sta=statuses::find($s->status);
       ?> 
-<form class="form-horizontal" action="/students/studentupdate" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" action="/students/update" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="photo" class="col-sm-2 control-label">Photo</label>
       <div class="col-sm-5">
-          <?php
-              $photo = "/img/user.jpg";
-              if($detail->photo != NULL)
-              {
-                $photo = $detail->photo;
-              }
-            ?>
-        <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
-        <input type="file" name="image" value="<?php echo $detail->photo; ?>" class="form-control" id="image" placeholder="Photo">
+           <?php 
+                echo $s->photo;
+                  $pic="/uploads/".$s->photo;
+                  if($s->photo=="")
+                    $pic="/img/user.jpg";
+                ?>
+      <img src="<?php echo $pic;?>" height="100" width="100" alt="student-photo" class="img-rounded">
+        <h1>Photo Upload</h1>
+     <!--  <form role="form" action="/images/upload" method="post"  enctype="multipart/form-data"> -->
+              <label>Select image to upload:</label>
+          <input type="file" name="photo" id="photo">
+          <input type="hidden" name="sid" value="<?php echo $detail->id;?>">
+        <!--<input type="file" name="image" value="<?php echo $detail->photo; ?>" class="form-control" id="image" placeholder="Photo">
+      -->
       </div>
     </div>
 
