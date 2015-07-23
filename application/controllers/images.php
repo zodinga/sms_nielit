@@ -3,7 +3,8 @@ class Images_Controller extends Base_Controller
 {
 	public function action_index()
 	{
-        return View::make('imageupload');
+        return View::make('home.imageupload')
+        				->with('error_code',0);
 	}
 public function action_upload()
 	{
@@ -43,6 +44,7 @@ public function action_upload()
         //var_dump($file);exit();
         Input::upload('file', $destinationPath, 'test.jpg');*/
 //------------------------------------------
+    	return View::make('home');
     }
     //}
 
