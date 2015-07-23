@@ -3,7 +3,7 @@
  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3 class="page-header">Student Entry Form</h3>
     <p>
-        <form class="form-horizontal" action="/students/save" method="POST">
+        <form class="form-horizontal" action="/students/save" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-5">
@@ -280,10 +280,15 @@
           </div>
 
           <div class="form-group">
-            <label for="photo" class="col-sm-2 control-label">Photo</label>
-            <div class="col-sm-5">
-              <input type="text" name="photo" class="form-control" id="photo" placeholder="Photo">
-            </div>
+            <img src="" height="100" width="100" alt="student-photo" class="img-rounded" id="output" class="img-rounded" style="border:1px solid black">
+          <input type="file" name="photo" id="photo" onchange="loadFile(event)">
+          
+          <script>
+            var loadFile = function(event) {
+              var output = document.getElementById('output');
+              output.src = URL.createObjectURL(event.target.files[0]);
+            };
+          </script>
           </div>
 
           <div class="form-group">

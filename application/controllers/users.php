@@ -51,7 +51,7 @@ class Users_Controller extends Base_Controller {
 
 	public function get_signup()
 	{
-		return View::make('signup.index')
+		return View::make('home.signup')
 					->with('error_code','2');
 	}
 

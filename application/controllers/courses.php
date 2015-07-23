@@ -1,8 +1,8 @@
 <?php
 class Courses_Controller extends Base_Controller {
 
-	
-	public function action_index()
+	public $restful = true;
+	public function get_index()
 	{
 		$courses = Courses::all();
 		return View::make('admin.course.index')
@@ -10,10 +10,12 @@ class Courses_Controller extends Base_Controller {
 			->with('error_code',0);
 	}
 
-	public function action_list()
+	public function get_list()
 	{
+		$cours=Courses::where('id','>','0')->paginate(8);
 		return View::make('home.courses')
-			->with('cours',Courses::order_by('id')->get())
+			->with('cours',$cours->results)
+			->with('links',$cours->links())
 			->with('error_code',0);
 	}
 

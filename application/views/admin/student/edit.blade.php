@@ -13,21 +13,22 @@
       <label for="photo" class="col-sm-2 control-label">Photo</label>
       <div class="col-sm-5">
                 <?php 
-                echo $s->photo;
+                //echo $s->photo;
                   $pic="/uploads/".$s->photo;
                   if($s->photo=="")
                     $pic="/img/user.jpg";
                 ?>
-      <img src="<?php echo $pic;?>" height="100" width="100" alt="student-photo" class="img-rounded">
-<!--         <input type="text" name="photo" value="<?php echo $detail->photo; ?>" class="form-control" id="photo" placeholder="Photo"> -->
-      <h1>Photo Upload</h1>
-     <!--  <form role="form" action="/images/upload" method="post"  enctype="multipart/form-data"> -->
-              <label>Select image to upload:</label>
-          <input type="file" name="photo" id="photo">
+          <img src="<?php echo $pic;?>" height="100" width="100" alt="student-photo" class="img-rounded" id="output" class="img-rounded" style="border:1px solid black">
+          <input type="file" name="photo" id="photo" onchange="loadFile(event)">
+          
+          <script>
+            var loadFile = function(event) {
+              var output = document.getElementById('output');
+              output.src = URL.createObjectURL(event.target.files[0]);
+            };
+          </script>
+
           <input type="hidden" name="sid" value="<?php echo $detail->id;?>">
-         <!--  <input type="text" name="id" id="id" value="<?php echo $detail->id; ?>"> -->
-         <!--  <input type="submit" value="Upload" name="submit"> -->
-     <!--  </form> -->
       </div>
     </div>
 

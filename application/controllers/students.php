@@ -103,10 +103,21 @@
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->status=Input::get('status');
-				$update_student->photo=Input::get('photo');
 
-      		$update_student->save();
-      		
+				$update_student->save();
+
+				$rules = array(
+            	'image' => 'image',
+		        );
+		        $validation = Validator::make(Input::file('photo'), $rules);
+		        // create random filename
+				$filename = $update_student->id.'.'. File::extension(Input::file('photo.name'));
+				// Save photo in the database
+				$update_student->photo = $filename;
+				$update_student->save();
+				//upload to uploads folder
+				Input::upload('photo', 'public/uploads', $filename);
+
 			return Redirect::to('students/index');
 		}
 
