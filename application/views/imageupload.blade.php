@@ -63,7 +63,7 @@
 
                                 <h1>File Upload</h1>
                                 <form role="form" action="/images/upload" method="post"  enctype="multipart/form-data">
-                                    <label>Input ID:</label>
+                                    <label>Input Student ID:</label>
                                     <input type="text" name="id" value="" autofocus>
                                     <label>Select image to upload:</label>
                                     <input type="file" name="photo" id="photo">

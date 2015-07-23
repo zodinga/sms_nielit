@@ -275,12 +275,18 @@
 		        );
 		        $validation = Validator::make(Input::file('photo'), $rules);
 		        // create random filename
+				if($validation->passes())
+				{
 				$filename = Input::get('sid').'.'. File::extension(Input::file('photo.name'));
 				// Save photo in the database
 				$update_student->photo = $filename;
 				$update_student->save();
 				//upload to uploads folder
 				Input::upload('photo', 'public/uploads', $filename);
+				}
+				else
+					echo "error";
+				
       		
 
       		//$this->upload();

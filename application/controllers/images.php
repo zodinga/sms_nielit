@@ -14,22 +14,27 @@ public function action_upload()
         );
         $validation = Validator::make(Input::file('photo'), $rules);
         // create random filename
-		$filename = Str::random(5) .'.'. File::extension(Input::file('photo.name'));
-		// Save logo in the database
-		$event = Students::where('id', '=', $id)->first();
-		$event->photo = $filename;
-		$event->save();
-		
-		// start bundle 'resizer'
-		//Bundle::start('resizer');
-		// resize image		
-		//$img = Input::file('photo');
-		
-		//$success = Resizer::open($img)
-					//->resize(60 , 30 , 'auto' )
-					//->save('public/uploads/thumbnails/'.$filename , 90 );
-		// move uploaded file to public/uploads
-		Input::upload('photo', 'public/uploads', $filename);
+        if($validation->passes())
+		{
+			$filename = Str::random(5) .'.'. File::extension(Input::file('photo.name'));
+			// Save logo in the database
+			$event = Students::where('id', '=', $id)->first();
+			$event->photo = $filename;
+			$event->save();
+			
+			// start bundle 'resizer'
+			//Bundle::start('resizer');
+			// resize image		
+			//$img = Input::file('photo');
+			
+			//$success = Resizer::open($img)
+						//->resize(60 , 30 , 'auto' )
+						//->save('public/uploads/thumbnails/'.$filename , 90 );
+			// move uploaded file to public/uploads
+			Input::upload('photo', 'public/uploads', $filename);
+		}
+		else
+			echo "Upload unsuccessful";
 
 
 //------------------------------------------
