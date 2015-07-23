@@ -1,7 +1,6 @@
 <?php
 	class Students_Controller extends Base_Controller
 	{
-		public $restful = true;
 		public function get_index()
 		{
 			$head="All Students";
@@ -25,16 +24,17 @@
 		{
 			# code...
 			return View::make('admin.student.edit')
-			->with('s',Students::find($id))
-			->with('error_code',0);
-		}
+				->with('s',Students::find($id))
+				->with('error_code',0);
+			}
 
-		public function get_searchedit($id)
+		public function action_searchedit($id)
 		{
 			# code...
-			return View::make('studentedit')
-			->with('s',Students::find($id))
-			->with('error_code',0);
+			$student = Students::find($id);
+			return View::make('home.studentedit')
+				->with('student',$student)
+				->with('error_code',0);
 		}
 
 		public function get_detail($id)
@@ -204,7 +204,7 @@
 				->with('links',"");
 		}
 
-	public function post_search()
+	public function action_search()
 		{
 			$searchtxt = "%".Input::get('searchtxt')."%";
 			$course = Input::get('course');
@@ -220,12 +220,11 @@
 				$scourse=Courses::find($course)->course;	
 			}
 
-	        $head="Search Result <small class='text-error'>Keywords: <u>".Input::get('searchtxt')."</u> from <u>".$scourse."</u></small>";
+	        $head="<strong>Search</strong> Result <small class='text-error'>Keywords: <u>".Input::get('searchtxt')."</u> from <u>".$scourse."</u></small>";
 			
 			$edit=Settings::find(1);
 
-			//echo "EDIT=",$edit->editstudent;exit();
-			return View::make('search')
+			return View::make('home.search')
 				->with('students',$students)
 				->with('error_code',0)
 				->with('heading',$head)
