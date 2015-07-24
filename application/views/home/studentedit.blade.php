@@ -12,11 +12,26 @@
         <b>Update Student Information</b>
     </div><!--/.module-head-->
     <div class="module-body">
+    <div class="tab">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="tab-1">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="basicinput">Basic Input</label>
+                                    <div class="controls">
+                                        <input type="text" id="basicinput" placeholder="Type something here..." class="span8">
+                                        <span class="help-inline">Helpful text here.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
         <div class="stats-overview row-fluid">
         <p> 
             <form class="form-horizontal" action="/students/update" method="POST" enctype="multipart/form-data">
                 <div class="control-group">
-                    <label for="basicinput" class="control-label">Photo</label>
                     <div class="control">
                         <?php 
                             echo $student->photo;
