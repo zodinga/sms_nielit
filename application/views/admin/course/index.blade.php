@@ -157,7 +157,7 @@
     ?>
     </tbody>
     </table>
-
+    <?php echo $links; ?>
     </p>
  </div>
 @endsection

@@ -3,8 +3,19 @@ class Images_Controller extends Base_Controller
 {
 	public function action_index()
 	{
+        $edit=Settings::find(1);
+		if($edit->editstudent=="Y")
+		{
         return View::make('home.imageupload')
         				->with('error_code',0);
+        }
+        else
+    	{
+    		$msg="<marquee><h1>Student's Editing is not Enabled!! Contact Admin</h1></marquee>";
+        	return View::make('home.index')
+        				->with('error_code',0)
+        				->with('message',$msg);;
+    	}
 	}
 public function action_upload()
 	{

@@ -47,8 +47,7 @@
 		                  ?>
 		              </select>
 		            <button class="btn btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
-<!-- 		          <button class="btn btn-warning" type="button"><i class="icon-eye-open"></i></button>
- -->		         </form>
+		         </form>
 					<li class="nav-header">Extra</li>
 					<li>
 						<a href="#signinModal"  data-toggle="modal"><i class="icon-signin"></i>Sign In</a>
@@ -60,13 +59,13 @@
 					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
-						<a href="/courses/list"><i class="icon-file"></i>Existing Courses</a>
+						<a href="/courses/index"><i class="icon-file"></i>Existing Courses</a>
 					</li>
 					<li>
 						<a href="/images/index"><i class="icon-user-md"></i>Image Upload</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-group"></i>About Developer Team</a>
+						<a href="/home/about"><i class="icon-group"></i>About Developer Team</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-calendar"></i>Calendar</a>

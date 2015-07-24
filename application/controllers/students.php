@@ -236,7 +236,7 @@
 			$edit=Settings::find(1);
 
 			//echo "EDIT=",$edit->editstudent;exit();
-			return View::make('search')
+			return View::make('home.search')
 				->with('students',$students)
 				->with('error_code',0)
 				->with('heading',$head)

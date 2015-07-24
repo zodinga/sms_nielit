@@ -4,19 +4,24 @@ class Courses_Controller extends Base_Controller {
 	public $restful = true;
 	public function get_index()
 	{
-		$courses = Courses::all();
-		return View::make('admin.course.index')
-			->with('cours',$courses)
-			->with('error_code',0);
-	}
+		if(Auth::check())
+				{
+					$cours=Courses::where('id','>','0')->paginate(10);
+					return View::make('admin.course.index')
+						->with('cours',$cours->results)
+						->with('links',$cours->links())
+						->with('error_code',0);
+				}
+				else
+				{
+					$cours=Courses::where('id','>','0')->paginate(10);
+					return View::make('home.courses')
+						->with('cours',$cours->results)
+						->with('links',$cours->links())
+						->with('error_code',0);
+				}
 
-	public function get_list()
-	{
-		$cours=Courses::where('id','>','0')->paginate(8);
-		return View::make('home.courses')
-			->with('cours',$cours->results)
-			->with('links',$cours->links())
-			->with('error_code',0);
+
 	}
 
 	public function get_add()
