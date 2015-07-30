@@ -53,12 +53,12 @@
                             <!--Details Modal Start -->
                             <?php include("./application/views/admin/student/details-modal.php"); ?>
                             <!--Details Modal End -->
-                            <a href="/students/searchdetail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
+                            <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
                             &nbsp;
                             <?php 
                             if($editstudent=="Y"){
                             ?>
-                            <a href="/students/searchedit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
+                            <a href="/students/edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
                             <?php
                             }
                             ?>

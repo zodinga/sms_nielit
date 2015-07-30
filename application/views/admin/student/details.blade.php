@@ -8,7 +8,164 @@
 	$comm=communities::find($s->community);
 	$stat=statuses::find($s->status);
 ?>
-<ol class="list-group">
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+  <td><b>ID</b></td><td>{{$detail->id}}</td>
+  </tr>
+   <tr>
+  <td><b>PHOTO</b></td>
+  <td><?php
+      $photo = "/img/icon-user-default.jpg";
+      if($detail->photo != NULL)
+      {
+        $photo = $detail->photo;
+      }
+      ?>
+      <img src="/uploads/<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-rounded">
+  </td>
+  </tr>
+  <tr>
+  <td><b>NAME</b></td><td>{{$detail->name}}</td>
+  </tr>
+  <tr>
+  <td><b>AADHAAR</b></td><td>{{$detail->aadhaar}}</td>
+  </tr>
+  <tr>
+  <td><b>EID</b></td><td>{{$detail->eid}}</td>
+  </tr>
+  <tr>
+  <td><b>PHONE</b></td><td>{{$detail->phone}}</td>
+  </tr>
+  <tr>
+  <td><b>EMAIL</b></td><td>{{$detail->email}}</td>
+  </tr>
+  <tr>
+  <td><b>INST NO</b></td><td>{{$detail->inst_no}}</td>
+  </tr>
+  <tr>
+  <td><b>UNIV NO</b></td><td>{{$detail->univ_reg_no}}</td>
+  </tr>
+  <tr>
+  <td><b>EXAM ROLL</b></td><td>{{$detail->exam_roll_no}}</td>
+  </tr>
+  <tr>
+  <td><b>YOJ</b></td><td>{{$detail->doj}}</td>
+  </tr>
+  <tr>
+  <td><b>COURSE</b></td>
+  <td>
+  <?php 
+    if ($course_detail) {
+      ?>
+    {{$course_detail->course}}
+    <?php
+    }
+    ?>
+    </td>
+  </tr>
+  <tr>
+  <td><b>BATCH</b></td><td>{{$detail->batch}}</td>
+  </tr>
+  <tr>
+  <td><b>FATHERS NAME</b></td><td>{{$detail->fathers_me}}</td>
+  </tr>
+  <tr>
+  <td><b>MOTHERS NAME</b></td><td>{{$detail->mothers_me}}</td>
+  </tr>
+  <tr>
+  <td><b>PARENTS PHONE</b></td><td>{{$detail->parents_phone}}</td>
+  </tr>
+  <tr>
+  <td><b>GUARDIAN</b></td><td>{{$detail->guardian_me}}</td>
+  </tr>
+  <tr>
+  <td><b>GUARDIAN PHONE</b></td><td>{{$detail->guardian_phone}}</td>
+  </tr>
+  <tr>
+  <td><b>DOB</b></td><td>{{$detail->dob}}</td>
+  </tr>
+  <tr>
+  <td><b>SEX</b></td><td>{{$detail->sex}}</td>
+  </tr>
+  <tr>
+  <td><b>CATEGORY</b></td>
+  <td>
+  <?php 
+    if ($cate) {
+      ?>
+      {{$cate->category}}
+      <?php
+    }
+    ?>
+  </td>
+  </tr>
+  <tr>
+  <td><b>COMMUNITY</b></td>
+  <td>
+  <?php 
+    if ($comm) {
+      ?>
+    {{$comm->community}}
+      <?php
+    }
+    ?>
+  </td>
+  </tr>
+  <tr>
+  <td><b>PERMANET STREET</b></td><td>{{$detail->per_street}}</td>
+  </tr>
+  <tr>
+  <td><b>PERMANENT CITY</b></td><td>{{$detail->per_city}}</td>
+  </tr>
+  <tr>
+  <td><b>PERMANENT DISTRICT</b></td><td>{{$detail->per_district}}</td>
+  </tr>
+  <tr>
+  <td><b>PERMANENT STATE</b></td><td>{{$detail->per_state}}</td>
+  </tr>
+  <tr>
+  <td><b>PERMANENT PIN</b>/td><td>{{$detail->per_pin}}</td>
+  </tr>
+  <tr>
+  <td><b>PRESENT STREET</b></td><td>{{$detail->pre_street}}</td>
+  </tr>
+  <tr>
+  <td><b>PRESENT CITY</b></td><td>{{$detail->pre_city}}</td>
+  </tr>
+  <tr>
+  <td><b>PRESENT DISTRICT</b></td><td>{{$detail->pre_district}}</td>
+  </tr>
+  <tr>
+  <td><b>PRESENT STATE</b></td><td>{{$detail->pre_state}}</td>
+  </tr>
+  <tr>
+  <td><b>PRESENT PIN</b></td><td>{{$detail->pre_pin}}</td>
+  </tr>
+  <tr>
+  <td><b>STATUS</b></td>
+  <td>
+  <?php 
+    if ($stat) {
+      ?>
+    {{$stat->status}}
+      <?php
+    }
+    ?>
+  </td>
+  </tr>
+  <tr>
+  <td><b>CREATED AT</b></td><td>{{$detail->created_at}}</td>
+  </tr>
+  <tr>
+  <td><b>UPDATED AT</b></td><td>{{$detail->updated_at}}</td>
+  </tr>
+</table>
+
+
+
+
+<!-- <ol class="list-group">
 	<li class="list-group-item">
       <?php
       $photo = "/img/icon-user-default.jpg";
@@ -95,5 +252,5 @@
     ?>
     
     
-</ol>
+</ol> -->
 @endsection

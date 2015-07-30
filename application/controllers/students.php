@@ -1,17 +1,28 @@
 <?php
 	class Students_Controller extends Base_Controller
 	{
-		public $restful = true;
-		public function get_index()
+		//public $restful = true;
+		public function action_index()
 		{
 			$head="All Students";
-			$students = Students::where('id','>',0)->paginate(10);
+			$students = Students::where('id','>',0)->paginate(8);
 
+			if(Auth::check())
+			{
 			return View::make('admin.student.index')
 				->with('students',$students->results)
 				->with('error_code',0)
 				->with('heading',$head)
 				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
 
 		}
 
@@ -24,31 +35,55 @@
 		public function get_edit($id)
 		{
 			# code...
-			return View::make('admin.student.edit')
+			if(Auth::check())
+				{
+					return View::make('admin.student.edit')
+						->with('s',Students::find($id))
+						->with('error_code',0);
+				}
+				else
+				{
+					return View::make('home/studentedit')
+						->with('student',Students::find($id))
+						->with('error_code',0);
+				}
+			/*return View::make('admin.student.edit')
 			->with('s',Students::find($id))
-			->with('error_code',0);
+			->with('error_code',0);*/
 		}
 
 		public function get_searchedit($id)
 		{
 			# code...
-			return View::make('studentedit')
+			return View::make('home/studentedit')
 			->with('s',Students::find($id))
 			->with('error_code',0);
 		}
 
-		public function get_detail($id)
+		public function action_detail($id)
 		{
 			# code...
-			return View::make('admin.student.details')
+			if(Auth::check())
+				{
+					return View::make('admin.student.details')
+						->with('s',Students::find($id))
+						->with('error_code',0);
+				}
+				else
+				{
+					return View::make('home/displaydetails')
+						->with('s',Students::find($id))
+						->with('error_code',0);
+				}
+/*			return View::make('admin.student.details')
 			->with('s',Students::find($id))
-			->with('error_code',0);
+			->with('error_code',0);*/
 		}
 
 		public function get_searchdetail($id)
 		{
 			# code...
-			return View::make('searchdetails')
+			return View::make('home/searchdetails')
 			->with('s',Students::find($id))
 			->with('error_code',0);
 		}
@@ -107,7 +142,7 @@
 				$update_student->save();
 
 				$rules = array(
-            	'image' => 'image',
+            	'image' => 'image|max:300',
 		        );
 		        $validation = Validator::make(Input::file('photo'), $rules);
 		        // create random filename
@@ -160,7 +195,7 @@
 				$update_student->photo=Input::get('photo');
 
 				$rules = array(
-            	'image' => 'image',
+            	'image' => 'image|max:300',
 		        );
 		        $validation = Validator::make(Input::file('photo'), $rules);
 		        // create random filename
@@ -244,6 +279,60 @@
 				->with('editstudent',$edit->editstudent);
 		}
 
+		public function get_advancedsearch()
+		{
+			return View::make('admin.student.advancedsearch')
+				->with('error_code',0);
+		}
+
+		public function post_advancedsearchresult()
+		{
+			$name=Input::get('name');
+			/*if($name=="")
+				$name="all"*/;
+			$course=Input::get('course');
+			$yoj=Input::get('yoj');
+			/*if($yoj=="")
+				$yoj="all";*/
+			$sex=Input::get('sex');
+
+			$category=Input::get('category');
+
+			$community=Input::get('community');
+			$status=Input::get('status');
+
+			echo "Name=",$name;
+			echo "  Course=",$course;
+			echo "  Yoj=",$yoj;
+			echo "  Sex=",$sex;
+			echo "  Category=",$category;
+			echo "  Community=",$community;
+			echo "  Status=",$status;
+
+			$head="Advanced Search Results";
+
+			$students=DB::table('students')
+								->where('name','like','%$name%')
+								->where('course','=',$course)
+								->where('doj','=','$yoj')
+								->where('sex','like','$sex')
+								->where('category','=',$category)
+								->where('community','=',$community)
+								->where('status','=',$status)->paginate(8);
+
+			//$students=DB::table('students')->where_name_and_course('$name',$course)->get();
+
+			var_dump($students);
+			exit();
+
+			
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('links',$students->links())
+				->with('heading',$head);
+		}
+
 	public function post_studentupdate()
 		{
 			# code...
@@ -282,7 +371,7 @@
 				$update_student->status=Input::get('status');
 
 				$rules = array(
-            	'image' => 'image',
+            	'image' => 'image|max:300',
 		        );
 		        $validation = Validator::make(Input::file('photo'), $rules);
 		        // create random filename

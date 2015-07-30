@@ -1,8 +1,10 @@
 @layout('admin')
 @section('content')
- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h3 class="page-header">Student Entry Form</h3>
-    <p>
+<section class="module">
+        <div class="module-head">
+          <h4><b>Student Entry Form</b></h4>
+        </div><!--/.module-head-->
+        <div class="module-body">
         <form class="form-horizontal" action="/students/save" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
@@ -298,6 +300,8 @@
             </div>
           </div>
         </form>
-</p>
-</div>
+       
+
+    </div>
+</section>
 @endsection

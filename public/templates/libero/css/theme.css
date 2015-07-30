@@ -355,7 +355,7 @@ textarea.autosize-animated {
   font-weight: 500;
 }
 .navbar {
-  background: #1573C2;
+  background: #0870be;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.5) inset;
   -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.5) inset;
@@ -836,13 +836,9 @@ textarea.autosize-animated {
 /*= STATS OVERVIEW
 ---------------------------------------------------------------------------------------------- */
 .stats-overview .stats {
-  border: 2px solid #25ADC5;
+  border: 1px solid #eee;
   padding: 20px;
   margin-top: 15px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
 }
 .stats-overview .stats h3 {
   margin: 0;

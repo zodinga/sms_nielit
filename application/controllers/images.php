@@ -14,7 +14,7 @@ class Images_Controller extends Base_Controller
     		$msg="<marquee><h1>Student's Editing is not Enabled!! Contact Admin</h1></marquee>";
         	return View::make('home.index')
         				->with('error_code',0)
-        				->with('message',$msg);;
+        				->with('message',$msg);
     	}
 	}
 public function action_upload()
@@ -22,13 +22,13 @@ public function action_upload()
 		//dd(Input::get('id')); exit();
 		$id=Input::get('id');
        	$rules = array(
-            'image' => 'image',
+            'image' => 'image|max:300',
         );
         $validation = Validator::make(Input::file('photo'), $rules);
         // create random filename
         if($validation->passes())
 		{
-			$filename = Str::random(5) .'.'. File::extension(Input::file('photo.name'));
+			$filename = $id .'.'. File::extension(Input::file('photo.name'));
 			// Save logo in the database
 			$event = Students::where('id', '=', $id)->first();
 			$event->photo = $filename;
@@ -46,7 +46,11 @@ public function action_upload()
 			Input::upload('photo', 'public/uploads', $filename);
 		}
 		else
+		{
 			echo "Upload unsuccessful";
+			exit();
+		}
+
 
 
 //------------------------------------------
@@ -55,7 +59,8 @@ public function action_upload()
         //var_dump($file);exit();
         Input::upload('file', $destinationPath, 'test.jpg');*/
 //------------------------------------------
-    	return View::make('home');
+    	return View::make('home')
+    		->with('error_code',0);
     }
     //}
 

@@ -63,32 +63,32 @@
 					</li>
 					
 					<li>
-						<a href="#"><i class="icon-user-md"></i>Advanced Search</a>
+						<a href="/students/advancedsearch"><i class="icon-user-md"></i>Advanced Search</a>
 					</li>
 
 					<li>Course</li>
 					<li>
-						<a href="/courses/index"><i class="icon-file"></i>List Course</a>
+						<a href="/courses/index"><i class="icon-file"></i>Courses</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="/courses/add"><i class="icon-file"></i>New Course</a>
-					</li>
+					</li> -->
 
-					<li>Type</li>
+					<!-- <li>Type</li>
 					<li>
-						<a href="/types/index"><i class="icon-file"></i>List Types</a>
+						<a href="/types/index"><i class="icon-file"></i>Types</a>
 					</li>
 					<li>
 						<a href="/types/add"><i class="icon-file"></i>New Type</a>
-					</li>
+					</li> -->
 
-					<li>Category</li>
+					<!-- <li>Category</li>
 					<li>
-						<a href="#"><i class="icon-file"></i>List Catogories</a>
+						<a href="#"><i class="icon-file"></i>Catogories</a>
 					</li>
 					<li>
 						<a href="#"><i class="icon-file"></i>New Category</a>
-					</li>
+					</li> -->
 					<li class="nav-header">Settings</li>
 					<li>
 						<a href="/settings/index"><i class="icon-wrench"></i>Settings</a>

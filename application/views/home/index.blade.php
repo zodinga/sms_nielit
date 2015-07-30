@@ -61,7 +61,15 @@
             </div>
           </div>
         </div><!--/.module-body-->
-      </section><!--/.module-->
+  </section><!--/.module-->
+
+  <div class="chart-wrapper">
+    <div class="chart-inner">
+      <div id="placeholder" class="chart"></div>
+    </div>
+  </div>
+
+
 
 
 

@@ -59,16 +59,22 @@
 					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
-						<a href="/courses/index"><i class="icon-file"></i>Existing Courses</a>
+						<a href="/gallery"><i class="icon-file"></i>Gallery</a>
+					</li>
+          <li>
+            <a href="/students"><i class="icon-file"></i>Display Students</a>
+          </li>
+					<li>
+						<a href="/courses"><i class="icon-file"></i>Existing Courses</a>
 					</li>
 					<li>
-						<a href="/images/index"><i class="icon-user-md"></i>Image Upload</a>
+						<a href="/images"><i class="icon-user-md"></i>Image Upload</a>
 					</li>
 					<li>
 						<a href="/home/about"><i class="icon-group"></i>About Developer Team</a>
 					</li>
 					<li>
-						<a href="#"><i class="icon-calendar"></i>Calendar</a>
+						<a href="/test"><i class="icon-calendar"></i>Calendar</a>
 					</li>
 
 
@@ -88,6 +94,7 @@
 				  <strong>Login Error!</strong> Please Re-type your usename and password.
 				</div>
 			<?php } ?>
+      @yield('searchForm')
 			</div>
 			<div class="content-body">
 				<div class="row-fluid">
@@ -116,202 +123,208 @@
 <!-- THEME -->
 <script src="/templates/libero/js/theme.js"></script>
 <!-- SCRIPTS: FLOT GRAPH BASIC -->
+
 <script type="text/javascript">
 $(function () {
-	var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
-	var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+  var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
+  var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+  var d3 = [ [0, 6], [1, 6], [2, 8], [3, 3], [4, 7],  [5, 9], [6, 5], [7, 8], [8, 11] ];
+  var d4 = [ [0, 5], [1, 9], [2, 12], [3, 13], [4, 14],  [5, 12], [6, 14], [7, 16], [8, 19] ];
 
-	var plot = $.plot($("#placeholder"), 
-	[ { data: d1, label: "Data A" }, { data: d2, label: "Data B" } ], {
-		lines: { 
-			show: true, 
-			fill: false, 
-			lineWidth: 1,
-			lineColor: "#fc0" 
-		},
-		points: { 
-			show: true, 
-			lineWidth: 4 
-		},
-		grid: {
-			clickable: true,
-			hoverable: true,
-			autoHighlight: true,
-			mouseActiveRadius: 10,
-			aboveData: true,
-			backgroundColor: "#fafafa",
-			borderWidth: 0,
-			borderColor: "#fc0",
-			minBorderMargin: 25,
-		},
-		colors: [ "#090", "#099",  "#609", "#900"],
-		shadowSize: 0
-	});
+  var plot = $.plot($("#placeholder"), 
+  [ { data: d1, label: "BCA" }, { data: d2, label: "MCA" },{ data: d3, label: "DCSE" },{ data: d4, label: "DETE" } ], {
+    lines: { 
+      show: true, 
+      fill: false, 
+      lineWidth: 1,
+      lineColor: "#fc0" 
+    },
+    points: { 
+      show: true, 
+      lineWidth: 4 
+    },
+    grid: {
+      clickable: true,
+      hoverable: true,
+      autoHighlight: true,
+      mouseActiveRadius: 10,
+      aboveData: true,
+      backgroundColor: "#fafafa",
+      borderWidth: 0,
+      borderColor: "#fc0",
+      minBorderMargin: 25,
+    },
+    colors: [ "#090", "#099",  "#609", "#900"],
+    shadowSize: 0
+  });
 
-	function showTooltip(x, y, contents) {
-		$('<div id="gridtip">' + contents + '</div>').css( {
-			position: 'absolute',
-			display: 'none',
-			top: y + 5,
-			left: x + 5
-		}).appendTo("body").fadeIn(300);
-	}
+  function showTooltip(x, y, contents) {
+    $('<div id="gridtip">' + contents + '</div>').css( {
+      position: 'absolute',
+      display: 'none',
+      top: y + 5,
+      left: x + 5
+    }).appendTo("body").fadeIn(300);
+  }
 
-	var previousPoint = null;
-	$("#placeholder").bind("plothover", function (event, pos, item) {
-		$("#x").text(pos.x.toFixed(2));
-		$("#y").text(pos.y.toFixed(2));
+  var previousPoint = null;
+  $("#placeholder").bind("plothover", function (event, pos, item) {
+    $("#x").text(pos.x.toFixed(2));
+    $("#y").text(pos.y.toFixed(2));
 
-		if (item) {
-			if (previousPoint != item.dataIndex) {
-				previousPoint = item.dataIndex;
-				
-				$("#gridtip").remove();
-				var x = item.datapoint[0].toFixed(0),
-					y = item.datapoint[1].toFixed(0);
-				
-				showTooltip(item.pageX, item.pageY,
-							"x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
-			}
-		}
-		else {
-			$("#gridtip").remove();
-			previousPoint = null;            
-		}
-	});
+    if (item) {
+      if (previousPoint != item.dataIndex) {
+        previousPoint = item.dataIndex;
+        
+        $("#gridtip").remove();
+        var x = item.datapoint[0].toFixed(0),
+          y = item.datapoint[1].toFixed(0);
+        
+        showTooltip(item.pageX, item.pageY,
+              "x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
+      }
+    }
+    else {
+      $("#gridtip").remove();
+      previousPoint = null;            
+    }
+  });
 });
 </script>
 
 <!-- SCRIPTS: FLOT GRAPH ADVANCE -->
 <script type="text/javascript">
 $(function () {
-	var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
-	var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+  var d1 = [ [0, 1], [1, 14], [2, 5], [3, 4], [4, 5], [5, 1], [6, 14], [7, 5],  [8, 5] ];
+  var d2 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+  var d3 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
+  var d4 = [ [0, 5], [1, 2], [2, 10], [3, 1], [4, 9],  [5, 5], [6, 2], [7, 10], [8, 8] ];
 
-	var plot = $.plot($("#placeholder2"),
-		   [ { data: d1, label: "Data Y"}, { data: d2, label: "Data X" } ], {
-				lines: { 
-					show: true, 
-					fill: true, /*SWITCHED*/
-					lineWidth: 2 
-				},
-				points: { 
-					show: true, 
-					lineWidth: 3
-				},
-				grid: {
-					clickable: true,
-					hoverable: true,
-					autoHighlight: true,
-					mouseActiveRadius: 10,
-					aboveData: true,
-					backgroundColor: "#fafafa",
-					borderWidth: 0,
-					minBorderMargin: 25,
-				},
-				colors: [ "#090", "#099",  "#609", "#900"],
-				shadowSize: 0
-			 });
+  var plot = $.plot($("#placeholder2"),
+       [ { data: d1, label: "Data Y"}, { data: d2, label: "Data X" } ], {
+        lines: { 
+          show: true, 
+          fill: true, /*SWITCHED*/
+          lineWidth: 2 
+        },
+        points: { 
+          show: true, 
+          lineWidth: 3
+        },
+        grid: {
+          clickable: true,
+          hoverable: true,
+          autoHighlight: true,
+          mouseActiveRadius: 10,
+          aboveData: true,
+          backgroundColor: "#fafafa",
+          borderWidth: 0,
+          minBorderMargin: 25,
+        },
+        colors: [ "#090", "#099",  "#609", "#900"],
+        shadowSize: 0
+       });
 
-	function showTooltip(x, y, contents) {
-		$('<div id="gridtip">' + contents + '</div>').css( {
-			position: 'absolute',
-			display: 'none',
-			top: y + 5,
-			left: x + 5
-		}).appendTo("body").fadeIn(300);
-	}
+  function showTooltip(x, y, contents) {
+    $('<div id="gridtip">' + contents + '</div>').css( {
+      position: 'absolute',
+      display: 'none',
+      top: y + 5,
+      left: x + 5
+    }).appendTo("body").fadeIn(300);
+  }
 
-	var previousPoint = null;
-	$("#placeholder2").bind("plothover", function (event, pos, item) {
-		$("#x").text(pos.x.toFixed(2));
-		$("#y").text(pos.y.toFixed(2));
+  var previousPoint = null;
+  $("#placeholder2").bind("plothover", function (event, pos, item) {
+    $("#x").text(pos.x.toFixed(2));
+    $("#y").text(pos.y.toFixed(2));
 
-		if (item) {
-			if (previousPoint != item.dataIndex) {
-				previousPoint = item.dataIndex;
-				
-				$("#gridtip").remove();
-				var x = item.datapoint[0].toFixed(0),
-					y = item.datapoint[1].toFixed(0);
-				
-				showTooltip(item.pageX, item.pageY,
-							"x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
-			}
-		}
-		else {
-			$("#gridtip").remove();
-			previousPoint = null;            
-		}
-	});
+    if (item) {
+      if (previousPoint != item.dataIndex) {
+        previousPoint = item.dataIndex;
+        
+        $("#gridtip").remove();
+        var x = item.datapoint[0].toFixed(0),
+          y = item.datapoint[1].toFixed(0);
+        
+        showTooltip(item.pageX, item.pageY,
+              "x : " + x + "&nbsp;&nbsp;&nbsp; y : " + y);
+      }
+    }
+    else {
+      $("#gridtip").remove();
+      previousPoint = null;            
+    }
+  });
 });
 </script>
 
 <!-- SCRIPTS: CHARTS -->
 <script>
-	// PREDEFINED DATA
-	var data = [
-					{ label: "Series1",  data: [[1,10]]},
-					{ label: "Series2",  data: [[1,30]]},
-					{ label: "Series3",  data: [[1,90]]}
-				];
+  // PREDEFINED DATA
+  var data = [
+          { label: "Series1",  data: [[1,10]]},
+          { label: "Series2",  data: [[1,30]]},
+          { label: "Series3",  data: [[1,90]]}
+        ];
 
-	// // DEFAULT
-	// $.plot($("#pie-default"), data, 
-	// {
-	// 	series: {
-	// 		pie: {
-	// 			show: true
-	// 		}
-	// 	}
-	// });
+  // // DEFAULT
+  // $.plot($("#pie-default"), data, 
+  // {
+  //  series: {
+  //    pie: {
+  //      show: true
+  //    }
+  //  }
+  // });
 
-	// DEFINE ACTIONS FOR pieHover & pieClick
-	function pieHover(event, pos, obj) 
-	{
-		if (!obj)
-					return;
-		percent = parseFloat(obj.series.percent).toFixed(2);
-		$("#hover").html('<span>'+obj.series.label+' - '+percent+'%</span>');
-	}
+  // DEFINE ACTIONS FOR pieHover & pieClick
+  function pieHover(event, pos, obj) 
+  {
+    if (!obj)
+          return;
+    percent = parseFloat(obj.series.percent).toFixed(2);
+    $("#hover").html('<span>'+obj.series.label+' - '+percent+'%</span>');
+  }
 
-	function pieClick(event, pos, obj) 
-	{
-		if (!obj)
-					return;
-		percent = parseFloat(obj.series.percent).toFixed(2);
-		alert(''+obj.series.label+': '+percent+'%');
-	}
+  function pieClick(event, pos, obj) 
+  {
+    if (!obj)
+          return;
+    percent = parseFloat(obj.series.percent).toFixed(2);
+    alert(''+obj.series.label+': '+percent+'%');
+  }
 
-	// DONUT
-	$.plot($("#pie-donut"), data, 
-	{
-		series: {
-			pie: { 
-				innerRadius: 10,
-				show: true
-			}
-		}
-	});
+  // DONUT
+  $.plot($("#pie-donut"), data, 
+  {
+    series: {
+      pie: { 
+        innerRadius: 50,
+        show: true
+      }
+    }
+  });
 
-	// DONUT + INTERACTIVE
-	$.plot($("#pie-interactive"), data,
-	{
-			series: {
-				pie: {
-					innerRadius: 10,
-					show: true
-				}
-			},
-			grid: {
-				hoverable: true,
-				clickable: true
-			}
-	});
+  // DONUT + INTERACTIVE
+  $.plot($("#pie-interactive"), data,
+  {
+      series: {
+        pie: {
+          innerRadius: 50,
+          show: true
+        }
+      },
+      grid: {
+        hoverable: true,
+        clickable: true
+      }
+  });
 
-	$("#pie-interactive").bind("plothover", pieHover);
-	$("#pie-interactive").bind("plotclick", pieClick);
+  $("#pie-interactive").bind("plothover", pieHover);
+  $("#pie-interactive").bind("plotclick", pieClick);
 </script>
+
 <!--Signin Modal -->
 <div id="signinModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">

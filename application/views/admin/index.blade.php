@@ -32,6 +32,9 @@
     $per_sc = round((($sc*100)/$student_no),2);
     $per_obc = round((($obc*100)/$student_no),2);
     $per_gen = round((($gen*100)/$student_no),2);
+
+    
+    
   ?> 
       
 <section class="module">
@@ -116,54 +119,71 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th><button type="button" class="btn btn-primary" data-toggle="popover" title="MCA" data-content="Master of Computer Applications : 3yrs Affiliated by MZU">MCA</button></th>
+                  <th>Year</th>
+                  <th>MCA</th>
                   <th>BCA</th>
                   <th>DETE</th>
                   <th>DCSE</th>
-                  <th>MAT-O</th>
                   <th>O-Level</th>
                   <th>A-Level</th>
-                  <th>CCC</th>
-                  <th>Short Term</th>
+                  <!-- <th>Short Term</th> -->
+
                 </tr>
               </thead>
               <tbody>
+              <?php $start_year=2002;
+              $cmca=0;$cbca=0;$cdete=0;$cdcse=0;$co=0;$ca=0;$csh=0;
+                  for($i=$start_year;$i<date("Y");$i++){
+              ?>
                 <tr>
-                  <td>2013-2014</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
+                <?php echo "<td>".$i."-".($i+1)."</td>"; ?>
+                <?php $mca=Students::where('course','=',4)->where('doj','=',$i)->count();  
+                      echo "<td>".$mca."</td>"; 
+                      $cmca=$cmca+$mca;
+                      ?>
+
+                <?php $bca=Students::where('course','=',3)->where('doj','=',$i)->count();  
+                      echo "<td>".$bca."</td>"; 
+                      $cbca=$cbca+$bca;
+                      ?>
+
+                <?php $dete=Students::where('course','=',6)->where('doj','=',$i)->count();  
+                      echo "<td>".$dete."</td>"; 
+                      $cdete=$cdete+$dete;
+                      ?>
+
+                <?php $dcse=Students::where('course','=',5)->where('doj','=',$i)->count();  
+                      echo "<td>".$dcse."</td>"; 
+                      $cdcse=$cdcse+$dcse;
+                      ?>
+
+                <?php $o=Students::where('course','=',1)->where('doj','=',$i)->count();  
+                      echo "<td>".$o."</td>"; 
+                      $co=$co+$o;
+                      ?>
+
+                <?php $a=Students::where('course','=',2)->where('doj','=',$i)->count();  
+                      echo "<td>".$a."</td>"; 
+                      $ca=$ca+$a;
+                      ?>
+<!-- 
+                <?php $sh=Students::where('course','>',6)->where('doj','=',$i)->count();  
+                      echo "<td>".$sh."</td>"; 
+                      $csh=$csh+$sh;
+                      ?> -->
                 </tr>
+                <?php
+                }
+                ?>
                 <tr>
-                  <td>2014-2015</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                </tr>
-                <tr>
-                  <td>TOTAL</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
-                  <td>1000</td>
+                <td><b>TOTAL</b></td>
+                <?php echo "<td><b>".$cmca."</b></td>"; ?>
+                <?php echo "<td><b>".$cbca."</b></td>"; ?>
+                <?php echo "<td><b>".$cdete."</b></td>"; ?>
+                <?php echo "<td><b>".$cdcse."</b></td>"; ?>
+                <?php echo "<td><b>".$co."</b></td>"; ?>
+                <?php echo "<td><b>".$ca."</b></td>"; ?>
+               <!--  <?php echo "<td><b>".$csh."</b></td>"; ?> -->
                 </tr>
                </tbody>
             </table>
