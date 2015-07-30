@@ -26,13 +26,13 @@
 
 		}
 
-		public function get_add()
+		public function action_add()
 		{
 			# code...
 			return View::make('admin.student.form')->with('error_code',0);
 		}
 
-		public function get_edit($id)
+		public function action_edit($id)
 		{
 			# code...
 			if(Auth::check())
@@ -52,7 +52,7 @@
 			->with('error_code',0);*/
 		}
 
-		public function get_searchedit($id)
+		public function action_searchedit($id)
 		{
 			# code...
 			return View::make('home/studentedit')
@@ -80,7 +80,7 @@
 			->with('error_code',0);*/
 		}
 
-		public function get_searchdetail($id)
+		public function action_searchdetail($id)
 		{
 			# code...
 			return View::make('home/searchdetails')
@@ -88,12 +88,12 @@
 			->with('error_code',0);
 		}
 
-		public function get_view($id){
+		public function action_view($id){
 			
 			return View::make('admin.student.view')->with('id',$id);
 		}
 
-		public function get_delete($id)
+		public function action_delete($id)
 		{
 		$delete_student=Students::find($id);
 		
@@ -102,7 +102,7 @@
 		return Redirect::to('students/index');
 		}
 
-		public function post_save()
+		public function action_save()
 		{
 			# code...
 			$update_student = new Students;
@@ -156,7 +156,7 @@
 			return Redirect::to('students/index');
 		}
 
-		public function post_update()
+		public function action_update()
 		{
 			# code...
 			$update_student = Students::find(Input::get('id'));
@@ -217,7 +217,7 @@
 		}
 
 
-	public function post_image()
+	public function action_image()
 		{
 			$file = Input::file('image');
 			$destinationPath = 'img/';
@@ -225,7 +225,7 @@
 			Input::file('image')->move($destinationPath, $filename);
 		}
 
-	public function post_adminsearch()
+	public function action_adminsearch()
 		{
 			$searchtxt = "%".Input::get('searchtxt')."%";
 			$course = Input::get('course');
@@ -250,7 +250,7 @@
 				->with('links',"");
 		}
 
-	public function post_search()
+	public function action_search()
 		{
 			$searchtxt = "%".Input::get('searchtxt')."%";
 			$course = Input::get('course');
@@ -279,13 +279,13 @@
 				->with('editstudent',$edit->editstudent);
 		}
 
-		public function get_advancedsearch()
+		public function action_advancedsearch()
 		{
 			return View::make('admin.student.advancedsearch')
 				->with('error_code',0);
 		}
 
-		public function post_advancedsearchresult()
+		public function action_advancedsearchresult()
 		{
 			$name=Input::get('name');
 			/*if($name=="")
@@ -333,7 +333,7 @@
 				->with('heading',$head);
 		}
 
-	public function post_studentupdate()
+	public function action_studentupdate()
 		{
 			# code...
 			$update_student = Students::find(Input::get('id'));
