@@ -5,7 +5,7 @@
 		public function action_index()
 		{
 			$head="All Students";
-			$students = Students::where('id','>',0)->paginate(8);
+			$students = Students::where('id','>',0)->paginate(20);
 
 			if(Auth::check())
 			{
@@ -86,6 +86,19 @@
 			return View::make('home/searchdetails')
 			->with('s',Students::find($id))
 			->with('error_code',0);
+		}
+
+		public function action_filter()
+		{
+			$course = Courses::find(Input::get('courseID'));
+			$head = "Filter Result :".$course->course;
+			$students = Students::where('course','=',$course->id)->get();
+			
+			return View::make('home.displaystudent')
+				->with('students',$students)
+				->with('error_code',0)
+				->with('heading',$head);
+
 		}
 
 		public function action_view($id){

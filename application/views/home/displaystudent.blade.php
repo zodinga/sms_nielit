@@ -1,27 +1,47 @@
 @layout('home')
-@section('searchForm')
-<form class="navbar-form navbar-right" method="POST" action="/students/search">
-    <input type="text" class="input-small" required name="searchtxt" placeholder="Student Search...">
-    <select class="input-small" name="course">
-        <option selected="selected" value="all">All Course</option>
-        <?php
-        $course=Courses::all();
-        foreach ($course as $c) {
-        ?>
-        <option value="<?php echo $c->id;?>"><?php echo $c->course;?></option>
-        <?php
-        }
-        ?>
-    </select>
-    <button class="btn btn-mini btn-primary" type="submit"><i class="icon-search"></i></button>
-</form>
-@endsection
 @section('content')
 <section class="module">
     <div class="module-head">
         <b>{{$heading}}</b>
     </div><!--/.module-head-->
     <div class="module-body">
+        <div class="control-group">
+            <form class="form-horizontal" action="/students/filter" method="POST">
+                <label class="control-label"> Filter</label>
+                <p class="controls controls-row">
+                    <select class="span2" name="courseID">
+                        <option selected="selected" value="">---All Courses---</option>
+                        <?php 
+                        $courses = Courses::all();
+                        ?>
+                        @foreach($courses as $course)
+                        <option value="{{$course->id}}">{{$course->course}}</option>
+                        @endforeach
+                    </select>
+                    <select class="span2" name="category">
+                        <option selected="selected" value="">---All Category---</option>
+                        <option value="1">ST</option>
+                        <option value="2">SC</option>
+                        <option value="3">OBC</option>
+                        <option value="4">General</option>
+                    </select>
+                    <select class="span2" name="status">
+                        <option selected="selected" value="">---All Status---</option>
+                        <option value="1">On-going</option>
+                        <option value="2">Completed</option>
+                        <option value="3">Drop-out</option>
+                        <option value="4">Discontinued</option>
+                    </select><select class="span2" name="sex">
+                        <option selected="selected" value="">---Male & Female---</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <button type="submit" class="btn btn-success"><i class=" icon-level-down"></i> Filter</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
         <table class="table table-hover">
             <thead>
                 <tr class="warning">
@@ -29,7 +49,8 @@
                     <td>Photo</td>
                     <td>Name</td>
                     <td>Course</td>
-                    <td>Batch</td>
+                    <td>Sex</td>
+                    <td>Category</td>
                     <td>Phone</td>
                     <td>Status</td>
                     <td>Action</td>
@@ -54,7 +75,8 @@
                             echo $course->course;
                         ?>
                     </td>
-                    <td>{{$s->batch}}</td>
+                    <td>{{$s->sex}}</td>
+                    <td>{{$s->category}}</td>
                     <td>{{$s->phone}}</td>
                     <td>
                         <?php
@@ -66,14 +88,6 @@
                         ?>
                     </td>
                     <td>
-                        <!--Details Modal Start -->
-                        <?php include("./application/views/admin/student/details-modal.php"); ?>
-                        <!--Details Modal End -->
-
-                        <!--Edit Modal Start -->
-                        <?php include("./application/views/admin/student/edit-modal.php"); ?>
-                        <!--Edit Modal End -->
-
                         <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
                         &nbsp;
                         <?php
@@ -90,7 +104,7 @@
                 @endforeach
             </tbody>
         </table>
-        <?php echo $links; ?>
+        <?php //echo $links; ?>
     </div>
 </section>
 @endsection
