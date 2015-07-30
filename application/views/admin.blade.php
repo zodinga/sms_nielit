@@ -56,7 +56,7 @@
 					</li>
 					<li>Student</li>
 					<li>
-						<a href="/students/index"><i class="icon-file"></i>List Student</a>
+						<a href="/students"><i class="icon-file"></i>List Student</a>
 					</li>
 					<li>
 						<a href="/students/add"><i class="icon-file"></i>New Student</a>
