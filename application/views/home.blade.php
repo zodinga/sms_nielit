@@ -36,7 +36,7 @@
 					<form class="navbar-form navbar-right" method="POST" action="/students/search">
 		            <input type="text" class="input-small" required name="searchtxt" placeholder="Student Search...">
 		              <select class="input-small" name="course">
-		                  <option selected="selected" value="all">All Course</option>
+		                  <option selected="selected" value="all">Courses</option>
 		                  <?php
 		                  $course=Courses::all();
 		                  foreach ($course as $c) {
@@ -59,9 +59,6 @@
 					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
-						<a href="/gallery"><i class="icon-file"></i>Gallery</a>
-					</li>
-          <li>
             <a href="/students"><i class="icon-file"></i>Display Students</a>
           </li>
 					<li>
@@ -74,7 +71,7 @@
 						<a href="/home/about"><i class="icon-group"></i>About Developer Team</a>
 					</li>
 					<li>
-						<a href="/test"><i class="icon-calendar"></i>Calendar</a>
+						<a href="/test"><i class="icon-calendar"></i>Test</a>
 					</li>
 
 

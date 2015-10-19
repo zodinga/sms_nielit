@@ -26,6 +26,155 @@
 
 		}
 
+		public function action_current_mca()
+		{
+			
+			$students = Students::where('course','=',4)->where('status','=',1)->paginate(20);
+			$head="Current MCA Students:$students->total";
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
+		public function action_current_bca()
+		{
+			
+			$students = Students::where('course','=',3)->where('status','=',1)->paginate(20);
+			$head="Current BCA Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
+		public function action_current_dcse()
+		{
+			
+			$students = Students::where('course','=',5)->where('status','=',1)->paginate(20);
+			$head="Current DCSE Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
+		public function action_current_dete()
+		{
+			
+			$students = Students::where('course','=',6)->where('status','=',1)->paginate(20);
+			$head="Current DETE Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
+		public function action_current_o()
+		{
+			
+			$students = Students::where('course','=',1)->where('status','=',1)->paginate(20);
+			$head="Current O Level Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
+		public function action_current_a()
+		{
+			
+			$students = Students::where('course','=',2)->where('status','=',1)->paginate(20);
+			$head="Current A Level Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+
+		}
+
 		public function action_add()
 		{
 			# code...
@@ -90,14 +239,31 @@
 
 		public function action_filter()
 		{
-			$course = Courses::find(Input::get('courseID'));
-			$head = "Filter Result :".$course->course;
-			$students = Students::where('course','=',$course->id)->get();
+			$course=0;
+			if(Input::get('courseID')!=0)
+			{
+				$cour = Courses::find(Input::get('courseID'));
+				$course=$cour->id;
+
+			}
+			
+			$cat=Input::get('category');
+			$status=Input::get('status');
+			$sex=Input::get('status');
+			echo "Course=$course, Category=$cat, Status=$status, Sex=$sex";
+			
+			$head = "Filter Result :";
+			$students = Students::where('course','=',$course)
+						->or_where('category','=',$cat)
+						->or_where('status','=',$status)
+						->or_where('sex','=',$sex)
+						->paginate(20);
 			
 			return View::make('home.displaystudent')
-				->with('students',$students)
+				->with('students',$students->results)
 				->with('error_code',0)
-				->with('heading',$head);
+				->with('heading',$head)
+				->with('links',$students->links());
 
 		}
 
@@ -440,6 +606,66 @@
 				echo "error"; exit();
 			}*/
 		 }
+
+		 public function action_display($cy)
+		{
+			# code...
+			$c=strstr($cy, "-",true);//before
+			$y = substr($cy, strpos($cy, "-") + 1);    //after
+			echo "Year=".$y;
+			echo "Course=".$c;
+			
+			if($c!="all")
+				$students = Students::where('doj','like',$y)->where('course','=',$c)->paginate(20);
+			else
+				$students = Students::where('doj','like',$y)->paginate(20);
+
+			$head="Students:$students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+		}
+
+		public function action_display_all($c)
+		{
+			# code...
+			$students = Students::where('course','=',$c)->paginate(20);
+
+			$course=Courses::find($c);
+            if($course)
+            $head="All $course->course Students: $students->total";
+
+			if(Auth::check())
+			{
+			return View::make('admin.student.index')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+			else
+			{
+				return View::make('home.displaystudent')
+				->with('students',$students->results)
+				->with('error_code',0)
+				->with('heading',$head)
+				->with('links',$students->links());
+			}
+		}
 
 	}
 ?>

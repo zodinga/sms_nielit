@@ -28,7 +28,7 @@
 		<div class="sidebar">
 			<div class="wrapper">
 				<a href="/admin/index" class="profile">
-					<img src="../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
+					<img src="../../img/user.jpg" class="avatar pull-left" width="30" style="margin-right: 15px; border-radius: 4px">
 					Welcome : <?php echo Auth::user()->username; ?>
 				</a>
 				<ul class="nav nav-list">
@@ -56,10 +56,29 @@
 					</li>
 					<li>Student</li>
 					<li>
-						<a href="/students"><i class="icon-file"></i>List Student</a>
+						<a href="/students"><i class="icon-file"></i>List All Students</a>
 					</li>
 					<li>
-						<a href="/students/add"><i class="icon-file"></i>New Student</a>
+						<a href="/students/current_mca"><i class="icon-file"></i>Current MCA Students</a>
+					</li>
+					<li>
+						<a href="/students/current_bca"><i class="icon-file"></i>Current BCA Students</a>
+					</li>
+					<li>
+						<a href="/students/current_dete"><i class="icon-file"></i>Current DETE Students</a>
+					</li>
+					<li>
+						<a href="/students/current_dcse"><i class="icon-file"></i>Current DCSE Students</a>
+					</li>
+					<li>
+						<a href="/students/current_o"><i class="icon-file"></i>Current O Level Students</a>
+					</li>
+					<li>
+						<a href="/students/current_a"><i class="icon-file"></i>Current A Level Students</a>
+					</li>
+
+					<li>
+						<a href="/students/add"><i class="icon-file"></i>Add New Student</a>
 					</li>
 					
 					<li>
@@ -69,6 +88,9 @@
 					<li>Course</li>
 					<li>
 						<a href="/courses/index"><i class="icon-file"></i>Courses</a>
+					</li>
+					<li>
+						<a href="/status_update/update"><i class="icon-file"></i>Status Update</a>
 					</li>
 					<!-- <li>
 						<a href="/courses/add"><i class="icon-file"></i>New Course</a>

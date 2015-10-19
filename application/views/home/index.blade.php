@@ -19,6 +19,10 @@
     foreach ($courses_short as $short) {
     $student_short = $student_short + students::where('course','=',$short->id)->count();
     }
+    if($student_short == 0)
+    {
+      $student_short = 1;
+    }
     $per_male = round(($student_sex_male*100)/$student_no,2);
     $per_female = round(($student_sex_female*100)/$student_no,2);
     $per_unknown = round((($student_no - ($student_sex_female + $student_sex_male))*100)/$student_no,2);
@@ -28,47 +32,168 @@
     $per_sc = round((($sc*100)/$student_no),2);
     $per_obc = round((($obc*100)/$student_no),2);
     $per_gen = round((($gen*100)/$student_no),2);
+
+    
+    
   ?> 
-  <section class="module">
+      
+<section class="module">
         <div class="module-head">
-          <b>Students Tribe Statictics : Total No.of entered in DB - <?php echo $student_no; ?></b>
+          <b>Dashboard</b>
         </div><!--/.module-head-->
-        <div class="module-body">
-          <div class="stats-overview row-fluid">
-            <div class="span3">
-              <section class="stats">
-                <p class="muted">Schedule Tribe</p>
-                <h3 class="text-red"><?php echo $st." / ".$per_st."%"; ?> <i class="icon-bar-chart"></i></h3>
-              </section><!--/.module-->
-            </div>
-            <div class="span3">
-              <section class="stats">
-                <p class="muted">Schedule Caste</p>
-                <h3 class="text-green"><?php echo $sc." / ".$per_sc."%"; ?></h3>
-              </section><!--/.module-->
-            </div>
-            <div class="span3">
-              <section class="stats">
-                <p class="muted">Other Backward Class</p>
-                <h3 class="text-blue"><?php echo $obc." / ".$per_obc."%"; ?></h3>
-              </section><!--/.module-->
-            </div>
-            <div class="span3">
-              <section class="stats">
-                <p class="muted">General</p>
-                <h3 class="text-orange"><?php echo $gen." / ".$per_gen."%"; ?></h3>
-              </section><!--/.module-->
-            </div>
-          </div>
-        </div><!--/.module-body-->
-  </section><!--/.module-->
-
-  <div class="chart-wrapper">
-    <div class="chart-inner">
-      <div id="placeholder" class="chart"></div>
+<?php echo $message; ?>
+      <p>
+    <button class="btn btn-primary" type="button">
+      Total No.of Student <span class="badge"><?php echo $student_no; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Male <span class="badge"><?php echo $student_sex_male; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Female <span class="badge"><?php echo $student_sex_female; ?></span>
+    </button>
+    <button class="btn btn-primary" type="button">
+      Unknown <span class="badge"><?php echo $student_no - ($student_sex_female + $student_sex_male); ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_male;?>%">
+        Male:<?php echo $per_male;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_female;?>%">
+        Female:<?php echo $per_female;?>%
+      </div>
+      <div class="progress-bar progress-bar-danger" style="width: <?php echo $per_unknown;?>%">
+        Unknown:<?php echo $per_unknown;?>%
+      </div>
     </div>
-  </div>
 
+    <p>
+    <button class="btn btn-danger" type="button">
+      Long Term Student <span class="badge"><?php echo $student_long; ?></span>
+    </button>
+    <button class="btn btn-danger" type="button">
+      Short Term Student <span class="badge"><?php echo $student_short; ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_longterm;?>%">
+        Longterm:<?php echo $per_longterm;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_shortterm;?>%">
+        Short Term:<?php echo $per_shortterm;?>%
+      </div>
+    </div>
+
+    <p>
+    <button class="btn btn-info" type="button">
+      Schedule Tribe <span class="badge"><?php echo $st; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      Shedule Cast <span class="badge"><?php echo $sc; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      OBC <span class="badge"><?php echo $obc; ?></span>
+    </button>
+    <button class="btn btn-info" type="button">
+      General <span class="badge"><?php echo $gen; ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_st;?>%">
+        ST:<?php echo $per_st;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_sc;?>%">
+        SC:<?php echo $per_sc;?>%
+      </div>
+      <div class="progress-bar progress-bar-info progress-bar-striped" style="width: <?php echo $per_obc;?>%">
+        OBC:<?php echo $per_obc;?>%
+      </div>
+      <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <?php echo $per_gen;?>%">
+        General:<?php echo $per_gen;?>%
+      </div>
+    </div>
+
+          <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>MCA</th>
+                  <th>BCA</th>
+                  <th>DETE</th>
+                  <th>DCSE</th>
+                  <th>O-Level</th>
+                  <th>A-Level</th>
+                  <!-- <th>Short Term</th> -->
+
+                </tr>
+              </thead>
+              <tbody>
+               <?php $start_year=2002;
+              $cmca=0;$cbca=0;$cdete=0;$cdcse=0;$co=0;$ca=0;$csh=0;
+                  for($i=$start_year;$i<date("Y");$i++){
+                    $tot_year=0;
+              ?>
+                <tr>
+                <?php echo "<td>".$i."-".($i+1)."</td>"; ?>
+                <?php $mca=Students::where('course','=',4)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/4-".$i."\">".$mca."</a></td>"; 
+                      $cmca=$cmca+$mca;
+                      
+                      ?>
+
+                <?php $bca=Students::where('course','=',3)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/3-".$i."\">".$bca."</td>"; 
+                      $cbca=$cbca+$bca;
+                      ?>
+
+                <?php $dete=Students::where('course','=',6)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/6-".$i."\">".$dete."</td>"; 
+                      $cdete=$cdete+$dete;
+                      ?>
+
+                <?php $dcse=Students::where('course','=',5)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/5-".$i."\">".$dcse."</td>"; 
+                      $cdcse=$cdcse+$dcse;
+                      ?>
+
+                <?php $o=Students::where('course','=',1)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/1-".$i."\">".$o."</td>"; 
+                      $co=$co+$o;
+                      ?>
+
+                <?php $a=Students::where('course','=',2)->where('doj','=',$i)->count();  
+                      echo "<td><a href=\"/students/display/2-".$i."\">".$a."</td>"; 
+                      $ca=$ca+$a;
+                      ?>
+
+                <?php $tot_year=$mca+$bca+$dete+$dcse+$o+$a;
+                      echo "<td><a href=\"/students/display/all-".$i."\">".$tot_year."</td>"; 
+                      ?>
+                </tr>
+                <?php
+                }
+                ?>
+                <tr>
+                <td><b>TOTAL</b></td>
+                <?php echo "<td><b><a href=\"/students/display_all/4\">".$cmca."</b></td>"; ?>
+                <?php echo "<td><b><a href=\"/students/display_all/3\">".$cbca."</b></td>"; ?>
+                <?php echo "<td><b><a href=\"/students/display_all/6\">".$cdete."</b></td>"; ?>
+                <?php echo "<td><b><a href=\"/students/display_all/5\">".$cdcse."</b></td>"; ?>
+                <?php echo "<td><b><a href=\"/students/display_all/1\">".$co."</b></td>"; ?>
+                <?php echo "<td><b><a href=\"/students/display_all/2\">".$ca."</b></td>"; ?>
+                <?php echo "<td><h3>".($cmca+$cbca+$cdete+$cdcse+$co+$ca)."</h3></td>"; ?>
+                </tr>
+                
+               
+                
+               </tbody>
+            </table>
+          </div>
+        </div>
+  </section>
 
 
 

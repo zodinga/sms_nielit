@@ -16,13 +16,13 @@
    <tr>
   <td><b>PHOTO</b></td>
   <td><?php
-      $photo = "/img/icon-user-default.jpg";
+      $photo = "/img/user.jpg";
       if($detail->photo != NULL)
       {
-        $photo = $detail->photo;
+        $photo = "/uploads/".$detail->photo;
       }
       ?>
-      <img src="/uploads/<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-circle">
+      <img src="<?php echo $photo;?>" height="100" width="100" alt="student-photo" class="img-circle">
   </td>
   </tr>
   <tr>

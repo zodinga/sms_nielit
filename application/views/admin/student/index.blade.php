@@ -14,7 +14,7 @@
             <td>Photo</td>
             <td>Name</td>
             <td>Course</td>
-            <td>Batch</td>
+            <td>Year</td>
             <td>Phone</td>
             <td>Status</td>
             <td>Action</td>
@@ -44,7 +44,7 @@
                         if($course)
                         echo $course->course;?>
                   </td>
-                  <td><?php echo $s->batch;?>
+                  <td><?php echo $s->doj;?>
                   </td>
                   <td><?php echo $s->phone;?>
                   </td>
