@@ -10,7 +10,7 @@
                 <label class="control-label"> Filter</label>
                 <p class="controls controls-row">
                     <select class="span2" name="courseID">
-                        <option selected="selected" value="">---All Courses---</option>
+                        <option selected="selected" value="0">---All Courses---</option>
                         <?php 
                         $courses = Courses::all();
                         ?>
@@ -19,20 +19,20 @@
                         @endforeach
                     </select>
                     <select class="span2" name="category">
-                        <option selected="selected" value="">---All Category---</option>
+                        <option selected="selected" value="0">---All Category---</option>
                         <option value="1">ST</option>
                         <option value="2">SC</option>
                         <option value="3">OBC</option>
                         <option value="4">General</option>
                     </select>
                     <select class="span2" name="status">
-                        <option selected="selected" value="">---All Status---</option>
+                        <option selected="selected" value="0">---All Status---</option>
                         <option value="1">On-going</option>
                         <option value="2">Completed</option>
                         <option value="3">Drop-out</option>
                         <option value="4">Discontinued</option>
                     </select><select class="span2" name="sex">
-                        <option selected="selected" value="">---Male & Female---</option>
+                        <option selected="selected" value="%">---Male & Female---</option>
                         <option value="M">Male</option>
                         <option value="F">Female</option>
                     </select>
@@ -110,7 +110,7 @@
                 @endforeach
             </tbody>
         </table>
-        <?php echo $links; ?>
+        
     </div>
 </section>
 @endsection

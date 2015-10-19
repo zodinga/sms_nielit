@@ -239,31 +239,25 @@
 
 		public function action_filter()
 		{
-			$course=0;
-			if(Input::get('courseID')!=0)
-			{
-				$cour = Courses::find(Input::get('courseID'));
-				$course=$cour->id;
+			$students = Students::all();
+			$course = Input::get('courseID');
+			$cat = Input::get('category');
+			$status = Input::get('status');
+			$sex = Input::get('status');
+			$input = Input::all();
+			dd($input);
+			echo "Course=$course, Category=$cat, Status=$status, Sex=$sex".gettype($course);
 
-			}
-			
-			$cat=Input::get('category');
-			$status=Input::get('status');
-			$sex=Input::get('status');
-			echo "Course=$course, Category=$cat, Status=$status, Sex=$sex";
-			
 			$head = "Filter Result :";
-			$students = Students::where('course','=',$course)
-						->or_where('category','=',$cat)
-						->or_where('status','=',$status)
-						->or_where('sex','=',$sex)
-						->paginate(20);
-			
-			return View::make('home.displaystudent')
-				->with('students',$students->results)
+			$students = Students::where('course','=',$course)->get();
+						// ->or_where('category','=',$cat)
+						// ->or_where('status','=',$status)
+						// ->or_where('sex','like',$sex);
+				
+			return View::make('home.filter')
+				->with('students',$students)
 				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
+				->with('heading',$head);
 
 		}
 
