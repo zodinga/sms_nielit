@@ -6,7 +6,7 @@
         </div><!--/.module-head-->
         <div class="module-body">
           
-			<form class="form-vertical" method="POST" action="/students/advancedsearchresult">
+			<form class="form-vertical" method="POST" action="/students/filter">
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Enter Name</label>
 					<div class="controls">
@@ -18,7 +18,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Year of Joining</label>
 					<div class="controls">
-						<input type="text" name="yoj" id="basicinput" placeholder="All..." class="span8">
+						<input type="text" name="year" id="basicinput" placeholder="All..." class="span8">
 						<span class="help-inline">Enter Joining Year</span>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Course</label>
 					<div class="controls">
-						<select tabindex="1" name="course" data-placeholder="Select here.." class="span8">
+						<select tabindex="1" name="courseID" data-placeholder="Select here.." class="span8">
 							<option selected="selected" value="">All Courses</option>
 							 <?php
 							  $course=Courses::all();
@@ -107,6 +107,8 @@
 							Female
 						</label>
 				</div>
+
+				<input type="hidden" name="export" value="T">
 
 				<div class="control-group">
 					<div class="controls">

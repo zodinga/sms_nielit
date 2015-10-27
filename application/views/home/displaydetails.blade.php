@@ -125,7 +125,7 @@
   <td><b>PERMANENT STATE</b></td><td>{{$detail->per_state}}</td>
   </tr>
   <tr>
-  <td><b>PERMANENT PIN</b>/td><td>{{$detail->per_pin}}</td>
+  <td><b>PERMANENT PIN</b></td><td>{{$detail->per_pin}}</td>
   </tr>
   <tr>
   <td><b>PRESENT STREET</b></td><td>{{$detail->pre_street}}</td>
@@ -153,6 +153,9 @@
     }
     ?>
   </td>
+  </tr>
+  <tr>
+  <td><b>STATUS UPDATE DATE</b></td><td>{{$detail->status_update_date}}</td>
   </tr>
   <tr>
   <td><b>CREATED AT</b></td><td>{{$detail->created_at}}</td>

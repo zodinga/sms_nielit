@@ -104,7 +104,7 @@
         else
           $c_detail="----Select-----";
       ?>
-        <select class="form-control input-sm" name="course_id">
+        <select class="form-control input-sm" name="course">
           <option selected="selected" value=""><?php echo $c_detail; ?> </option>
           <?php
           $course = Courses::all();
@@ -330,7 +330,6 @@
         </select>
       </div>
     </div> 
-
 
     <input type="hidden" name="id" value="<?php echo $detail->id; ?>" class="form-control" id="id">
 

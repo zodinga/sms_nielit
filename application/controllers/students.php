@@ -26,136 +26,36 @@
 
 		}
 
-		public function action_current_mca()
+		public function action_current()
 		{
 			
-			$students = Students::where('course','=',4)->where('status','=',1)->paginate(20);
-			$head="Current MCA Students:$students->total";
+			//$students = Students::where('course','=',4)->where('status','=',1)->paginate(20);
+			$head="Current Students:";
 			if(Auth::check())
 			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
+			return View::make('admin.student.current')
 				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
+				->with('heading',$head);
 			}
 			else
 			{
 				return View::make('home.displaystudent')
-				->with('students',$students->results)
 				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
+				->with('heading',$head);
 			}
 
 		}
 
-		public function action_current_bca()
+		public function action_current_filter()
 		{
+			$course=Input::get('optionsCourse');
 			
-			$students = Students::where('course','=',3)->where('status','=',1)->paginate(20);
-			$head="Current BCA Students:$students->total";
-
-			if(Auth::check())
-			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
+			$students = Students::where('course','=',$course)->where('status','=',1)->paginate(20);
+			$cour=Courses::find($course);
+			if($cour)
+			$head="Current $cour->course Students:";
 			else
-			{
-				return View::make('home.displaystudent')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-
-		}
-
-		public function action_current_dcse()
-		{
-			
-			$students = Students::where('course','=',5)->where('status','=',1)->paginate(20);
-			$head="Current DCSE Students:$students->total";
-
-			if(Auth::check())
-			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-			else
-			{
-				return View::make('home.displaystudent')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-
-		}
-
-		public function action_current_dete()
-		{
-			
-			$students = Students::where('course','=',6)->where('status','=',1)->paginate(20);
-			$head="Current DETE Students:$students->total";
-
-			if(Auth::check())
-			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-			else
-			{
-				return View::make('home.displaystudent')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-
-		}
-
-		public function action_current_o()
-		{
-			
-			$students = Students::where('course','=',1)->where('status','=',1)->paginate(20);
-			$head="Current O Level Students:$students->total";
-
-			if(Auth::check())
-			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-			else
-			{
-				return View::make('home.displaystudent')
-				->with('students',$students->results)
-				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
-			}
-
-		}
-
-		public function action_current_a()
-		{
-			
-			$students = Students::where('course','=',2)->where('status','=',1)->paginate(20);
-			$head="Current A Level Students:$students->total";
-
+				$head="No Course";
 			if(Auth::check())
 			{
 			return View::make('admin.student.index')
@@ -186,9 +86,15 @@
 			# code...
 			if(Auth::check())
 				{
-					return View::make('admin.student.edit')
-						->with('s',Students::find($id))
-						->with('error_code',0);
+					  	$detail = students::find($id);
+        				$course_detail = courses::find($detail->course);
+        				$cate = categories::find($detail->category);
+        				$comm=communities::find($detail->community);
+        				$sta=statuses::find($detail->status);
+        				$stas = statuses::all();
+						return View::make('admin.student.edit')
+							->with('detail',$detail)
+							->with('error_code',0);
 				}
 				else
 				{
@@ -239,25 +145,66 @@
 
 		public function action_filter()
 		{
-			$students = Students::all();
-			$course = Input::get('courseID');
-			$cat = Input::get('category');
-			$status = Input::get('status');
-			$sex = Input::get('status');
-			$input = Input::all();
-			dd($input);
-			echo "Course=$course, Category=$cat, Status=$status, Sex=$sex".gettype($course);
-
 			$head = "Filter Result :";
-			$students = Students::where('course','=',$course)->get();
-						// ->or_where('category','=',$cat)
-						// ->or_where('status','=',$status)
-						// ->or_where('sex','like',$sex);
-				
-			return View::make('home.filter')
-				->with('students',$students)
-				->with('error_code',0)
-				->with('heading',$head);
+			$student = Students::where('id','>',0);
+
+			if(Input::has('name'))
+			{
+				$student->where('name','like','%'.Input::get('name').'%');
+				$head = $head." Name:".Input::get('name');
+			}
+
+			if(Input::has('year'))
+			{
+				$student->where('doj','=',Input::get('year'));
+				$head = $head." Year:".Input::get('year');
+			}
+			
+			if(Input::has('courseID'))
+			{
+				$student->where('course','=',Input::get('courseID'));
+				$head = $head." Course id:".Input::get('courseID');
+			}
+
+			if(Input::has('category'))
+			{
+				$student->where('category','=',Input::get('category'));
+				$head = $head." Category id:".Input::get('category');
+			}
+
+			if(Input::has('status'))
+			{
+				$student->where('status','=',Input::get('status'));
+				$head = $head." Status id:".Input::get('status');
+			}
+
+			if(Input::has('sex'))
+			{
+				$student->where('sex','=',Input::get('sex'));
+				$head = $head." Sex id:".Input::get('sex');
+			}
+
+			if(Input::has('community'))
+			{
+				$student->where('community','=',Input::get('community'));
+				$head = $head." Community id:".Input::get('community');
+			}
+			$students = $student->get();
+
+			if(Auth::check())
+				{
+					return View::make('admin.student.index')
+					->with('students',$students)
+					->with('error_code',0)
+					->with('heading',$head);
+				}
+				else
+				{
+					return View::make('home.displaystudent')
+					->with('students',$students)
+					->with('error_code',0)
+					->with('heading',$head);
+				}
 
 		}
 
@@ -311,8 +258,17 @@
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->status=Input::get('status');
+				$now = new DateTime("now");
+				$update_student->status_update_date=$now;
 
-				$update_student->save();
+				
+
+
+				if (empty($_FILES['photo']['name'])) {
+    			// No file was selected for upload, your (re)action goes here
+					$update_student->save();
+					return Redirect::to('students/index');
+				}
 
 				$rules = array(
             	'image' => 'image|max:300',
@@ -366,6 +322,17 @@
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->status=Input::get('status');
 				$update_student->photo=Input::get('photo');
+				dd($update_student->status.' - '.Input::get('status'));
+				/*if($update_student->status != Input::get('status'))
+				{
+					dd(date('Y-m-d'));
+				}*/
+
+				if (empty($_FILES['photo']['name'])) {
+    			// No file was selected for upload, your (re)action goes here
+					$update_student->save();
+					return Redirect::to('students/index');
+				}
 
 				$rules = array(
             	'image' => 'image|max:300',

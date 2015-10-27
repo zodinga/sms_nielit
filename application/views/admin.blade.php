@@ -59,26 +59,14 @@
 						<a href="/students"><i class="icon-file"></i>List All Students</a>
 					</li>
 					<li>
-						<a href="/students/current_mca"><i class="icon-file"></i>Current MCA Students</a>
+						<a href="/students/current"><i class="icon-file"></i>Current Students</a>
 					</li>
 					<li>
-						<a href="/students/current_bca"><i class="icon-file"></i>Current BCA Students</a>
-					</li>
-					<li>
-						<a href="/students/current_dete"><i class="icon-file"></i>Current DETE Students</a>
-					</li>
-					<li>
-						<a href="/students/current_dcse"><i class="icon-file"></i>Current DCSE Students</a>
-					</li>
-					<li>
-						<a href="/students/current_o"><i class="icon-file"></i>Current O Level Students</a>
-					</li>
-					<li>
-						<a href="/students/current_a"><i class="icon-file"></i>Current A Level Students</a>
+						<a href="/students/add"><i class="icon-file"></i>Add New Student</a>
 					</li>
 
 					<li>
-						<a href="/students/add"><i class="icon-file"></i>Add New Student</a>
+						<a href="/status_update"><i class="icon-file"></i>Status Update</a>
 					</li>
 					
 					<li>
@@ -89,9 +77,7 @@
 					<li>
 						<a href="/courses/index"><i class="icon-file"></i>Courses</a>
 					</li>
-					<li>
-						<a href="/status_update/update"><i class="icon-file"></i>Status Update</a>
-					</li>
+					
 					<!-- <li>
 						<a href="/courses/add"><i class="icon-file"></i>New Course</a>
 					</li> -->
@@ -158,6 +144,30 @@
 <script src="/templates/libero/js/mixitup/jquery.mixitup.min.js"></script>
 <!-- THEME -->
 <script src="/templates/libero/js/theme.js"></script>
+
+<!--js link for export-->
+<script src="/templates/libero/js/bootstrap.mini.js"></script>
+<script src="/templates/libero/js/jquery.min.js"></script>
+<script src="/templates/libero/js/export/tableExport.js"></script>
+<script src="/templates/libero/js/export/jquery.base64.js"></script>
+<script src="/templates/libero/js/export/html2canvas.js"></script>
+<script src="/templates/libero/js/export/jspdf/libs/base64.js"></script>
+<script src="/templates/libero/js/export/jspdf/libs/sprintf.js"></script>
+<script src="/templates/libero/js/export/jspdf/jspdf.js"></script>
+<!-- End export-->
+<script type="text/javascript">
+	$(document).ready(function(){
+			$('#exportFile').hide();
+	});
+
+	$("#button_excel").click(function(){
+		$("#exportFile").show();
+		$('#exportFile').tableExport({
+			type:'excel',escape:'false'
+		});
+		$('#exportFile').hide();
+	});
+</script>
 <!-- SCRIPTS: FLOT GRAPH BASIC -->
 <script type="text/javascript">
 $(function () {

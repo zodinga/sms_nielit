@@ -155,6 +155,9 @@
   </td>
   </tr>
   <tr>
+  <td><b>STATUS UPDATE DATE</b></td><td>{{$detail->status_update_date}}</td>
+  </tr>
+  <tr>
   <td><b>CREATED AT</b></td><td>{{$detail->created_at}}</td>
   </tr>
   <tr>

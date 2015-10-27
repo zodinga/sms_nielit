@@ -41,7 +41,8 @@
         <div class="module-head">
           <b>Dashboard</b>
         </div><!--/.module-head-->
-<?php echo $message; ?>
+<?php if(isset($message))
+echo $message; ?>
       <p>
     <button class="btn btn-primary" type="button">
       Total No.of Student <span class="badge"><?php echo $student_no; ?></span>

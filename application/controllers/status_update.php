@@ -2,6 +2,12 @@
 	class Status_Update_Controller extends Base_Controller
 	{
 		//public $restful = true;
+		public function action_index()
+		{
+			return View::make('admin.student.status_update')
+				->with('error_code',0);
+		}
+
 		public function action_update()
 		{
 			$students = Students::all();
@@ -33,8 +39,9 @@
 								$over=(int)$m-$course->duration;
 								echo "Name:$s->name has completed his/her course, months expired by:$over<br>";
 								$s->status=2;
+								$s->status_update->date=$now;
 								$s->save();
-								echo "Saved";
+								echo "$s->name's Status Updated.";
 							}
 						}
 					}

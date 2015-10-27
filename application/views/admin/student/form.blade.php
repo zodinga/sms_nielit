@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="course" class="col-sm-2 control-label">Course</label>
             <div class="col-sm-5">
-              <select class="form-control input-sm" name="course_id">
+              <select class="form-control input-sm" name="course">
                 <option selected="selected" value="">---Select Course---</option>
                 <?php
                 $course = Courses::all();

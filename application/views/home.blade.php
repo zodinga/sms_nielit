@@ -59,7 +59,7 @@
 					<!--SEPARATE-->
 					<li class="nav-header">Menu</li>
 					<li>
-            <a href="/students"><i class="icon-file"></i>Display Students</a>
+            <a href="/students"><i class="icon-file"></i>Display/Search Students</a>
           </li>
 					<li>
 						<a href="/courses"><i class="icon-file"></i>Existing Courses</a>
