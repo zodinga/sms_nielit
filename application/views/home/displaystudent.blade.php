@@ -3,13 +3,13 @@
 <section class="module">
     <div class="module-head">
         <b>{{$heading}}</b>
-    </div><!--/.module-head-->
+    </div>
     <div class="module-body">
         <div class="control-group">
             <form class="form-horizontal" action="/students/filter" method="POST">
                 <label class="control-label"><h4>Filter</h4></label>
-                <p class="controls controls-row">
-                <select class="span2" name="year">
+                <p>
+                    <select class="span2" name="year">
                         <option selected="selected" value="">---All Years---</option>
                         <?php 
                         for($i=2002;$i<=date("Y");$i++)
@@ -42,13 +42,13 @@
                         <option value="2">Completed</option>
                         <option value="3">Drop-out</option>
                         <option value="4">Discontinued</option>
-                    </select><select class="span2" name="sex">
+                    </select>
+                    <select class="span2" name="sex">
                         <option selected="selected" value="">---Male & Female---</option>
                         <option value="M">Male</option>
                         <option value="F">Female</option>
                     </select>
-
-                    </select><select class="span2" name="community">
+                    <select class="span2" name="community">
                         <option selected="selected" value="">---All Communities---</option>
                         <option value="1">Christian</option>
                         <option value="2">Hindu</option>
@@ -60,7 +60,6 @@
                 </p>
             </form>
         </div>
-    </div>
 
         <table class="table table-hover">
             <thead>
@@ -142,8 +141,10 @@
                 @endforeach
             </tbody>
         </table>
-        <?php if(isset($links))
-        echo $links; ?>
+        <?php 
+            if(isset($links))
+                echo $links; 
+        ?>
     </div>
 </section>
 @endsection

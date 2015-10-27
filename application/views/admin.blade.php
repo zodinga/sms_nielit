@@ -18,10 +18,7 @@
 	<script src="/templates/libero/js/jquery-1.9.1.min.js"></script>
 	<script src="/templates/libero/js/jquery-ui-1.10.1.custom.min.js"></script>
 	<script src="/templates/libero/bootstrap/js/bootstrap.min.js"></script>
-	<style type="text/css">
 	
-
-	</style>
 </head>
 <body>
 	<div class="frame">

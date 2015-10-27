@@ -32,92 +32,88 @@
     $per_sc = round((($sc*100)/$student_no),2);
     $per_obc = round((($obc*100)/$student_no),2);
     $per_gen = round((($gen*100)/$student_no),2);
-
-    
-    
-  ?> 
+?> 
       
 <section class="module">
-
-          <h3 class="sub-header">YEARLY STUDENT RECORD</h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
+    <div class="module-head">
+        <b>YEARLY STUDENT RECORD</b>
+    </div>
+    <div class="module-body">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                  <th>Year</th>
-                  <th>MCA</th>
-                  <th>BCA</th>
-                  <th>DETE</th>
-                  <th>DCSE</th>
-                  <th>O-Level</th>
-                  <th>A-Level</th>
-                  <th>Total</th>
-                  <!-- <th>Short Term</th> -->
-
+                    <th>Year</th>
+                    <th>MCA</th>
+                    <th>BCA</th>
+                    <th>DETE</th>
+                    <th>DCSE</th>
+                    <th>O-Level</th>
+                    <th>A-Level</th>
+                    <th>Total</th>
                 </tr>
-              </thead>
-              <tbody>
-              <?php $start_year=2002;
-              $cmca=0;$cbca=0;$cdete=0;$cdcse=0;$co=0;$ca=0;$csh=0;
-                  for($i=$start_year;$i<date("Y");$i++){
-                    $tot_year=0;
-              ?>
+            </thead>
+            <tbody>
+                <?php 
+                    $start_year = 2002;
+                    $cmca = 0; $cbca = 0; $cdete = 0; $cdcse = 0; $co = 0; $ca = 0; $csh = 0;
+                    for($i=$start_year;$i<date("Y");$i++)
+                    {
+                        $tot_year = 0;
+                    ?>
                 <tr>
-                <?php echo "<td>".$i."-".($i+1)."</td>"; ?>
-                <?php $mca=Students::where('course','=',4)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/4-".$i."\">".$mca."</a></td>"; 
-                      $cmca=$cmca+$mca;
-                      
-                      ?>
+                    <?php echo "<td>".$i."-".($i+1)."</td>"; ?>
+                    <?php 
+                        $mca = Students::where('course','=',4)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/4-".$i."\">".$mca."</a></td>"; 
+                        $cmca = $cmca + $mca;
+                    ?>
+                    <?php 
+                        $bca = Students::where('course','=',3)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/3-".$i."\">".$bca."</td>"; 
+                        $cbca = $cbca + $bca;
+                    ?>
+                    <?php 
+                        $dete = Students::where('course','=',6)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/6-".$i."\">".$dete."</td>"; 
+                        $cdete = $cdete + $dete;
+                    ?>
 
-                <?php $bca=Students::where('course','=',3)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/3-".$i."\">".$bca."</td>"; 
-                      $cbca=$cbca+$bca;
-                      ?>
+                    <?php 
+                        $dcse = Students::where('course','=',5)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/5-".$i."\">".$dcse."</td>"; 
+                        $cdcse = $cdcse + $dcse;
+                    ?>
 
-                <?php $dete=Students::where('course','=',6)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/6-".$i."\">".$dete."</td>"; 
-                      $cdete=$cdete+$dete;
-                      ?>
+                    <?php 
+                        $o = Students::where('course','=',1)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/1-".$i."\">".$o."</td>"; 
+                        $co = $co + $o;
+                    ?>
 
-                <?php $dcse=Students::where('course','=',5)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/5-".$i."\">".$dcse."</td>"; 
-                      $cdcse=$cdcse+$dcse;
-                      ?>
+                    <?php 
+                        $a = Students::where('course','=',2)->where('doj','=',$i)->count();  
+                        echo "<td><a href=\"/students/display/2-".$i."\">".$a."</td>"; 
+                        $ca = $ca + $a;
+                    ?>
 
-                <?php $o=Students::where('course','=',1)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/1-".$i."\">".$o."</td>"; 
-                      $co=$co+$o;
-                      ?>
-
-                <?php $a=Students::where('course','=',2)->where('doj','=',$i)->count();  
-                      echo "<td><a href=\"/students/display/2-".$i."\">".$a."</td>"; 
-                      $ca=$ca+$a;
-                      ?>
-
-                <?php $tot_year=$mca+$bca+$dete+$dcse+$o+$a;
-                      echo "<td><a href=\"/students/display/all-".$i."\">".$tot_year."</td>"; 
-                      ?>
-                  
-
+                    <?php 
+                        $tot_year = $mca+$bca+$dete+$dcse+$o+$a;
+                        echo "<td><a href=\"/students/display/all-".$i."\">".$tot_year."</td>"; 
+                    ?>
                 </tr>
-                <?php
-
-                }
-                ?>
+                    <?php }?>
                 <tr>
-                <td><b>TOTAL</b></td>
-                <?php echo "<td><b><a href=\"/students/display_all/4\">".$cmca."</b></td>"; ?>
-                <?php echo "<td><b><a href=\"/students/display_all/3\">".$cbca."</b></td>"; ?>
-                <?php echo "<td><b><a href=\"/students/display_all/6\">".$cdete."</b></td>"; ?>
-                <?php echo "<td><b><a href=\"/students/display_all/5\">".$cdcse."</b></td>"; ?>
-                <?php echo "<td><b><a href=\"/students/display_all/1\">".$co."</b></td>"; ?>
-                <?php echo "<td><b><a href=\"/students/display_all/2\">".$ca."</b></td>"; ?>
-                <?php echo "<td><h3>".($cmca+$cbca+$cdete+$cdcse+$co+$ca)."</h3></td>"; ?>
+                    <td><b>TOTAL</b></td>
+                    <?php echo "<td><b><a href=\"/students/display_all/4\">".$cmca."</b></td>"; ?>
+                    <?php echo "<td><b><a href=\"/students/display_all/3\">".$cbca."</b></td>"; ?>
+                    <?php echo "<td><b><a href=\"/students/display_all/6\">".$cdete."</b></td>"; ?>
+                    <?php echo "<td><b><a href=\"/students/display_all/5\">".$cdcse."</b></td>"; ?>
+                    <?php echo "<td><b><a href=\"/students/display_all/1\">".$co."</b></td>"; ?>
+                    <?php echo "<td><b><a href=\"/students/display_all/2\">".$ca."</b></td>"; ?>
+                    <?php echo "<td><h3>".($cmca+$cbca+$cdete+$cdcse+$co+$ca)."</h3></td>"; ?>
                 </tr>
-               </tbody>
-            </table>
-          </div>
-        </div>
-  </section>
+            </tbody>
+        </table>
+    </div>
+</section>
 @endsection
