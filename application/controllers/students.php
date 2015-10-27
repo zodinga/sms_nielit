@@ -86,15 +86,26 @@
 			# code...
 			if(Auth::check())
 				{
-					  	$detail = students::find($id);
-        				$course_detail = courses::find($detail->course);
-        				$cate = categories::find($detail->category);
-        				$comm=communities::find($detail->community);
-        				$sta=statuses::find($detail->status);
-        				$stas = statuses::all();
+					  	$detail = Students::find($id);
+        				$course_detail = Courses::find($detail->course);
+        				$courses = Courses::all();
+        				$cate = Categories::find($detail->category);
+        				$categories = Categories::all();
+        				$comm = Communities::find($detail->community);
+        				$communities = Communities::all();
+        				$sta = Statuses::find($detail->status);
+        				$statuses = Statuses::all();
 						return View::make('admin.student.edit')
 							->with('detail',$detail)
-							->with('error_code',0);
+							->with('error_code',0)
+							->with('course_detail',$course_detail)
+							->with('courses',$courses)
+							->with('cate',$cate)
+							->with('categories',$categories)
+							->with('comm',$comm)
+							->with('communities',$communities)
+							->with('sta',$sta)
+							->with('statuses',$statuses);
 				}
 				else
 				{
@@ -287,8 +298,7 @@
 
 		public function action_update()
 		{
-			# code...
-			$update_student = Students::find(Input::get('id'));
+				$update_student = Students::find(Input::get('id'));
 
 				$update_student->name=Input::get('name');
 				$update_student->aadhaar=Input::get('aadhaar');
@@ -320,13 +330,12 @@
 				$update_student->pre_district=Input::get('pre_district');
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
-				$update_student->status=Input::get('status');
 				$update_student->photo=Input::get('photo');
-				dd($update_student->status.' - '.Input::get('status'));
-				/*if($update_student->status != Input::get('status'))
+				if($update_student->status != Input::get('status'))
 				{
-					dd(date('Y-m-d'));
-				}*/
+					$update_student->status_update_date = date('Y-m-d');
+					$update_student->status=Input::get('status');
+				}
 
 				if (empty($_FILES['photo']['name'])) {
     			// No file was selected for upload, your (re)action goes here

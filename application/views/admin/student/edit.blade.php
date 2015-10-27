@@ -1,23 +1,16 @@
 @layout('admin')
 @section('content')
 
-<?php
-        $detail = students::find($s->id);
-        $course_detail = courses::find($s->course);
-        $cate = categories::find($s->category);
-        $comm=communities::find($s->community);
-        $sta=statuses::find($s->status);
-      ?> 
 <form class="form-horizontal" action="/students/update" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="photo" class="col-sm-2 control-label">Photo</label>
       <div class="col-sm-5">
-                <?php 
-                //echo $s->photo;
-                  $pic="/uploads/".$s->photo;
-                  if($s->photo=="")
-                    $pic="/img/user.jpg";
-                ?>
+          <?php 
+          //echo $s->photo;
+            $pic="/uploads/".$detail->photo;
+            if($detail->photo=="")
+              $pic="/img/user.jpg";
+          ?>
           <img src="<?php echo $pic;?>" height="100" width="100" alt="student-photo" class="img-rounded" id="output" class="img-rounded" style="border:1px solid black">
           <input type="file" name="photo" id="photo" onchange="loadFile(event)">
           
@@ -98,23 +91,11 @@
     <div class="form-group">
       <label for="course" class="col-sm-2 control-label">Course</label>
       <div class="col-sm-5">
-      <?php
-        if($course_detail)
-          $c_detail=$course_detail->course;
-        else
-          $c_detail="----Select-----";
-      ?>
         <select class="form-control input-sm" name="course">
-          <option selected="selected" value=""><?php echo $c_detail; ?> </option>
-          <?php
-          $course = Courses::all();
-          foreach ($course as $c) {
-           ?> 
-           <option value="<?php echo $c->id; ?>"><?php echo $c->course; ?></option>
-          <?php  
-          }
-          ?>
-          
+          <option selected="selected" value="{{$course_detail->id}}">{{$course_detail->course}}</option>
+          @foreach($courses as $course)
+           <option value="{{$course->id}}">{{$course->course}}</option>
+          @endforeach
         </select>
       </div>
     </div>
@@ -178,23 +159,11 @@
     <div class="form-group">
       <label for="catogory" class="col-sm-2 control-label">Category</label>
       <div class="col-sm-5">
-      <?php
-        if($cate)
-          $c_gory=$cate->category;
-        else
-          $c_gory="----Select-----";
-      ?>
         <select class="form-control input-sm" name="category">
-          <option selected="selected" value=""><?php echo $c_gory; ?></option>
-          <?php
-          $category = Categories::all();
-          foreach ($category as $c) {
-           ?> 
-           <option value="<?php echo $c->id; ?>"><?php echo $c->category; ?></option>
-          <?php  
-          }
-          ?>
-          
+          <option selected="selected" value="{{$cate->id}}">{{$cate->category}}</option>
+          @foreach ($categories as $category) 
+           <option value="{{$category->id}}">{{$category->category}}</option>
+          @endforeach
         </select>
       </div>
     </div>
@@ -202,23 +171,11 @@
     <div class="form-group">
       <label for="community" class="col-sm-2 control-label">Community</label>
       <div class="col-sm-5">
-      <?php
-        if($comm)
-          $c_ty=$comm->community;
-        else
-          $c_ty="----Select-----";
-      ?>
         <select class="form-control input-sm" name="community">
-          <option selected="selected" value=""><?php echo $c_ty; ?></option>
-          <?php
-          $community = Communities::all();
-          foreach ($community as $c) {
-           ?> 
-           <option value="<?php echo $c->id; ?>"><?php echo $c->community; ?></option>
-          <?php  
-          }
-          ?>
-          
+          <option selected="selected" value="{{$comm->id}}">{{$comm->community}}</option>
+            @foreach ($communities as $community) {
+              <option value="{{$community->id}}">{{$community->community}}</option>
+            @endforeach
         </select>
       </div>
     </div>
@@ -310,22 +267,11 @@
     <div class="form-group">
       <label for="status" class="col-sm-2 control-label">Status</label>
       <div class="col-sm-5">
-      <?php
-        if($sta)
-          $s_tus=$sta->status;
-        else
-          $s_tus="----Select-----";
-      ?>
         <select class="form-control input-sm" name="status">
-          <option selected="selected" value=""><?php echo $s_tus; ?></option>
-          <?php
-          $status = statuses::all();
-          foreach ($status as $st) {
-           ?> 
-           <option value="<?php echo $st->id; ?>"><?php echo $st->status; ?></option>
-          <?php  
-          }
-          ?>
+          <option selected="selected" value="{{$sta->id}}">{{$sta->status}}</option>
+            @foreach ($statuses as $status) {
+              <option value="{{$status->id}}">{{$status->status}}</option>
+            @endforeach
           
         </select>
       </div>
