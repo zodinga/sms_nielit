@@ -65,14 +65,14 @@
           <div class="form-group">
             <label for="doj" class="col-sm-2 control-label">YoJ</label>
             <div class="col-sm-5">
-              <input type="text" name="doj" class="form-control" id="doj" placeholder="Enter Year of Joining">
+              <input type="text" name="doj" class="form-control" id="doj" placeholder="Enter Year of Joining" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="course" class="col-sm-2 control-label">Course</label>
             <div class="col-sm-5">
-              <select class="form-control input-sm" name="course">
+              <select class="form-control input-sm" name="course" required>
                 <option selected="selected" value="">---Select Course---</option>
                 <?php
                 $course = Courses::all();
@@ -146,7 +146,7 @@
           <div class="form-group">
             <label for="catogory" class="col-sm-2 control-label">Category</label>
             <div class="col-sm-5">
-              <select class="form-control input-sm" name="category">
+              <select class="form-control input-sm" name="category" required>
                 <option selected="selected" value="">---Select Category---</option>
                 <?php
                 $category = Categories::all();
@@ -164,7 +164,7 @@
           <div class="form-group">
             <label for="community" class="col-sm-2 control-label">Community</label>
             <div class="col-sm-5">
-              <select class="form-control input-sm" name="community">
+              <select class="form-control input-sm" name="community" required>
                 <option selected="selected" value="">---Select Community---</option>
                 <?php
                 $community = Communities::all();
@@ -266,7 +266,7 @@
           <div class="form-group">
             <label for="status" class="col-sm-2 control-label">Status</label>
             <div class="col-sm-5">
-              <select class="form-control input-sm" name="status">
+              <select class="form-control input-sm" name="status" required>
                 <option selected="selected" value="">---Select Status---</option>
                 <?php
                 $status = Statuses::all();
