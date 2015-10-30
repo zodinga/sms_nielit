@@ -17,6 +17,8 @@ class Settings_Controller extends Base_Controller {
       
       //echo "Radio:",Input::get('optionsRadios');exit();
       $update_settings->editstudent=Input::get('optionsRadios');
+      $update_settings->delete_student=Input::get('optionsDelete');
+
       $update_settings->save();
       return View::make('admin.settings.index')
       ->with('settings',Settings::all())

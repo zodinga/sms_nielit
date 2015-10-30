@@ -26,14 +26,14 @@
 
 		}
 
-		public function action_current()
+		public function action_current_menu()
 		{
 			
 			//$students = Students::where('course','=',4)->where('status','=',1)->paginate(20);
 			$head="Current Students:";
 			if(Auth::check())
 			{
-			return View::make('admin.student.current')
+			return View::make('admin.student.current_menu')
 				->with('error_code',0)
 				->with('heading',$head);
 			}
@@ -50,7 +50,7 @@
 		{
 			$course=Input::get('optionsCourse');
 			
-			$students = Students::where('course','=',$course)->where('status','=',1)->paginate(20);
+			$students = Students::where('course','=',$course)->where('status','=',1)->order_by('doj','desc')->order_by('name','asc')->get();
 			$cour=Courses::find($course);
 			if($cour)
 			$head="Current $cour->course Students:";
@@ -58,19 +58,17 @@
 				$head="No Course";
 			if(Auth::check())
 			{
-			return View::make('admin.student.index')
-				->with('students',$students->results)
+			return View::make('admin.student.current_students')
+				->with('students',$students)
 				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
+				->with('heading',$head);
 			}
 			else
 			{
 				return View::make('home.displaystudent')
 				->with('students',$students->results)
 				->with('error_code',0)
-				->with('heading',$head)
-				->with('links',$students->links());
+				->with('heading',$head);
 			}
 
 		}
@@ -157,7 +155,7 @@
 		public function action_filter()
 		{
 			$head = "Filter Result :";
-			$student = Students::where('id','>',0);
+			$student = Students::where('id','>',0)->order_by('doj','asc');
 
 			if(Input::has('name'))
 			{
@@ -174,19 +172,25 @@
 			if(Input::has('courseID'))
 			{
 				$student->where('course','=',Input::get('courseID'));
-				$head = $head." Course id:".Input::get('courseID');
+				$course=Courses::find(Input::get('courseID'));
+            	if($course)
+					$head = $head." Course:".$course->course;
 			}
 
 			if(Input::has('category'))
 			{
 				$student->where('category','=',Input::get('category'));
-				$head = $head." Category id:".Input::get('category');
+				$category=Categories::find(Input::get('category'));
+            	if($category)
+					$head = $head." Category:".$category->category;
 			}
 
 			if(Input::has('status'))
 			{
 				$student->where('status','=',Input::get('status'));
-				$head = $head." Status id:".Input::get('status');
+				$status=Statuses::find(Input::get('status'));
+            	if($status)
+					$head = $head." Status:".$status->status;
 			}
 
 			if(Input::has('sex'))
@@ -198,7 +202,9 @@
 			if(Input::has('community'))
 			{
 				$student->where('community','=',Input::get('community'));
-				$head = $head." Community id:".Input::get('community');
+				$community=Communities::find(Input::get('community'));
+            	if($community)
+					$head = $head." Community:".$community->community;
 			}
 			$students = $student->get();
 

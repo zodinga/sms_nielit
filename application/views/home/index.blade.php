@@ -33,8 +33,17 @@
     $per_obc = round((($obc*100)/$student_no),2);
     $per_gen = round((($gen*100)/$student_no),2);
 
-    
-    
+    $christian=students::where('community','=',1)->count();
+    $hindu=students::where('community','=',2)->count();
+    $mushlim=students::where('community','=',3)->count();
+    $others=students::where('community','=',4)->count();
+    $budhist=students::where('community','=',5)->count();
+      $per_christian = round((($christian*100)/$student_no),2);
+      $per_hindu = round((($hindu*100)/$student_no),2);
+      $per_mushlim = round((($mushlim*100)/$student_no),2);
+      $per_others = round((($others*100)/$student_no),2);
+      $per_budhist = round((($budhist*100)/$student_no),2);
+
   ?> 
       
 <section class="module">
@@ -87,16 +96,16 @@ echo $message; ?>
     </div>
 
     <p>
-    <button class="btn btn-info" type="button">
+    <button class="btn btn-success" type="button">
       Schedule Tribe <span class="badge"><?php echo $st; ?></span>
     </button>
-    <button class="btn btn-info" type="button">
+    <button class="btn btn-success" type="button">
       Shedule Cast <span class="badge"><?php echo $sc; ?></span>
     </button>
-    <button class="btn btn-info" type="button">
+    <button class="btn btn-success" type="button">
       OBC <span class="badge"><?php echo $obc; ?></span>
     </button>
-    <button class="btn btn-info" type="button">
+    <button class="btn btn-success" type="button">
       General <span class="badge"><?php echo $gen; ?></span>
     </button>
     </p>
@@ -115,6 +124,41 @@ echo $message; ?>
       </div>
     </div>
 
+    <p>
+    <button class="btn btn-warning" type="button">
+      Christian <span class="badge"><?php echo $christian; ?></span>
+    </button>
+    <button class="btn btn-warning" type="button">
+      Hindu <span class="badge"><?php echo $hindu; ?></span>
+    </button>
+    <button class="btn btn-warning" type="button">
+      Mushlim <span class="badge"><?php echo $mushlim; ?></span>
+    </button>
+    <button class="btn btn-warning" type="button">
+      Bhudist <span class="badge"><?php echo $budhist; ?></span>
+    </button>
+    <button class="btn btn-warning" type="button">
+      Others <span class="badge"><?php echo $others; ?></span>
+    </button>
+    </p>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: <?php echo $per_st;?>%">
+        Christian:<?php echo $per_christian;?>%
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <?php echo $per_sc;?>%">
+        Hindu:<?php echo $per_hindu;?>%
+      </div>
+      <div class="progress-bar progress-bar-info progress-bar-striped" style="width: <?php echo $per_obc;?>%">
+        Mushlim:<?php echo $per_mushlim;?>%
+      </div>
+      <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <?php echo $per_gen;?>%">
+        Bhudist:<?php echo $per_budhist;?>%
+      </div> 
+      <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <?php echo $per_gen;?>%">
+        Others:<?php echo $per_others;?>%
+      </div>
+    </div>
+
           <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -127,7 +171,7 @@ echo $message; ?>
                   <th>DCSE</th>
                   <th>O-Level</th>
                   <th>A-Level</th>
-                  <!-- <th>Short Term</th> -->
+                  <th>Total</th>
 
                 </tr>
               </thead>

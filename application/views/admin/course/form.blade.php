@@ -16,7 +16,7 @@
           <div class="form-group">
             <label for="full_form" class="col-sm-2 control-label">Full Form</label>
             <div class="col-sm-5">
-              <input type="text" name="full_form" class="form-control" id="full_form" placeholder="Full form">
+              <input type="text" name="full_form" class="form-control" id="full_form" placeholder="Full form" required>
             </div>
           </div>
 
@@ -40,16 +40,16 @@
           </div>
                
           <div class="form-group">
-            <label for="semester" class="col-sm-2 control-label">Semester</label>
+            <label for="semester" class="col-sm-2 control-label">No of Semesters</label>
             <div class="col-sm-5">
-              <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester">
+              <input type="text" name="semester" class="form-control" id="semester" placeholder="Semester" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="duration" class="col-sm-2 control-label">Duration</label>
             <div class="col-sm-5">
-              <input type="text" name="duration" class="form-control" id="duration" placeholder="Duration">
+              <input type="text" name="duration" class="form-control" id="duration" placeholder="Duration" required>
             </div>
           </div>
 

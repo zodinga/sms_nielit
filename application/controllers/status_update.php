@@ -10,7 +10,7 @@
 
 		public function action_update()
 		{
-			$students = Students::all();
+			$students = Students::where('status','=',1)->order_by('doj','desc')->get();
 			$cy=date("Y");
 			$cy=(int)$cy;
 			//echo gettype($cy);
@@ -19,8 +19,6 @@
 				$y=$s->doj;
 				$y=(int)$y;
 
-				if($s->status==1)
-				{
 					$course=Courses::find($s->course);
 					if($course!=NULL)
 					{
@@ -32,20 +30,17 @@
 							$interval = date_diff($sd, $now);
 							$m=$interval->m + ($interval->y * 12) . ' months';
 							
-
-							//echo "Name:$s->name, Course:$course->course, Duration:$course->duration, Starting date:".date_format($sd,"Y/m/d").", Months spend:".$m;
 							if($m>$course->duration)
 							{
 								$over=(int)$m-$course->duration;
 								echo "Name:$s->name has completed his/her course, months expired by:$over<br>";
 								$s->status=2;
-								$s->status_update->date=$now;
+								$s->status_update_date=$now;
 								$s->save();
 								echo "$s->name's Status Updated.";
 							}
 						}
 					}
-				}
 			}
 			return View::make('admin.index')
 				->with('error_code',0);

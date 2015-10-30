@@ -56,23 +56,27 @@
 						<a href="/students"><i class="icon-file"></i>List All Students</a>
 					</li>
 					<li>
-						<a href="/students/current"><i class="icon-file"></i>Current Students</a>
+						<a href="/students/current_menu"><i class="icon-file"></i>Current Students</a>
 					</li>
 					<li>
-						<a href="/students/add"><i class="icon-file"></i>Add New Student</a>
+						<a href="/students/advancedsearch"><i class="icon-user-md"></i>Advanced Search</a>
+					</li>
+					<li>
+						<a href="/students/add"><i class="icon-file"></i>New</a>
 					</li>
 
 					<li>
 						<a href="/status_update"><i class="icon-file"></i>Status Update</a>
 					</li>
 					
-					<li>
-						<a href="/students/advancedsearch"><i class="icon-user-md"></i>Advanced Search</a>
-					</li>
+					
 
 					<li>Course</li>
 					<li>
 						<a href="/courses/index"><i class="icon-file"></i>Courses</a>
+					</li>
+					<li>
+						<a href="/courses/add"><i class="icon-file"></i>New</a>
 					</li>
 					
 					<!-- <li>

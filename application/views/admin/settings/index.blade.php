@@ -26,6 +26,20 @@
             </div>
           </div>
 
+          <div class="control-group">
+            <label class="control-label">Enable Student Delete</label>
+            <div class="controls">
+              <label class="radio inline">
+                <input type="radio" name="optionsDelete" id="optionsDelete1" value="Y" <?php if($s->delete_student=="Y") echo " checked"; ?>>
+                YES
+              </label> 
+              <label class="radio inline">
+                <input type="radio" name="optionsDelete" id="optionsDelete2" value="N" <?php if($s->delete_student=="N"||$s->delete_student=="") echo " checked"; ?>>
+                NO
+              </label> 
+            </div>
+          </div>
+
            <input type="hidden" value=<?php echo $s->id; ?> name="id"></input>
 
           <?php } ?>

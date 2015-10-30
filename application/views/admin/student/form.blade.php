@@ -272,7 +272,7 @@
                 $status = Statuses::all();
                 foreach ($status as $s) {
                  ?> 
-                 <option value="<?php echo $s->id; ?>"><?php echo $s->status; ?></option>
+                 <option value="<?php echo $s->id;?>"><?php echo $s->status; ?></option>
                 <?php  
                 }
                 ?>

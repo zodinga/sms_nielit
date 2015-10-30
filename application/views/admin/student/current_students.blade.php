@@ -12,12 +12,12 @@
     <table class="table table-hover">
         <thead>
             <tr class="warning">
+                <td>Semesterxx</td>
                 <td>Id</td>
                 <td>Photo</td>
                 <td>Name</td>
                 <td>Course</td>
                 <td>Year</td>
-                <td>Semester</td>
                 <td>Phone</td>
                 <td>Status</td>
                 <td>Status Update Date</td>
@@ -29,23 +29,6 @@
             foreach($students as $s){
             ?>
             <tr>
-                <td><?php echo $s->id;?></td>
-                <td>
-                  <?php 
-                    $pic="/uploads/".$s->photo;
-                    if($s->photo=="")
-                      $pic="/img/user.jpg";
-                    ?>
-                    <img src="<?php echo $pic;?>" height="30" width="30" alt="student-photo" class="img-rounded">
-                </td>
-                <td><?php echo $s->name;?></td>
-                <td><?php 
-                        $course=Courses::find($s->course);
-                        if($course)
-                            echo $course->course;
-                    ?>
-                </td>
-                <td><?php echo $s->doj;?></td>
                 <td><?php 
                     $course=Courses::find($s->course);
                         if($course!=NULL)
@@ -68,11 +51,29 @@
                                 }
                             else
                                 if($s->status==1)
-                                    echo "<a href='/status_update/update'>Status update needed</a>";
+                                    echo "Status update needed";
                             }
                         }
                   ?>
                 </td>
+                <td><?php echo $s->id;?></td>
+                <td>
+                  <?php 
+                    $pic="/uploads/".$s->photo;
+                    if($s->photo=="")
+                      $pic="/img/user.jpg";
+                    ?>
+                    <img src="<?php echo $pic;?>" height="30" width="30" alt="student-photo" class="img-rounded">
+                </td>
+                <td><?php echo $s->name;?></td>
+                <td><?php 
+                        $course=Courses::find($s->course);
+                        if($course)
+                            echo $course->course;
+                    ?>
+                </td>
+                <td><?php echo $s->doj;?></td>
+                
                 <td><?php echo $s->phone;?></td>
                 <td>
                     <?php
@@ -127,10 +128,7 @@
             ?>
         </tbody>
     </table>
-    <?php 
-        if(isset($links))
-            echo $links; 
-    ?>
+
     <!-- Table for exporting Data to excel file -->
 
    <table class="table table-hover" id="exportFile">
