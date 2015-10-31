@@ -18,8 +18,10 @@ class Login_Controller extends Base_Controller {
                                     ->with('username',$uname)
 									->with('confirm',0);
                         }
-
-                    return View::make('home.index')->with('error_code','1');
+                    else
+                        {
+                            return View::make('home.index')->with('error_code','1');
+                        }
                     }
             else
                     return View::make('home.index')->with('error_code','2');;
