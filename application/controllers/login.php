@@ -14,15 +14,15 @@ class Login_Controller extends Base_Controller {
                             Session::put('username',Input::get('username'));
 							$uname = Session::get('username');
 							return View::make('admin.index')
-                                    ->with('error_code','3')
+                                    ->with('loginerror','3')
                                     ->with('username',$uname)
 									->with('confirm',0);
                         }
 
-                    return View::make('home.index')->with('error_code','1');
+                    return View::make('home.index')->with('loginerror','1');
                     }
             else
-                    return View::make('home.index')->with('error_code','2');;
+                    return View::make('home.index')->with('loginerror','2');;
 	}
 
 }
