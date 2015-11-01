@@ -11,7 +11,7 @@
               <input type="text" name="type" class="form-control" id="type" value="<?php echo $s->editstudent; ?>" placeholder="Type" required>
             </div>
           </div> -->
-
+          
           <div class="control-group">
             <label class="control-label">Enable Update from Guest</label>
             <div class="controls">
