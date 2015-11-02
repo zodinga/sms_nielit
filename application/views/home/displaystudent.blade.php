@@ -9,6 +9,7 @@
             <form class="form-horizontal" action="/students/filter" method="POST">
                 <label class="control-label"><h4>Filter</h4></label>
                 <p>
+                    <input type="text" name="name" id="basicinput" placeholder="Name" class="span3">
                     <select class="span2" name="year">
                         <option selected="selected" value="">---All Years---</option>
                         <?php 
