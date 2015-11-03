@@ -224,8 +224,7 @@
             <td><?php echo $s->guardian_me;?></td>
             <td><?php echo $s->guardian_phone;?></td>
             <td><?php echo $s->dob;?></td>
-		 <td><?php echo $s->sex;?></td>
-
+            <td><?php echo $s->sex;?></td>
             <td>
                 <?php
                  $category=Categories::find($s->category);
