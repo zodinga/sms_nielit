@@ -78,6 +78,9 @@
 					<li>
 						<a href="/courses/add"><i class="icon-file"></i>New</a>
 					</li>
+					<li>
+						<a href="/users"><i class="icon-file"></i>Users</a>
+					</li>
 					
 					<!-- <li>
 						<a href="/courses/add"><i class="icon-file"></i>New Course</a>
