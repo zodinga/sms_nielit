@@ -43,7 +43,7 @@
                     </form>
 					<li class="nav-header">Extra</li>
 					<li><a href="/signin"  data-toggle="modal"><i class="icon-signin"></i>Sign In</a></li>
-					<li><a href="/users/signup" data-toggle="modal"><i class="icon-key"></i>Signup</a></li>
+					<li><a href="#signupModal" data-toggle="modal"><i class="icon-key"></i>Signup</a></li>
 					<li class="nav-header">Menu</li>
 					<li><a href="/students"><i class="icon-file"></i>Display/Search Students</a></li>
 					<li><a href="/courses"><i class="icon-file"></i>Existing Courses</a></li>

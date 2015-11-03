@@ -49,7 +49,7 @@
 
 					<li class="nav-header">Extra</li>
 					<li>
-						<a href="/users/logout"><i class="icon-signout"></i>Logout</a>
+						<a href="/logout"><i class="icon-signout"></i>Logout</a>
 					</li>
 					<li>Student</li>
 					<li>

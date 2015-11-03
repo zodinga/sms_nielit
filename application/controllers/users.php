@@ -17,17 +17,21 @@ class Users_Controller extends Base_Controller {
 	}
 	public function post_save()
 	{
-		$update_course=new Courses;
+		if(Input::get('password')==Input::get('repassword'))
+		{
+			$user=new Users;
 
-		$update_course->course=Input::get('course');
-		$update_course->full_form=Input::get('full_form');
-		$update_course->type_id=Input::get('type_id');
-		$update_course->semester=Input::get('semester');
-		$update_course->duration=Input::get('duration');
+			$user->username=Input::get('username');
 
-		$update_course->save();
+			$user->password=Input::get('password');
+			$user->type=3;
+			
 
-		return Redirect::to('courses/index')->with('cours',Courses::order_by('id')->get());
+			$user->save();
+		}
+		
+
+		return Redirect::to('home/index');
 	}
 	public function post_update()
 	{

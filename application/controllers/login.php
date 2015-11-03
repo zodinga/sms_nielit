@@ -13,7 +13,7 @@ class Login_Controller extends Base_Controller {
                         {
                             Session::put('username',Input::get('username'));
 							$uname = Session::get('username');
-							return View::make('admin.index')
+							return Redirect::to('admin/index')
                                     ->with('error_code','3')
                                     ->with('username',$uname)
 									->with('confirm',0);
