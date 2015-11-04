@@ -2,7 +2,7 @@
 @section('content')
 <section class="module">
         <div class="module-head">
-          <h4><b>Student Entry Form</b></h4>
+          <b>Student Entry Form</b>
         </div><!--/.module-head-->
         <div class="module-body">
         <form class="form-horizontal" action="/students/save" method="POST" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
           <div class="form-group">
             <label for="aadhaar" class="col-sm-2 control-label">Aadhaar No</label>
             <div class="col-sm-5">
-              <input type="text" name="aadhaar" class="form-control" id="aadhaar" placeholder="Enter Aadhaar No">
+              <input type="text" name="aadhaar" class="form-control" c id="aadhaar" placeholder="Enter Aadhaar No">
             </div>
           </div>
 

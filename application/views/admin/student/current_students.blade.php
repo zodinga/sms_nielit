@@ -20,6 +20,8 @@
                 <td>Course</td>
                 <td>Year</td>
                 <td>Phone</td>
+                <td>Sex</td>
+                <td>Category</td>
                 <td>Status</td>
                 <td>Status Update Date</td>
                 <td>Action</td>
@@ -76,6 +78,16 @@
                 <td><?php echo $s->doj;?></td>
                 
                 <td><?php echo $s->phone;?></td>
+                <td><?php echo $s->sex;?></td>
+                <td>
+                <?php
+                 $category=Categories::find($s->category);
+                 if($category) {
+                echo $category->category;  
+                }
+                
+                ?>
+            </td>
                 <td>
                     <?php
                         $status=Statuses::find($s->status);

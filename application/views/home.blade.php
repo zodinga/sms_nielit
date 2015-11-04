@@ -48,7 +48,8 @@
 					<li><a href="/students"><i class="icon-file"></i>Display/Search Students</a></li>
 					<li><a href="/courses"><i class="icon-file"></i>Existing Courses</a></li>
 					<li><a href="/images"><i class="icon-user-md"></i>Image Upload</a></li>
-					<li><a href="/home/about"><i class="icon-group"></i>About Developer Team</a></li>
+					<li><a href="/home/about"><i class="icon-group"></i>SC/ST Student List</a></li>
+                    <li><a href="/home/about"><i class="icon-group"></i>Generate Student List for MIS</a></li>
 					<li><a href="/test"><i class="icon-calendar"></i>Test</a></li>
                 </ul>
 			</div>
@@ -153,5 +154,27 @@
     <script src="/templates/libero/js/jquery-ui-1.10.1.custom.min.js"></script>
     <script src="/templates/libero/bootstrap/js/bootstrap.min.js"></script>
 
+<!--js link for export-->
+<script src="/templates/libero/js/bootstrap.mini.js"></script>
+<script src="/templates/libero/js/jquery.min.js"></script>
+<script src="/templates/libero/js/export/tableExport.js"></script>
+<script src="/templates/libero/js/export/jquery.base64.js"></script>
+<script src="/templates/libero/js/export/html2canvas.js"></script>
+<script src="/templates/libero/js/export/jspdf/libs/base64.js"></script>
+<script src="/templates/libero/js/export/jspdf/libs/sprintf.js"></script>
+<script src="/templates/libero/js/export/jspdf/jspdf.js"></script>
+<!-- End export-->
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#exportFile').hide();
+    });
 
+    $("#button_excel").click(function(){
+        $("#exportFile").show();
+        $('#exportFile').tableExport({
+            type:'excel',escape:'false'
+        });
+        $('#exportFile').hide();
+    });
+</script>
 

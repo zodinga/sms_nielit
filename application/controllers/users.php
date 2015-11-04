@@ -17,21 +17,28 @@ class Users_Controller extends Base_Controller {
 	}
 	public function post_save()
 	{
-		if(Input::get('password')==Input::get('repassword'))
+		$user = Users::where_username(Input::get('usename'))->first();
+		if(!$user)
 		{
-			$user=new Users;
+			if(Input::get('password')==Input::get('repassword'))
+			{
+				$user=new Users;
 
-			$user->username=Input::get('username');
+				$user->username=Input::get('username');
 
-			$user->password=Input::get('password');
-			$user->type=3;
-			
+				$user->password=Hash::make(Input::get('password'));
+				//if(Hash::check(Hash::make(Input::get('oldPassword')),$user->password)
+				$user->type=3;
+				
 
-			$user->save();
+				$user->save();
+				return Redirect::to('home/index');
+			}
 		}
-		
-
-		return Redirect::to('home/index');
+		else
+		{
+			return Redirect::to('home/index');
+		}
 	}
 	public function post_update()
 	{

@@ -2,11 +2,12 @@
 	class Students_Controller extends Base_Controller
 	{
 		//public $restful = true;
+		
 		public function action_index()
 		{
-			$head="All Students";
-			$students = Students::where('id','>',0)->paginate(20);
-
+			$head="Current Students";
+			$students = Students::where('status','=',1)->order_by('course','asc')->order_by('doj','asc')->order_by('name','asc')->paginate(20);
+			$students_details = Students::where('status','=',1)->order_by('course','asc')->order_by('doj','asc')->order_by('name','asc')->get();
 			if(Auth::check())
 			{
 			return View::make('admin.student.index')
@@ -19,6 +20,7 @@
 			{
 				return View::make('home.displaystudent')
 				->with('students',$students->results)
+				->with('students_details',$students_details)
 				->with('error_code',0)
 				->with('heading',$head)
 				->with('links',$students->links());
@@ -49,7 +51,6 @@
 		public function action_current_filter()
 		{
 			$course=Input::get('optionsCourse');
-			
 			$students = Students::where('course','=',$course)->where('status','=',1)->order_by('doj','desc')->order_by('name','asc')->get();
 			$cour=Courses::find($course);
 			if($cour)
@@ -66,7 +67,7 @@
 			else
 			{
 				return View::make('home.displaystudent')
-				->with('students',$students->results)
+				->with('students',$students)
 				->with('error_code',0)
 				->with('heading',$head);
 			}

@@ -56,7 +56,7 @@
                 <?php 
                     $start_year = 2002;
                     $cmca = 0; $cbca = 0; $cdete = 0; $cdcse = 0; $co = 0; $ca = 0; $csh = 0;
-                    for($i=$start_year;$i<date("Y");$i++)
+                    for($i=$start_year;$i<date("Y")+1;$i++)
                     {
                         $tot_year = 0;
                     ?>
