@@ -19,6 +19,7 @@
                 <td>Year</td>
                 <td>Semester</td>
                 <td>Phone</td>
+                <td>Cat</td>
                 <td>Status</td>
                 <td>Status Update Date</td>
                 <td>Action</td>
@@ -74,6 +75,15 @@
                   ?>
                 </td>
                 <td><?php echo $s->phone;?></td>
+                <td>
+                <?php
+                 $category=Categories::find($s->category);
+                 if($category) {
+                echo $category->category;  
+                }
+                
+                ?>
+                </td>
                 <td>
                     <?php
                         $status=Statuses::find($s->status);

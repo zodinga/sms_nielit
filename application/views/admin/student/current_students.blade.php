@@ -13,7 +13,7 @@
     <table class="table table-hover">
         <thead>
             <tr class="warning">
-                <td>Semesterxx</td>
+                <td>Sem</td>
                 <td>Id</td>
                 <td>Photo</td>
                 <td>Name</td>
@@ -21,9 +21,8 @@
                 <td>Year</td>
                 <td>Phone</td>
                 <td>Sex</td>
-                <td>Category</td>
+                <td>Cat</td>
                 <td>Status</td>
-                <td>Status Update Date</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -95,8 +94,6 @@
                             echo $status->status;  
                         }
                     ?>
-                </td>
-                <td>
                     <?php echo $s->status_update_date;?>
                 </td>
                 <td>
@@ -106,8 +103,7 @@
                     <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
                     &nbsp;
                     <a href="/students/edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
-<!--                     <a href="#editModal<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>        <!-- Delete Modal -->
- -->                        
+                 <!--  <a href="#editModal<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>       -->
                     <?php 
                     $settings=Settings::find(1);
                     if($settings->delete_student=="Y")
