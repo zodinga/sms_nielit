@@ -2,7 +2,7 @@
 	class Students_Controller extends Base_Controller
 	{
 		//public $restful = true;
-		
+public $course_id;
 		public function action_index()
 		{
 			$head="Current Students";
@@ -50,19 +50,26 @@
 
 		public function action_current_filter()
 		{
+			if(Session::has('course_id'))
+				$course=Session::get('course_id');
+			else
 			$course=Input::get('optionsCourse');
+
+
 			$students = Students::where('course','=',$course)->where('status','=',1)->order_by('doj','desc')->order_by('name','asc')->get();
 			$cour=Courses::find($course);
 			if($cour)
 			$head="Current $cour->course Students:";
 			else
 				$head="No Course";
+
 			if(Auth::check())
 			{
 			return View::make('admin.student.current_students')
 				->with('students',$students)
 				->with('error_code',0)
-				->with('heading',$head);
+				->with('heading',$head)
+				->with('course_id',$course);
 			}
 			else
 			{
@@ -83,6 +90,7 @@
 		public function action_edit($id)
 		{
 			# code...
+			
 			if(Auth::check())
 				{
 					  	$detail = Students::find($id);
@@ -343,10 +351,15 @@
 					$update_student->status_update_date = date('Y-m-d');
 					$update_student->status=Input::get('status');
 				}
-
+				$course_id=Input::get('course');
 				if (empty($_FILES['photo']['name'])) {
     			// No file was selected for upload, your (re)action goes here
 					$update_student->save();
+
+					return Redirect::to('students/current_filter')->with('course_id',$course_id);
+				}
+				else
+				{
 					return Redirect::to('students/index');
 				}
 
@@ -366,7 +379,7 @@
       		//$update_student->save();
 				if(Auth::check())
 				{
-					return Redirect::to('students');
+					return Redirect::to('students/current_filter')->with('course_id',$course_id);
 				}
 				else
 					return Redirect::to('home');

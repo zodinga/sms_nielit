@@ -101,16 +101,18 @@
                 </td>
                 <td>
                     
+
                    
                     <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
                     &nbsp;
                     <a href="/students/edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
-                    <!-- Delete Modal -->
+<!--                     <a href="#editModal<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>        <!-- Delete Modal -->
+ -->                        
                     <?php 
                     $settings=Settings::find(1);
                     if($settings->delete_student=="Y")
                     {
-                        echo "
+                        ?>
                         <a href='#Delete_modal<?php echo $s->id; ?>'  role='button' class='icon-trash' data-toggle='modal' title='Delete Student'> Delete</a>
                         <div class='modal fade' id='Delete_modal<?php echo $s->id; ?>' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
                             <div class='modal-dialog'>
@@ -130,6 +132,7 @@
                                 </div>
                             </div>
                         </div>"; 
+                        <?php
                     }
                     ?>
                     <!-- End Delete Modal -->
@@ -141,6 +144,8 @@
             ?>
         </tbody>
     </table>
+
+
 
     <!-- Table for exporting Data to excel file -->
 

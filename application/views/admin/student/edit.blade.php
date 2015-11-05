@@ -10,7 +10,7 @@
                 <label  for="photo" >Photo</label>
                 <div>
                     <?php 
-                        //echo $s->photo;
+                        echo "couurse id=".Session::get('course_id');
                         $pic="/uploads/".$detail->photo;
                         if($detail->photo=="")
                             $pic="/img/user.jpg";
