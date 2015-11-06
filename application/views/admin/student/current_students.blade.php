@@ -86,7 +86,7 @@
                 }
                 
                 ?>
-            </td>
+                </td>
                 <td>
                     <?php
                         $status=Statuses::find($s->status);
