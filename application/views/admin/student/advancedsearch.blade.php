@@ -10,7 +10,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Enter Name</label>
 					<div class="controls">
-						<input type="text" name="name" id="basicinput" placeholder="XX..." class="span8">
+						<input type="text" name="name" id="basicinput" placeholder="XX..." class="span8" tabindex="1">
 						<span class="help-inline">Enter Student's Name</span>
 					</div>
 				</div>
@@ -18,7 +18,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Year of Joining</label>
 					<div class="controls">
-						<input type="text" name="year" id="basicinput" placeholder="All..." class="span8">
+						<input type="text" name="year" id="basicinput" placeholder="All..." class="span8" tabindex="2">
 						<span class="help-inline">Enter Joining Year</span>
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Course</label>
 					<div class="controls">
-						<select tabindex="1" name="courseID" data-placeholder="Select here.." class="span8">
+						<select tabindex="1" name="courseID" data-placeholder="Select here.." class="span8" tabindex="3">
 							<option selected="selected" value="">All Courses</option>
 							 <?php
 							  $course=Courses::all();
@@ -43,7 +43,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Category</label>
 					<div class="controls">
-						<select tabindex="1" name="category" data-placeholder="Select here.." class="span8">
+						<select tabindex="1" name="category" data-placeholder="Select here.." class="span8" tabindex="4">
 							<option selected="selected" value="">All Categories</option>
 							 <?php
 							  $category=Categories::all();
@@ -60,7 +60,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Community</label>
 					<div class="controls">
-						<select tabindex="1" name="community" data-placeholder="Select here.." class="span8">
+						<select tabindex="1" name="community" data-placeholder="Select here.." class="span8" tabindex="5">
 							<option selected="selected" value="">All Communities</option>
 							 <?php
 							  $comm=Communities::all();
@@ -77,7 +77,7 @@
 				<div class="control-group">
 					<label class="control-label" for="basicinput">Status</label>
 					<div class="controls">
-						<select tabindex="1" name="status" data-placeholder="Select here.." class="span8">
+						<select tabindex="1" name="status" data-placeholder="Select here.." class="span8" tabindex="6">
 							<option selected="selected" value="">All Statuses</option>
 							 <?php
 							  $status=Statuses::all();
@@ -95,15 +95,15 @@
 					<label class="control-label">Sex</label>
 					<div class="controls">
 						<label class="radio inline">
-							<input type="radio" name="sex" value="" checked="checked">
+							<input type="radio" name="sex" value="" checked="checked" tabindex="7">
 							All Sex
 						</label>
 						<label class="radio inline">
-							<input type="radio" name="sex" value="M">
+							<input type="radio" name="sex" value="M" tabindex="8">
 							Male
 						</label>
 						<label class="radio inline">
-							<input type="radio" name="sex" value="F">
+							<input type="radio" name="sex" value="F" tabindex="9">
 							Female
 						</label>
 				</div>
@@ -112,8 +112,8 @@
 
 				<div class="control-group">
 					<div class="controls">
-						<button type="submit" class="btn btn-primary">Search</button>
-						<button type="reset" class="btn">Reset Form</button>
+						<button type="submit" class="btn btn-primary" tabindex="10">Search</button>
+						<button type="reset" class="btn" tabindex="11">Reset Form</button>
 					</div>
 				</div>
 			</form>

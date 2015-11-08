@@ -2,7 +2,7 @@
 @section('content')
 <section class="module">
     <div class="module-head">
-        <b>{{$heading}}</b>
+        <b>Advanced Search Result:{{$heading}}</b>
     </div>
     <!--/.module-head-->
     <div class="module-body">
@@ -100,7 +100,8 @@
                    
                     <a href="/students/detail/<?php echo $s->id; ?>" role="button" class="icon-list-ol" data-toggle="modal" title="Display Details"> Details</a>
                     &nbsp;
-                    <a href="/students/all_edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
+                    <a href="/students/advanced_search_edit/<?php echo $s->id; ?>"  role="button" class="icon-edit-sign" data-toggle="modal" title="Edit Student"> Edit</a>
+                   
                     <!-- Delete Modal -->
                     <?php 
                     $settings=Settings::find(1);

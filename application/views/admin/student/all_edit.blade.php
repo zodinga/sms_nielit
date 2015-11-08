@@ -2,10 +2,10 @@
 @section('content')
 <section class="module">
     <div class="module-head">
-        <b>Student Edit haha</b>
+        <b>Student All Edit </b>
     </div>
     <div class="module-body">
-        <form class="form-horizontal" action="/students/update" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/students/all_update" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label  for="photo" >Photo</label>
                 <div>

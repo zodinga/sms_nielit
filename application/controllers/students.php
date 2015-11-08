@@ -87,6 +87,41 @@ public $course_id;
 			return View::make('admin.student.form')->with('error_code',0);
 		}
 
+		public function action_all_edit($id)
+		{
+			# code...
+			
+			if(Auth::check())
+				{
+					  	$detail = Students::find($id);
+        				$course_detail = Courses::find($detail->course);
+        				$courses = Courses::all();
+        				$cate = Categories::find($detail->category);
+        				$categories = Categories::all();
+        				$comm = Communities::find($detail->community);
+        				$communities = Communities::all();
+        				$sta = Statuses::find($detail->status);
+        				$statuses = Statuses::all();
+						return View::make('admin.student.all_edit')
+							->with('detail',$detail)
+							->with('error_code',0)
+							->with('course_detail',$course_detail)
+							->with('courses',$courses)
+							->with('cate',$cate)
+							->with('categories',$categories)
+							->with('comm',$comm)
+							->with('communities',$communities)
+							->with('sta',$sta)
+							->with('statuses',$statuses);
+				}
+				else
+				{
+					return View::make('students/edit')
+						->with('student',Students::find($id))
+						->with('error_code',0);
+				}
+		}
+
 		public function action_edit($id)
 		{
 			# code...
@@ -116,21 +151,45 @@ public $course_id;
 				}
 				else
 				{
-					return View::make('home/studentedit')
+					return View::make('students/edit')
 						->with('student',Students::find($id))
 						->with('error_code',0);
 				}
-			/*return View::make('admin.student.edit')
-			->with('s',Students::find($id))
-			->with('error_code',0);*/
 		}
 
-		public function action_searchedit($id)
+		public function action_advanced_search_edit($id)
 		{
 			# code...
-			return View::make('home/studentedit')
-			->with('s',Students::find($id))
-			->with('error_code',0);
+			
+			if(Auth::check())
+				{
+					  	$detail = Students::find($id);
+        				$course_detail = Courses::find($detail->course);
+        				$courses = Courses::all();
+        				$cate = Categories::find($detail->category);
+        				$categories = Categories::all();
+        				$comm = Communities::find($detail->community);
+        				$communities = Communities::all();
+        				$sta = Statuses::find($detail->status);
+        				$statuses = Statuses::all();
+						return View::make('admin.student.advanced_search_edit')
+							->with('detail',$detail)
+							->with('error_code',0)
+							->with('course_detail',$course_detail)
+							->with('courses',$courses)
+							->with('cate',$cate)
+							->with('categories',$categories)
+							->with('comm',$comm)
+							->with('communities',$communities)
+							->with('sta',$sta)
+							->with('statuses',$statuses);
+				}
+				else
+				{
+					return View::make('student.advanced_search_edit')
+						->with('student',Students::find($id))
+						->with('error_code',0);
+				}
 		}
 
 		public function action_detail($id)
@@ -219,7 +278,7 @@ public $course_id;
 
 			if(Auth::check())
 				{
-					return View::make('admin.student.index')
+					return View::make('admin.student.advanced_search_result')
 					->with('students',$students)
 					->with('error_code',0)
 					->with('heading',$head);
@@ -311,6 +370,75 @@ public $course_id;
 			return Redirect::to('students/index');
 		}
 
+				public function action_all_update()
+		{
+				$update_student = Students::find(Input::get('id'));
+
+				$update_student->name=Input::get('name');
+				$update_student->aadhaar=Input::get('aadhaar');
+				$update_student->eid=Input::get('eid');
+				$update_student->phone=Input::get('phone');
+				$update_student->email=Input::get('email');
+				$update_student->inst_no=Input::get('inst_no');
+				$update_student->univ_reg_no=Input::get('univ_reg_no');
+				$update_student->exam_roll_no=Input::get('exam_roll_no');
+				$update_student->doj=Input::get('doj');
+				$update_student->course=Input::get('course');
+				$update_student->batch=Input::get('batch');
+				$update_student->fathers_me=Input::get('fathers_me');
+				$update_student->mothers_me=Input::get('mothers_me');
+				$update_student->parents_phone=Input::get('parents_phone');
+				$update_student->guardian_me=Input::get('guardian_me');
+				$update_student->guardian_phone=Input::get('guardian_phone');
+				$update_student->dob=Input::get('dob');
+				$update_student->sex=Input::get('sex');
+				$update_student->category=Input::get('category');
+				$update_student->community=Input::get('community');
+				$update_student->per_street=Input::get('per_street');
+				$update_student->per_city=Input::get('per_city');
+				$update_student->per_district=Input::get('per_district');
+				$update_student->per_state=Input::get('per_state');
+				$update_student->per_pin=Input::get('per_pin');
+				$update_student->pre_street=Input::get('pre_street');
+				$update_student->pre_city=Input::get('pre_city');
+				$update_student->pre_district=Input::get('pre_district');
+				$update_student->pre_state=Input::get('pre_state');
+				$update_student->pre_pin=Input::get('pre_pin');
+				$update_student->photo=Input::get('photo');
+				if($update_student->status != Input::get('status'))
+				{
+					$update_student->status_update_date = date('Y-m-d');
+					$update_student->status=Input::get('status');
+				}
+				if (empty($_FILES['photo']['name'])) {
+    			// No file was selected for upload, your (re)action goes here
+					$update_student->save();
+
+					return Redirect::to('students/index');
+				}
+
+				$rules = array(
+            	'image' => 'image|max:300',
+		        );
+		        $validation = Validator::make(Input::file('photo'), $rules);
+		        // create random filename
+				$filename = Input::get('sid').'.'. File::extension(Input::file('photo.name'));
+				// Save photo in the database
+				$update_student->photo = $filename;
+				$update_student->save();
+				//upload to uploads folder
+				Input::upload('photo', 'public/uploads', $filename);
+
+
+      		//$update_student->save();
+				if(Auth::check())
+				{
+					return Redirect::to('students/index');
+				}
+				else
+					return Redirect::to('home');
+		}
+
 		public function action_update()
 		{
 				$update_student = Students::find(Input::get('id'));
@@ -380,6 +508,75 @@ public $course_id;
 				if(Auth::check())
 				{
 					return Redirect::to('students/current_filter')->with('course_id',$course_id);
+				}
+				else
+					return Redirect::to('home');
+		}
+
+		public function action_advanced_search_update()
+		{
+				$update_student = Students::find(Input::get('id'));
+
+				$update_student->name=Input::get('name');
+				$update_student->aadhaar=Input::get('aadhaar');
+				$update_student->eid=Input::get('eid');
+				$update_student->phone=Input::get('phone');
+				$update_student->email=Input::get('email');
+				$update_student->inst_no=Input::get('inst_no');
+				$update_student->univ_reg_no=Input::get('univ_reg_no');
+				$update_student->exam_roll_no=Input::get('exam_roll_no');
+				$update_student->doj=Input::get('doj');
+				$update_student->course=Input::get('course');
+				$update_student->batch=Input::get('batch');
+				$update_student->fathers_me=Input::get('fathers_me');
+				$update_student->mothers_me=Input::get('mothers_me');
+				$update_student->parents_phone=Input::get('parents_phone');
+				$update_student->guardian_me=Input::get('guardian_me');
+				$update_student->guardian_phone=Input::get('guardian_phone');
+				$update_student->dob=Input::get('dob');
+				$update_student->sex=Input::get('sex');
+				$update_student->category=Input::get('category');
+				$update_student->community=Input::get('community');
+				$update_student->per_street=Input::get('per_street');
+				$update_student->per_city=Input::get('per_city');
+				$update_student->per_district=Input::get('per_district');
+				$update_student->per_state=Input::get('per_state');
+				$update_student->per_pin=Input::get('per_pin');
+				$update_student->pre_street=Input::get('pre_street');
+				$update_student->pre_city=Input::get('pre_city');
+				$update_student->pre_district=Input::get('pre_district');
+				$update_student->pre_state=Input::get('pre_state');
+				$update_student->pre_pin=Input::get('pre_pin');
+				$update_student->photo=Input::get('photo');
+				if($update_student->status != Input::get('status'))
+				{
+					$update_student->status_update_date = date('Y-m-d');
+					$update_student->status=Input::get('status');
+				}
+				if (empty($_FILES['photo']['name'])) {
+    			// No file was selected for upload, your (re)action goes here
+					$update_student->save();
+
+					return Redirect::to('students/advancedsearch');
+				}
+
+				$rules = array(
+            	'image' => 'image|max:300',
+		        );
+		        $validation = Validator::make(Input::file('photo'), $rules);
+		        // create random filename
+				$filename = Input::get('sid').'.'. File::extension(Input::file('photo.name'));
+				// Save photo in the database
+				$update_student->photo = $filename;
+				$update_student->save();
+				//upload to uploads folder
+				Input::upload('photo', 'public/uploads', $filename);
+
+
+      		//$update_student->save();
+				if(Auth::check())
+				{
+					return Redirect::to('students/advancedsearch');
 				}
 				else
 					return Redirect::to('home');
