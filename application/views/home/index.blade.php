@@ -112,7 +112,7 @@
         </div>
 
         <hr>
-        <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
+        <h2 class="sub-header">YEARLY ADMITTED STUDENT RECORD</h2>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>

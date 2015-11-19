@@ -49,7 +49,7 @@
 					<li><a href="/courses"><i class="icon-file"></i>Existing Courses</a></li>
 					<li><a href="/images"><i class="icon-user-md"></i>Image Upload</a></li>
 					<li><a href="/home/about"><i class="icon-group"></i>SC/ST Student List</a></li>
-                    <li><a href="/home/about"><i class="icon-group"></i>Generate Student List for MIS</a></li>
+                    <li><a href="/mis"><i class="icon-group"></i>Generate Student List for MIS</a></li>
 					<li><a href="/test"><i class="icon-calendar"></i>Test</a></li>
                 </ul>
 			</div>
