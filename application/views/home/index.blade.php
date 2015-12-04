@@ -112,7 +112,7 @@
         </div>
 
         <hr>
-        <h2 class="sub-header">YEARLY ADMITTED STUDENT RECORD</h2>
+        <h2 class="sub-header">YEARLY STUDENT RECORD</h2>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -137,23 +137,34 @@
                     ?>
                     <tr>
                         <?php echo "<td>".$i."-".($i+1)."</td>"; ?>
-                        <?php $mca=Students::where('course','=',4)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/4-".$i."\">".$mca."</a></td>"; 
+                        <?php $mca=Students::where('course','=',4)->where('doj','<=',$i)->where('doj','>=',$i-2)->count();  
+                        $m=Students::where('course','=',4)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','m')->count();
+                        $f=Students::where('course','=',4)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','f')->count();
+
+                        echo "<td>M($m)+F($f)=<a href=\"/students/display/4-".$i."\">".$mca."</a></td>"; 
                         $cmca=$cmca+$mca;
                         ?>
 
-                        <?php $bca=Students::where('course','=',3)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/3-".$i."\">".$bca."</td>"; 
+                        <?php 
+                        $bca=Students::where('course','=',3)->where('doj','<=',$i)->where('doj','>=',$i-2)->count();  
+                        $m=Students::where('course','=',3)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','m')->count();
+                        $f=Students::where('course','=',3)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','f')->count();
+                        echo "<td>M($m)+F($f)=<a href=\"/students/display/3-".$i."\">".$bca."</td>"; 
                         $cbca=$cbca+$bca;
                         ?>
 
-                        <?php $dete=Students::where('course','=',6)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/6-".$i."\">".$dete."</td>"; 
+                        <?php 
+                        $dete=Students::where('course','=',6)->where('doj','<=',$i)->where('doj','>=',$i-2)->count();  
+                        $m=Students::where('course','=',6)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','m')->count();
+                        $f=Students::where('course','=',6)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','f')->count();
+                        echo "<td>M($m)+F($f)=<a href=\"/students/display/6-".$i."\">".$dete."</td>"; 
                         $cdete=$cdete+$dete;
                         ?>
 
-                        <?php $dcse=Students::where('course','=',5)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/5-".$i."\">".$dcse."</td>"; 
+                        <?php $dcse=Students::where('course','=',5)->where('doj','<=',$i)->where('doj','>=',$i-2)->count();  
+                        $m=Students::where('course','=',5)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','m')->count();
+                        $f=Students::where('course','=',5)->where('doj','<=',$i)->where('doj','>=',$i-2)->where('sex','=','f')->count();
+                        echo "<td>M($m)+F($f)=<a href=\"/students/display/5-".$i."\">".$dcse."</td>"; 
                         $cdcse=$cdcse+$dcse;
                         ?>
 

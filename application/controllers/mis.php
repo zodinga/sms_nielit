@@ -37,7 +37,17 @@ class Mis_Controller extends Base_Controller {
 							->order_by('doj','asc')
 							->order_by('name','asc')
 							->count();
-		$head="MIS REPORT: TOTAL ".$count;
+		$male=Students::where('doj','>=',$begin)
+							->where('doj','<=',$year)
+							->where('course','=',$course_id)
+							->where('sex','=','m')
+							->count();
+		$female=Students::where('doj','>=',$begin)
+							->where('doj','<=',$year)
+							->where('course','=',$course_id)
+							->where('sex','=','f')
+							->count();
+		$head="MIS REPORT: TOTAL ".$count." MALE=".$male." FEMALE=".$female;
 		return View::make('home.mis_report')
 					->with('students',$students)
 					->with('error_code',0)

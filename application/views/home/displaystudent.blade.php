@@ -189,7 +189,7 @@
             <td>Status</td>
             <td>Status Update Date</td>
         </tr>
-        <?php foreach($students_details as $s){ ?>
+        <?php foreach($students as $s){ ?>
         <tr>
             <td><?php echo $s->id;?></td>
             <td><?php echo $s->name;?></td>
