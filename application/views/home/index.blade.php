@@ -168,13 +168,17 @@
                         $cdcse=$cdcse+$dcse;
                         ?>
 
-                        <?php $o=Students::where('course','=',1)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/1-".$i."\">".$o."</td>"; 
+                        <?php $o=Students::where('course','=',1)->where('doj','=',$i)->count(); 
+                        $om=Students::where('course','=',1)->where('doj','=',$i)->where('sex','=','m')->count(); 
+                        $of=Students::where('course','=',1)->where('doj','=',$i)->where('sex','=','f')->count();  
+                        echo "<td>M($om)+F($of)=<a href=\"/students/display/1-".$i."\">".$o."</td>"; 
                         $co=$co+$o;
                         ?>
 
-                        <?php $a=Students::where('course','=',2)->where('doj','=',$i)->count();  
-                        echo "<td><a href=\"/students/display/2-".$i."\">".$a."</td>"; 
+                        <?php $a=Students::where('course','=',2)->where('doj','=',$i)->count();
+                        $am=Students::where('course','=',2)->where('doj','=',$i)->where('sex','=','m')->count();
+                        $af=Students::where('course','=',2)->where('doj','=',$i)->where('sex','=','f')->count();  
+                        echo "<td>M($am)+F($af)=<a href=\"/students/display/2-".$i."\">".$a."</td>"; 
                         $ca=$ca+$a;
                         ?>
 
