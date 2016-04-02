@@ -282,6 +282,13 @@
           </div>
 
           <div class="form-group">
+            <label for="remarks" class="col-sm-2 control-label">Remarks</label>
+            <div class="col-sm-5">
+              <input type="text" name="remarks" class="form-control" id="remarks" placeholder="Enter Remarks">
+            </div>
+          </div>
+
+          <div class="form-group">
             <img src="" height="100" width="100" alt="student-photo" class="img-rounded" id="output" class="img-rounded" style="border:1px solid black">
           <input type="file" name="photo" id="photo" onchange="loadFile(event)">
           

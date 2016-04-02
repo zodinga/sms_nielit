@@ -273,6 +273,14 @@
                 </div>
             </div> 
 
+            <div class="form-group">
+                <label  for="remarks" >Remarks</label>
+                <div>
+                    <input type="text" name="pre_pin" value="<?php echo $detail->remarks; ?>" class="form-control" id="remarks" placeholder="Enter Remarks">
+                </div>
+            </div> 
+
+
             <input type="hidden" name="id" value="<?php echo $detail->id; ?>" class="form-control" id="id">
             <div class="form-group">
                 <div class="col-sm-o">

@@ -343,6 +343,7 @@ public $course_id;
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->status=Input::get('status');
+				$update_student->remarks=Input::get('remarks');
 				$now = new DateTime("now");
 				$update_student->status_update_date=$now;
 
@@ -405,6 +406,7 @@ public $course_id;
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->photo=Input::get('photo');
+				$update_student->remarks=Input::get('remarks');
 				if($update_student->status != Input::get('status'))
 				{
 					$update_student->status_update_date = date('Y-m-d');
@@ -548,6 +550,7 @@ public $course_id;
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->photo=Input::get('photo');
+				$update_student->remarks=Input::get('remarks');
 				if($update_student->status != Input::get('status'))
 				{
 					$update_student->status_update_date = date('Y-m-d');

@@ -21,7 +21,7 @@
                 <td>Phone</td>
                 <td>Cat</td>
                 <td>Status</td>
-                <td>Status Update Date</td>
+                <td>Remarks</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -93,7 +93,7 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo $s->status_update_date;?>
+                    <?php echo $s->remarks;?>
                 </td>
                 <td>
                     
