@@ -23,6 +23,7 @@
                 <td>Sex</td>
                 <td>Cat</td>
                 <td>Status</td>
+                <td>Remarks</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -96,6 +97,7 @@
                     ?>
                     <?php echo $s->status_update_date;?>
                 </td>
+                <td><?php echo $s->remarks;?></td>
                 <td>
                     
 
@@ -184,6 +186,7 @@
             <td>Present Pin</td>
             <td>Status</td>
             <td>Status Update Date</td>
+            <td>Remarks</td>
         </tr>
         <?php foreach($students as $s){ ?>
         <tr>
@@ -275,6 +278,7 @@
                 ?>
             </td>
             <td><?php echo $s->status_update_date;?></td>
+            <td><?php echo $s->remarks;?></td>
         </tr>       
         <?php } ?>
     </table>

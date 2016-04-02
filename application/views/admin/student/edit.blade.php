@@ -276,7 +276,7 @@
             <div class="form-group">
                 <label  for="remarks" >Remarks</label>
                 <div>
-                    <input type="text" name="pre_pin" value="<?php echo $detail->remarks; ?>" class="form-control" id="remarks" placeholder="Enter Remarks">
+                    <input type="text" name="remarks" value="<?php echo $detail->remarks; ?>" class="form-control" id="remarks" placeholder="Enter Remarks">
                 </div>
             </div> 
 

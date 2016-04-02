@@ -275,7 +275,7 @@ public $course_id;
 					$head = $head." Community:".$community->community;
 			}
 			$students = $student->get();
-
+			//dd($head);
 			if(Auth::check())
 				{
 					return View::make('admin.student.advanced_search_result')
@@ -373,6 +373,9 @@ public $course_id;
 
 				public function action_all_update()
 		{
+				$filter=Input::get('course').'-'.Input::get('doj');
+				
+
 				$update_student = Students::find(Input::get('id'));
 
 				$update_student->name=Input::get('name');
@@ -416,7 +419,8 @@ public $course_id;
     			// No file was selected for upload, your (re)action goes here
 					$update_student->save();
 
-					return Redirect::to('students/index');
+
+					return Redirect::to('students/display/'.$filter);
 				}
 
 				$rules = array(
@@ -435,7 +439,7 @@ public $course_id;
       		//$update_student->save();
 				if(Auth::check())
 				{
-					return Redirect::to('students/index');
+					return Redirect::to('students/display/'.$filter);
 				}
 				else
 					return Redirect::to('home');
@@ -476,6 +480,7 @@ public $course_id;
 				$update_student->pre_state=Input::get('pre_state');
 				$update_student->pre_pin=Input::get('pre_pin');
 				$update_student->photo=Input::get('photo');
+				$update_student->remarks=Input::get('remarks');
 				if($update_student->status != Input::get('status'))
 				{
 					$update_student->status_update_date = date('Y-m-d');
